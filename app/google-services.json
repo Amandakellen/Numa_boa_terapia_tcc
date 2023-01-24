@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1057450825110",
+    "firebase_url": "https://numa-boa-terapia-default-rtdb.firebaseio.com",
+    "project_id": "numa-boa-terapia",
+    "storage_bucket": "numa-boa-terapia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057450825110:android:1c9fde7e9f89c60e9b79b7",
+        "android_client_info": {
+          "package_name": "com.example.numaboaterapia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057450825110-5gl4q1k10fqi1009sh4v8uf6skje9rhc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJo96qrFAHsw4rkgFPq2_3H8mtcfwecy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057450825110-5gl4q1k10fqi1009sh4v8uf6skje9rhc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
