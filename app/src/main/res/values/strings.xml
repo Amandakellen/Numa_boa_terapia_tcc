@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Numa Boa Terapia</string>
+    <string name="name">Numa Boa</string>
+    <string name="name_subtitle">Terapia</string>
 </resources>
