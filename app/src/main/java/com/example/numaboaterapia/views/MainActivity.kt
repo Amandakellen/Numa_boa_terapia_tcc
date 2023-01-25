@@ -1,9 +1,10 @@
-package com.example.numaboaterapia
+package com.example.numaboaterapia.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import com.example.numaboaterapia.databinding.ActivityMainBinding
+import com.example.numaboaterapia.views.CustomView.BotaoArredondadoBranco
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +15,16 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        setupViews(binding.botaoEntrar, Intent(this, LoginActivity::class.java))
+
         setContentView(binding.root)
     }
+
+    private fun setupViews(button: BotaoArredondadoBranco, intent: Intent) {
+        button.setOnClickListener {
+            startActivity(intent)
+        }
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.views
+package com.example.numaboaterapia.views.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
