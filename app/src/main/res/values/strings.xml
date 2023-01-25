@@ -2,4 +2,6 @@
     <string name="app_name">Numa Boa Terapia</string>
     <string name="name">Numa Boa</string>
     <string name="name_subtitle">Terapia</string>
+    <string name="button_login">Entrar</string>
+    <string name="registration_button">Cadastrar</string>
 </resources>
