@@ -8,8 +8,8 @@ android {
     namespace 'com.example.numaboaterapia'
     compileSdk 33
 
-    buildFeatures {
-        viewBinding true
+    viewBinding {
+        enabled = true
     }
 
     defaultConfig {
