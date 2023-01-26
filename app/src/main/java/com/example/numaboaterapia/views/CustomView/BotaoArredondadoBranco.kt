@@ -13,4 +13,5 @@ class BotaoArredondadoBranco(
 
     private val view = View.inflate(context, R.layout.layout_white_button, this)
 
+
 }

@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViews(button: BotaoArredondadoBranco, intent: Intent) {
+
         button.setOnClickListener {
             startActivity(intent)
         }

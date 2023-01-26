@@ -7,19 +7,22 @@ import com.example.numaboaterapia.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
-    //private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_login)
+        setupViews()
+
+        setContentView(binding.root)
     }
 
-//    private fun setupViews(){
-//        binding.toolBarLogin.getBackButton().setOnClickListener {
-//            finish()
-//        }
-//    }
+    private fun setupViews(){
+
+        binding.toolBarLogin.getBackButton().setOnClickListener {
+            finish()
+        }
+    }
 }

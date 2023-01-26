@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.numaboaterapia.R
 
@@ -13,7 +15,7 @@ class CustomToolBar(
 ) : ConstraintLayout(context, attrs) {
 
     private val view = View.inflate(context, R.layout.tool_bar_layout, this)
-    private val backButton = view.findViewById<Button>(R.id.back_button)
+    private val backButton = view.findViewById<ImageButton>(R.id.back_button)
 
-    fun getBackButton() : Button= backButton
+    fun getBackButton(): ImageButton = backButton
 }
