@@ -13,7 +13,7 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".views.LoginActivity"
+            android:name=".Login.view.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -3,6 +3,7 @@ package com.example.numaboaterapia.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.numaboaterapia.Login.view.LoginActivity
 import com.example.numaboaterapia.databinding.ActivityMainBinding
 import com.example.numaboaterapia.views.CustomView.BotaoArredondadoBranco
 
