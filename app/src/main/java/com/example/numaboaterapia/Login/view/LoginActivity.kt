@@ -2,10 +2,10 @@ package com.example.numaboaterapia.Login.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
-import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -17,23 +17,27 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
+        setUpEditText()
         setupViews()
 
         setContentView(binding.root)
     }
 
-    private fun setUpChanges(){
-        //TODO
+    private fun setUpEditText() {
+       binding.textInputEditEmail.doOnTextChanged { text, start, before, count ->
+           viewModel.emailValue(text.toString())
+       }
+
+       binding.textInputEditSenha.doOnTextChanged { text, start, before, count ->
+           viewModel.senhaValue(text.toString())
+       }
     }
 
-    private fun setupViews(){
-        val email = binding.textInputEditEmail.text
-        val senha = binding.textInputEditSenha.text
+    private fun setupViews() {
 
-        binding.botaoLogin.setOnClickListener {
-            viewModel.emailValue(email.toString())
-            viewModel.senhaValue(senha.toString())
-        }
+//        binding.botaoLogin.setOnClickListener {
+//
+//        }
 
         binding.toolBarLogin.getBackButton().setOnClickListener {
             finish()

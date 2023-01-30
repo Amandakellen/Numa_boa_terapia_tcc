@@ -46,7 +46,7 @@
         android:layout_marginTop="16dp">
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/text_input_edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_marginTop="16dp">
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/text_input_edit_senha"
             android:inputType="textPassword"
             android:layout_width="match_parent"
