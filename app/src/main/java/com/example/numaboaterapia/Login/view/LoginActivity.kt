@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
-import com.example.numaboaterapia.data.RequestResult
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,26 +22,23 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
-
-        setUpFirebase()
         setUpEditText()
         setupViews()
 
         setContentView(binding.root)
     }
 
-    fun setUpToast(toastMessage :String){
+    fun setUpToast(toastMessage: String) {
         toastLoginIsNull = Toast.makeText(
             applicationContext, toastMessage, Toast.LENGTH_LONG
         )
     }
 
-    fun setUpFirebase() = viewModel.setAuhthentication(FirebaseAuth.getInstance())
 
     override fun onStart() {
         super.onStart()
-        val currentUser: FirebaseUser? = viewModel.getAuthentication().currentUser
-        if(currentUser != null){
+        val currentUser: FirebaseUser? = viewModel.getAuthentication()?.currentUser
+        if (currentUser != null) {
             //todo
         }
     }
@@ -63,7 +59,13 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.email.value?.isNullOrEmpty() == true ||
                 viewModel.senha.value?.isNullOrEmpty() == true)
 
+    private fun loginResult() {
+        if(viewModel.result!= "Succes"){
+            viewModel.result?.let { setUpToast(it) }
+            toastLoginIsNull.show()
+        }
 
+    }
 
     private fun setupViews() {
 
@@ -75,7 +77,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
-                    val loginResult = viewModel.verifyLogin()
+                    viewModel.verifyLogin()
+                    loginResult()
+
+
                 }
             }
         }

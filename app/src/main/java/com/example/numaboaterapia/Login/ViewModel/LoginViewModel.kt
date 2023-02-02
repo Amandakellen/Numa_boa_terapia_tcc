@@ -3,7 +3,6 @@ package com.example.numaboaterapia.Login.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.numaboaterapia.data.RequestResult
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -16,8 +15,15 @@ class LoginViewModel : ViewModel() {
     private val _senha = MutableLiveData<String>()
     val senha: LiveData<String> = _senha
 
-    private lateinit var _mAuth: FirebaseAuth
+    private  var _mAuth: FirebaseAuth?= null
 
+    lateinit var result: String
+
+
+    init {
+        _mAuth = FirebaseAuth.getInstance()
+        result = ""
+    }
 
     fun emailValue(email: String) {
         _email.value = email
@@ -28,25 +34,34 @@ class LoginViewModel : ViewModel() {
     }
 
     fun setAuhthentication(mAuth: FirebaseAuth) {
-        _mAuth = mAuth
+        _mAuth = FirebaseAuth.getInstance()
     }
 
-    fun getAuthentication(): FirebaseAuth{
+    fun getAuthentication(): FirebaseAuth?{
         val mAuth = _mAuth
         return mAuth
     }
 
 
     fun verifyLogin() {
-        _mAuth.signInWithEmailAndPassword(_email.value.toString(), _senha.value.toString())
-            .addOnCompleteListener { task ->
+        _mAuth?.signInWithEmailAndPassword(_email.value.toString(), _senha.value.toString())
+            ?.addOnCompleteListener { task ->
                 onComplete(task)
 
             }
     }
 
-    private fun onComplete(task: Task<AuthResult>): RequestResult
-       = if (task.isSuccessful)  RequestResult.SUCCESSS else  RequestResult.FAILURE
+    private fun onComplete(task: Task<AuthResult>)
+    {
+        if (task.isSuccessful) {
+            result = "Succes"
+        }
+        else{
+            result = task.exception?.message.toString()
+        }
+
+    }
+
 
 
 
