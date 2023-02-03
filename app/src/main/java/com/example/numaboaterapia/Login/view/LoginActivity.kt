@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.Login.view
 
+import android.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var toastLoginIsNull: Toast
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,20 +30,20 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    fun setUp() {
+        viewModel.userData?.observe(this, { firebaseUser ->
+            if (firebaseUser != null) {
+                //todo
+            }
+        })
+    }
+
     fun setUpToast(toastMessage: String) {
         toastLoginIsNull = Toast.makeText(
             applicationContext, toastMessage, Toast.LENGTH_LONG
         )
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser: FirebaseUser? = viewModel.getAuthentication()?.currentUser
-        if (currentUser != null) {
-            //todo
-        }
-    }
 
     private fun setUpEditText() {
         binding.textInputEditEmail.doOnTextChanged { text, start, before, count ->
@@ -59,12 +61,13 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.email.value?.isNullOrEmpty() == true ||
                 viewModel.senha.value?.isNullOrEmpty() == true)
 
-    private fun loginResult() {
-        if(viewModel.result!= "Succes"){
-            viewModel.result?.let { setUpToast(it) }
-            toastLoginIsNull.show()
-        }
 
+    private fun checkError(){
+        if(viewModel.requestResult!=null){
+            setUpToast(viewModel.requestResult!!)
+            toastLoginIsNull.show()
+            binding.loginProgressBar.visibility = View.INVISIBLE
+        }
     }
 
     private fun setupViews() {
@@ -77,10 +80,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
-                    viewModel.verifyLogin()
-                    loginResult()
-
-
+                    viewModel.login()
+                    checkError()
                 }
             }
         }
