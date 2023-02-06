@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.Login.ViewModel
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(val application: Application) : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
@@ -46,25 +47,10 @@ class LoginViewModel : ViewModel() {
 
     fun verifyLogin() {
         viewModelScope.launch {
-            val checkLogin = repository.login(_email.value.toString(), _pass.value.toString())
-            checkLoginResult(checkLogin)
-
+            repository.login(application,_email.value.toString(), _pass.value.toString())
         }
 
     }
-
-    private fun checkLoginResult(loginResult: String){
-        when(loginResult){
-            "The email address is badly formatted."->{ result = "O email digitado não é um email válido"}
-            "There is no user record corresponding to this identifier. The user may have been deleted."->{ result = "Usuário não registrado"}
-            else->{ result ="Ocorreu um erro durante o Login, tente novamente"}
-        }
-    }
-
-
-
-
-
 
 
 }

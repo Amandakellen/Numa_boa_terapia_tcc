@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
 
-    private var viewModel = LoginViewModel()
+    private lateinit var viewModel :LoginViewModel
     private lateinit var binding: ActivityLoginBinding
     private lateinit var toastLoginIsNull: Toast
 
@@ -25,11 +25,15 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
+        viewModel = LoginViewModel(this.application)
+
         setUpEditText()
         setupViews()
 
         setContentView(binding.root)
     }
+
+
 
     fun setUp() {
         viewModel.userData!!.observe(this, object : Observer<FirebaseUser?> {

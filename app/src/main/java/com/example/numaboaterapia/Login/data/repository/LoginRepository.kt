@@ -1,5 +1,7 @@
 package com.example.numaboaterapia.Login.data.repository
 
+import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -21,14 +23,24 @@ class LoginRepository {
             firebaseUserMutableLiveData.postValue(auth.currentUser)
         }
     }
-    suspend fun login(email:String, pass: String): String {
-        return try{
+    suspend fun login(application: Application, email:String, pass: String) {
+         try{
                 auth
                 .signInWithEmailAndPassword(email,pass)
                 .await()
-            return "Sucesso"
+             Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
         }catch (e : Exception){
-            return e.message.toString()
+            val message =  checkLoginResult(e.message.toString())
+            Toast.makeText(application, message, Toast.LENGTH_SHORT).show();
+            //return e.message.toString()
+        }
+    }
+
+    private fun checkLoginResult(loginResult: String) : String{
+        when(loginResult){
+            "The email address is badly formatted."->{ return "O email digitado não é um email válido"}
+            "There is no user record corresponding to this identifier. The user may have been deleted."->{return "Usuário não registrado"}
+            else->{ return "Ocorreu um erro durante o Login, tente novamente"}
         }
     }
 
