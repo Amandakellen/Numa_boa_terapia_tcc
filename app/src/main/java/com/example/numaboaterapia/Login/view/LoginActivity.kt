@@ -2,6 +2,7 @@ package com.example.numaboaterapia.Login.view
 
 import android.R
 import android.os.Bundle
+import android.transition.Visibility
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var viewModel :LoginViewModel
+    private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
     private lateinit var toastLoginIsNull: Toast
 
@@ -34,8 +35,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
-    fun setUp() {
+    private fun setUp() {
         viewModel.userData!!.observe(this, object : Observer<FirebaseUser?> {
             override fun onChanged(firebaseUser: FirebaseUser?) {
                 if (firebaseUser != null) {
@@ -43,7 +43,13 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
+
     }
+
+    private fun setUpProgressBar() {
+        binding.loginProgressBar.visibility = View.INVISIBLE
+    }
+
 
 
     fun setUpToast(toastMessage: String) {
@@ -89,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
                     viewModel.verifyLogin()
-                    setUpToast(viewModel.result)
+                    binding.loginProgressBar.visibility = View.INVISIBLE
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.example.numaboaterapia.Login.data.repository
 
 import android.app.Application
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.AuthResult
@@ -13,10 +14,12 @@ class LoginRepository {
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
+    var loginResult: String
 
     init {
         firebaseUserMutableLiveData = MutableLiveData()
         userLoggedMutableLiveData = MutableLiveData()
+        loginResult = ""
 
         auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
@@ -31,8 +34,8 @@ class LoginRepository {
              Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
         }catch (e : Exception){
             val message =  checkLoginResult(e.message.toString())
-            Toast.makeText(application, message, Toast.LENGTH_SHORT).show();
-            //return e.message.toString()
+             loginResult = message
+            Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -43,19 +46,6 @@ class LoginRepository {
             else->{ return "Ocorreu um erro durante o Login, tente novamente"}
         }
     }
-
-//    fun login(email: String?, pass: String?) {
-//        auth.signInWithEmailAndPassword(email!!, pass!!).addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                firebaseUserMutableLiveData?.postValue(auth.currentUser)
-//            }
-//
-//            else {
-//                requestResult = task.exception?.message.toString()
-//
-//            }
-//        }
-//    }
 
     fun signOut() {
         auth.signOut()
