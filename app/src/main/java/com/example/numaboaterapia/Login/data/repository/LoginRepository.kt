@@ -29,7 +29,7 @@ class LoginRepository {
             }
 
             else {
-                requestResult = task.exception!!.message.toString()
+                requestResult = task.exception?.message.toString()
 
             }
         }
