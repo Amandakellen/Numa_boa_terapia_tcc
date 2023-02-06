@@ -26,14 +26,11 @@ class LoginViewModel(val application: Application) : ViewModel() {
     private var _loggedStatus: MutableLiveData<Boolean>? = null
     var loggedStatus: LiveData<Boolean>? = _loggedStatus
 
-    private lateinit var _result: String
-
     private var repository:LoginRepository = LoginRepository()
 
     init {
         _userData = repository.firebaseUserMutableLiveData
         _loggedStatus = repository.userLoggedMutableLiveData
-        _result = ""
 
     }
 
@@ -49,7 +46,6 @@ class LoginViewModel(val application: Application) : ViewModel() {
     fun verifyLogin() {
         viewModelScope.launch {
             repository.login(application,_email.value.toString(), _pass.value.toString())
-            _result =  repository.loginResult
         }
 
     }

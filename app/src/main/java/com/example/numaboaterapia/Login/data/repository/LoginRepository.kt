@@ -14,12 +14,10 @@ class LoginRepository {
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
-    var loginResult: String
 
     init {
         firebaseUserMutableLiveData = MutableLiveData()
         userLoggedMutableLiveData = MutableLiveData()
-        loginResult = ""
 
         auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
@@ -34,7 +32,6 @@ class LoginRepository {
              Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
         }catch (e : Exception){
             val message =  checkLoginResult(e.message.toString())
-             loginResult = message
             Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
         }
     }
