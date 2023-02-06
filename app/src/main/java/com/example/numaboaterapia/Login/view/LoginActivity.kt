@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
                     viewModel.verifyLogin()
-                    //checkError()
+                    setUpToast(viewModel.result)
                 }
             }
         }
