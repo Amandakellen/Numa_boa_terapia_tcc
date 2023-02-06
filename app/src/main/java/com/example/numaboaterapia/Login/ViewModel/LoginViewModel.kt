@@ -3,26 +3,37 @@ package com.example.numaboaterapia.Login.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.numaboaterapia.Login.data.repository.LoginRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class LoginViewModel : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
-    private val _senha = MutableLiveData<String>()
-    val senha: LiveData<String> = _senha
+    private val _pass = MutableLiveData<String>()
+    val pass: LiveData<String> = _pass
 
     private  var _mAuth: FirebaseAuth?= null
 
-    lateinit var result: String
+    private var _userData: MutableLiveData<FirebaseUser>? = null
+    var userData: LiveData<FirebaseUser>? = _userData
 
+    private var _loggedStatus: MutableLiveData<Boolean>? = null
+    var loggedStatus: LiveData<Boolean>? = _loggedStatus
+
+    lateinit var result: String
+    private var repository:LoginRepository = LoginRepository()
 
     init {
         _mAuth = FirebaseAuth.getInstance()
+        _userData = repository.firebaseUserMutableLiveData
+        _loggedStatus = repository.userLoggedMutableLiveData
         result = ""
+
     }
 
     fun emailValue(email: String) {
@@ -30,37 +41,17 @@ class LoginViewModel : ViewModel() {
     }
 
     fun senhaValue(senha: String) {
-        _senha.value = senha
-    }
-
-    fun setAuhthentication(mAuth: FirebaseAuth) {
-        _mAuth = FirebaseAuth.getInstance()
-    }
-
-    fun getAuthentication(): FirebaseAuth?{
-        val mAuth = _mAuth
-        return mAuth
+        _pass.value = senha
     }
 
 
     fun verifyLogin() {
-        _mAuth?.signInWithEmailAndPassword(_email.value.toString(), _senha.value.toString())
-            ?.addOnCompleteListener { task ->
-                onComplete(task)
-
-            }
-    }
-
-    private fun onComplete(task: Task<AuthResult>)
-    {
-        if (task.isSuccessful) {
-            result = "Succes"
-        }
-        else{
-            result = task.exception?.message.toString()
-        }
+        repository.login(_email.value.toString(), _pass.value.toString());
+        result = repository.requestResult.toString()
 
     }
+
+
 
 
 

@@ -1,14 +1,15 @@
 package com.example.numaboaterapia.Login.view
 
 import android.R
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 
@@ -31,12 +32,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun setUp() {
-        viewModel.userData?.observe(this, { firebaseUser ->
-            if (firebaseUser != null) {
-                //todo
+        viewModel.userData!!.observe(this, object : Observer<FirebaseUser?> {
+            override fun onChanged(firebaseUser: FirebaseUser?) {
+                if (firebaseUser != null) {
+                    //navController.navigate(R.id.action_signInFragment_to_signOutFragment)
+                }
             }
         })
     }
+
 
     fun setUpToast(toastMessage: String) {
         toastLoginIsNull = Toast.makeText(
@@ -57,18 +61,18 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkLoginIsEmpty(): Boolean =
         (viewModel.email.value?.isNullOrEmpty() == null ||
-                viewModel.senha.value?.isNullOrEmpty() == null ||
+                viewModel.pass.value?.isNullOrEmpty() == null ||
                 viewModel.email.value?.isNullOrEmpty() == true ||
-                viewModel.senha.value?.isNullOrEmpty() == true)
+                viewModel.pass.value?.isNullOrEmpty() == true)
 
 
-    private fun checkError(){
-        if(viewModel.requestResult!=null){
-            setUpToast(viewModel.requestResult!!)
-            toastLoginIsNull.show()
-            binding.loginProgressBar.visibility = View.INVISIBLE
-        }
-    }
+//    private fun checkError(){
+//        if(viewModel.requestResult!=null){
+//            setUpToast(viewModel.requestResult!!)
+//            toastLoginIsNull.show()
+//            binding.loginProgressBar.visibility = View.INVISIBLE
+//        }
+//    }
 
     private fun setupViews() {
 
@@ -80,8 +84,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
-                    viewModel.login()
-                    checkError()
+                    viewModel.verifyLogin()
+                    //checkError()
                 }
             }
         }
