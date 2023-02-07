@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.Login.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -42,6 +43,10 @@ class ForgetPassword : AppCompatActivity() {
                 }
                 else -> {
                     viewModel.verifyPassword()
+                    if(viewModel.result != null && viewModel.result!= false){
+                        val intent = Intent(this, PasswordRecoveryMessage::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
         }

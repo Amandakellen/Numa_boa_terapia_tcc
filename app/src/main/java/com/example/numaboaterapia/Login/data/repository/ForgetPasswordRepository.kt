@@ -12,20 +12,27 @@ class ForgetPasswordRepository {
         auth = FirebaseAuth.getInstance()
     }
 
-    suspend fun sendEmail(application: Application, email: String) {
+    suspend fun sendEmail(application: Application, email: String) :Boolean {
         try {
             auth
                 .sendPasswordResetEmail(email)
                 .await()
+            return true
         } catch (e: Exception) {
-              val message = checkErrorMessage(e.message.toString())
-              Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+            val message = checkErrorMessage(e.message.toString())
+            Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+            return false
         }
     }
 
-    private fun checkErrorMessage(message : String) : String{
-        when(message){
-            else->{return "Ocorreu um erro durante a operação, tente novamente mais tarde"}
+    private fun checkErrorMessage(message: String): String {
+        when (message) {
+            "There is no user record corresponding to this identifier. The user may have been deleted." -> {
+                return "Usuário não cadastrado"
+            }
+            else -> {
+                return "Ocorreu um erro durante a operação, tente novamente mais tarde"
+            }
         }
     }
 }

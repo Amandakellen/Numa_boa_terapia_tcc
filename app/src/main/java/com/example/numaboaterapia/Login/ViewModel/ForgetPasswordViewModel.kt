@@ -14,13 +14,15 @@ class ForgetPasswordViewModel(val application: Application) : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
+    var result : Boolean? = null
+
     fun emailValue(email: String) {
         _email.value = email
     }
 
     fun verifyPassword() {
         viewModelScope.launch {
-            repository.sendEmail(application,_email.value.toString())
+            result = repository.sendEmail(application,_email.value.toString())
         }
 
     }
