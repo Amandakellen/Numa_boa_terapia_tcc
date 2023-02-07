@@ -1,14 +1,12 @@
 package com.example.numaboaterapia.Login.view
 
-import android.R
+import android.content.Intent
 import android.os.Bundle
-import android.transition.Visibility
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseUser
@@ -46,12 +44,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpProgressBar() {
-        binding.loginProgressBar.visibility = View.INVISIBLE
-    }
-
-
-
     fun setUpToast(toastMessage: String) {
         toastLoginIsNull = Toast.makeText(
             applicationContext, toastMessage, Toast.LENGTH_LONG
@@ -76,14 +68,6 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.pass.value?.isNullOrEmpty() == true)
 
 
-//    private fun checkError(){
-//        if(viewModel.requestResult!=null){
-//            setUpToast(viewModel.requestResult!!)
-//            toastLoginIsNull.show()
-//            binding.loginProgressBar.visibility = View.INVISIBLE
-//        }
-//    }
-
     private fun setupViews() {
 
         binding.botaoLogin.setOnClickListener {
@@ -102,6 +86,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.toolBarLogin.getBackButton().setOnClickListener {
             finish()
+        }
+
+        binding.forgetPassword.setOnClickListener {
+            val intent = Intent(this, ForgetPassword::class.java)
+            startActivity(intent)
         }
 
     }
