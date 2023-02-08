@@ -18,7 +18,7 @@ class PasswordRecoveryMessage : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun setUp(){
+    private fun setUp() {
         binding.buttonBackToLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

@@ -9,12 +9,12 @@ import com.example.numaboaterapia.Login.data.repository.ForgetPasswordRepository
 import kotlinx.coroutines.launch
 
 class ForgetPasswordViewModel(val application: Application) : ViewModel() {
-    private val repository : ForgetPasswordRepository = ForgetPasswordRepository()
+    private val repository: ForgetPasswordRepository = ForgetPasswordRepository()
 
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
-    var result : Boolean? = null
+    var result: Boolean? = null
 
     fun emailValue(email: String) {
         _email.value = email
@@ -22,7 +22,7 @@ class ForgetPasswordViewModel(val application: Application) : ViewModel() {
 
     fun verifyPassword() {
         viewModelScope.launch {
-            result = repository.sendEmail(application,_email.value.toString())
+            result = repository.sendEmail(application, _email.value.toString())
         }
 
     }

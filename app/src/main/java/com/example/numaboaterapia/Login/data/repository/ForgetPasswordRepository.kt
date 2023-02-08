@@ -12,7 +12,7 @@ class ForgetPasswordRepository {
         auth = FirebaseAuth.getInstance()
     }
 
-    suspend fun sendEmail(application: Application, email: String) :Boolean {
+    suspend fun sendEmail(application: Application, email: String): Boolean {
         try {
             auth
                 .sendPasswordResetEmail(email)
