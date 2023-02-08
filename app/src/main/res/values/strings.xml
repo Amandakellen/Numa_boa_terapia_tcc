@@ -8,6 +8,8 @@
     <string name="pasword_recovery_text">Clique no link de recuperação de senha que te enviamos por e-mail.</string>
     <string name="back_to_login">Voltar para o Login</string>
     <string name="try_again_password_recovery"><u>Não recebeu? Tente novamente.</u></string>
+    <string name="psi_type">Sou psicólogo(a)</string>
+    <string name="cli_type">Sou paciente</string>
     <string name="forget_password">Recuperar senha</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
