@@ -1,8 +1,7 @@
-package com.example.numaboaterapia.cadastro.userType.view
+package com.example.numaboaterapia.register.userType.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
 
 class UserType : AppCompatActivity() {
