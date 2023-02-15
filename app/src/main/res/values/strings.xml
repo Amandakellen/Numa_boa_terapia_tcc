@@ -21,4 +21,12 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_texte">texte</string>
+
+        <!--Telas de Cadastro-->
+    <string name="email_string">Email</string>
+    <string name="name_string">Nome Completo</string>
+    <string name="phone_string">Telefone</string>
+    <string name="cpf_string">Informe seu CPF</string>
+    <string name="password_string"> Senha</string>
+    <string name="password_confirm_string">Confirme sua senha</string>
 </resources>

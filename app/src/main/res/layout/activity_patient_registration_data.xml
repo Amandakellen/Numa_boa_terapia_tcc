@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".register.paciente.view.PatientRegistrationData">
+
+    <com.example.numaboaterapia.views.CustomView.CustomToolBar
+        android:id="@+id/tool_bar_pacient_register"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/pacient_register_label"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Cadastro"
+        android:layout_gravity="left"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/chau_philomene_one"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/purple"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar_pacient_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_register_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pacient_register_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/name_string"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp">
+
+
+        <EditText
+            android:id="@+id/text_input_edit_register_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_person_outline_24"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_register_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/email_string"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp">
+
+
+        <EditText
+            android:id="@+id/text_input_edit_register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_email_24"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_register_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_register_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/phone_string"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp">
+
+
+        <EditText
+            android:id="@+id/text_input_edit_register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_phone_24"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_register_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_register_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/cpf_string"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp">
+
+
+        <EditText
+            android:id="@+id/text_input_edit_register_cpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_assignment_ind_24"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_pacient_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_register_cpf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/password_string"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/gray"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
+
+
+        <EditText
+            android:id="@+id/text_input_pacient_register_passwor"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_pacient_register_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_pacient_register_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/password_confirm_string"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/gray"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/purple"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/gray"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
+
+
+        <EditText
+            android:id="@+id/text_input_pacient_register_confirm_password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
+        android:id="@+id/pacient_register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_pacient_register_confirm_password"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/label_button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chau_philomene_one"
+            android:text="@string/registration_button"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
