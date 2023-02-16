@@ -1,8 +1,12 @@
 package com.example.numaboaterapia.register.userType.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.numaboaterapia.Login.view.LoginActivity
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
+import com.example.numaboaterapia.register.paciente.view.PatientRegistrationData
+
 
 class UserType : AppCompatActivity() {
 
@@ -12,16 +16,21 @@ class UserType : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding= ActivityUserTypeBinding.inflate(layoutInflater)
-
         setUpViews()
 
         setContentView(binding.root)
     }
 
-    fun setUpViews(){
-
+    private fun setUpViews(){
         binding.backButton.setOnClickListener {
             finish()
         }
+
+        binding.clientImage.setOnClickListener {
+            val intent = Intent(this, PatientRegistrationData::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
