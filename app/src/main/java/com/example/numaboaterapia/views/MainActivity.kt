@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.Login.view.LoginActivity
 import com.example.numaboaterapia.databinding.ActivityMainBinding
+import com.example.numaboaterapia.register.userType.view.UserType
 import com.example.numaboaterapia.views.CustomView.BotaoArredondadoBranco
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setupViews(binding.botaoEntrar, Intent(this, LoginActivity::class.java))
-        //setupViews(binding.botaoCadastro, Intent(this, UserType::class.java))
+        setupViews(binding.botaoCadastro, Intent(this, UserType::class.java))
 
         setContentView(binding.root)
     }
