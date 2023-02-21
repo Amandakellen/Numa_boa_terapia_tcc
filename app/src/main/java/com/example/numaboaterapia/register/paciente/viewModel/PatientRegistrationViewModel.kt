@@ -1,10 +1,11 @@
 package com.example.numaboaterapia.register.paciente.viewModel
 
+import android.app.Application
 import androidx.lifecycle.*
-import com.example.numaboaterapia.register.paciente.data.PatientData
 import com.example.numaboaterapia.register.paciente.data.repository.PatientRegistrationRepository
+import kotlinx.coroutines.launch
 
-class PatientRegistrationViewModel() :
+class PatientRegistrationViewModel(val application: Application) :
     ViewModel() {
 
     private val repository: PatientRegistrationRepository = PatientRegistrationRepository()
@@ -52,12 +53,29 @@ class PatientRegistrationViewModel() :
         _confirmPass.value = senha
     }
 
-    fun isPassEqual(): Boolean = _pass.value.equals(_confirmPass.value)
+    fun checkIfIsNullOrEmpty(): Boolean =
+        (_pass.value?.isNullOrEmpty() == null ||
+                _pass.value?.isNullOrEmpty() == true ||
+                _confirmPass.value?.isNullOrEmpty() == null ||
+                _confirmPass.value?.isNullOrEmpty() == true ||
+                _name.value?.isNullOrEmpty() == null ||
+                _name.value?.isNullOrEmpty() == true ||
+                _phone.value?.isNullOrEmpty() == null ||
+                _phone.value?.isNullOrEmpty() == true ||
+                _cpf.value?.isNullOrEmpty() == null ||
+                _cpf.value?.isNullOrEmpty() == true)
 
-    fun isValidPassword(): Boolean = if (_pass.value!!.length == 6) true else false
+    fun checkPassLength(): Boolean {
+        return _pass.value!!.length == 6
+    }
 
+    fun checkIfPassIsEqual(): Boolean = _pass.value.equals(_confirmPass.value)
 
-
+    fun crateUser() {
+        viewModelScope.launch {
+            repository.createUser(application, _email.value.toString(), _pass.value.toString())
+        }
+    }
 
 }
 
