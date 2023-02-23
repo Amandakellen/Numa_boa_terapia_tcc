@@ -5,12 +5,16 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class PatientRegistrationRepository{
+class PatientRegistrationRepository {
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
+    private val db = Firebase.firestore
+    lateinit var patientData: PatientData
 
     init {
         firebaseUserMutableLiveData = MutableLiveData()
@@ -22,11 +26,17 @@ class PatientRegistrationRepository{
         }
     }
 
-    suspend fun createUser(application: Application, email: String, pass: String) {
+    suspend fun createUser(
+        application: Application,
+        email: String,
+        pass: String,
+        userData : HashMap<String, String>
+    ) {
         try {
             auth
                 .createUserWithEmailAndPassword(email, pass)
                 .await()
+            db.collection("patient_users").add(userData)
             Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
         } catch (e: Exception) {
             val message = checkRequestResult(e.message.toString())
@@ -39,7 +49,7 @@ class PatientRegistrationRepository{
             "The email address is badly formatted." -> {
                 return "O email digitado não é um email válido"
             }
-            "The email address is already in use by another account."->{
+            "The email address is already in use by another account." -> {
                 return "O email digitado já está cadastrado"
             }
 
