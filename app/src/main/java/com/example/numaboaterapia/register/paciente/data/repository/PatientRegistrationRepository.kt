@@ -14,7 +14,6 @@ class PatientRegistrationRepository {
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
     private val db = Firebase.firestore
-    lateinit var patientData: PatientData
 
     init {
         firebaseUserMutableLiveData = MutableLiveData()
