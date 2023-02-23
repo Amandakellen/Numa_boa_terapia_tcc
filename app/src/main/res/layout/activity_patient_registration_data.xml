@@ -52,6 +52,7 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/baseline_person_outline_24"
             android:fontFamily="@font/roboto"
+            android:inputType="textPersonName"
             android:backgroundTint="@color/white"
             android:textColor="@color/gray" />
 
@@ -80,6 +81,7 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_baseline_email_24"
             android:fontFamily="@font/roboto"
+            android:inputType="textEmailAddress"
             android:backgroundTint="@color/white"
             android:textColor="@color/gray" />
 
@@ -108,6 +110,7 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/baseline_phone_24"
             android:fontFamily="@font/roboto"
+            android:inputType="phone"
             android:backgroundTint="@color/white"
             android:textColor="@color/gray" />
 
@@ -136,6 +139,7 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/baseline_assignment_ind_24"
             android:fontFamily="@font/roboto"
+            android:inputType="number"
             android:backgroundTint="@color/white"
             android:textColor="@color/gray" />
 
@@ -161,7 +165,7 @@
 
 
         <EditText
-            android:id="@+id/text_input_pacient_register_passwor"
+            android:id="@+id/text_input_pacient_register_password"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
