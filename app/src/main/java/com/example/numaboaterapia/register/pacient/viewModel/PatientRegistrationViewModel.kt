@@ -1,12 +1,9 @@
-package com.example.numaboaterapia.register.paciente.viewModel
+package com.example.numaboaterapia.register.pacient.viewModel
 
-import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.numaboaterapia.register.paciente.data.repository.PatientRegistrationRepository
+import com.example.numaboaterapia.register.pacient.data.repository.PatientRegistrationRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 class PatientRegistrationViewModel() :
     ViewModel() {

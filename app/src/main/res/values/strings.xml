@@ -22,7 +22,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_texte">texte</string>
 
-        <!--Telas de Cadastro-->
+    <!--Telas de Cadastro-->
     <string name="email_string">Email</string>
     <string name="name_string">Nome Completo</string>
     <string name="phone_string">Telefone</string>
