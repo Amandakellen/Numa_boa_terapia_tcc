@@ -1,34 +1,33 @@
 package com.example.numaboaterapia.register.paciente.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.numaboaterapia.register.paciente.data.repository.PatientRegistrationRepository
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class PatientRegistrationViewModel(val application: Application) :
+class PatientRegistrationViewModel() :
     ViewModel() {
 
     private val patientRegistrationRepository: PatientRegistrationRepository =
         PatientRegistrationRepository()
 
-
     private val _email = MutableLiveData<String>()
-    val email: LiveData<String> = _email
 
     private val _name = MutableLiveData<String>()
-    val name: LiveData<String> = _name
 
     private val _phone = MutableLiveData<String>()
-    val phone: LiveData<String> = _phone
 
     private val _cpf = MutableLiveData<String>()
-    val cpf: LiveData<String> = _cpf
 
     private val _pass = MutableLiveData<String>()
-    val pass: LiveData<String> = _pass
 
     private val _confirmPass = MutableLiveData<String>()
-    val confirmPass: LiveData<String> = _confirmPass
+
+    lateinit var message: String
+
 
     fun nameValue(name: String) {
         _name.value = name
@@ -73,7 +72,7 @@ class PatientRegistrationViewModel(val application: Application) :
     fun checkIfPassIsEqual(): Boolean = _pass.value.equals(_confirmPass.value)
 
     private fun hashMapData(): HashMap<String, String> {
-         return hashMapOf(
+        return hashMapOf(
             "pu_name" to _name.value.toString(),
             "pu_email" to _email.value.toString(),
             "pu_phone" to _phone.value.toString(),
@@ -82,17 +81,21 @@ class PatientRegistrationViewModel(val application: Application) :
 
     }
 
-    fun crateUser() {
-
-        viewModelScope.launch {
+    fun crateUser(): Deferred<String> {
+        val result = viewModelScope.async {
             patientRegistrationRepository.createUser(
-                application,
                 _email.value.toString(),
                 _pass.value.toString(),
                 hashMapData()
             )
-
         }
+        return result
+
+//        result.invokeOnCompletion {
+//            message = result.getCompleted()
+//            return@invokeOnCompletion result.getCompleted()
+//        }
+
 
     }
 

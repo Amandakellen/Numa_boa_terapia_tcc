@@ -20,7 +20,7 @@ class PatientRegistrationData : AppCompatActivity() {
 
         binding = ActivityPatientRegistrationDataBinding.inflate(layoutInflater)
 
-        viewModel = PatientRegistrationViewModel(this.application)
+        viewModel = PatientRegistrationViewModel()
         setUpEditText()
         setUpViews()
 
@@ -61,18 +61,18 @@ class PatientRegistrationData : AppCompatActivity() {
         toastRegistration.show()
     }
 
-    private fun checkRegister() : Boolean{
+    private fun checkRegister(): Boolean {
 
-        if(viewModel.checkIfIsNullOrEmpty()){
+        if (viewModel.checkIfIsNullOrEmpty()) {
             setUpToast("Digite os dados para cadastro!")
             return false
-        }else if (viewModel.checkPassLength() == false){
+        } else if (viewModel.checkPassLength() == false) {
             setUpToast("A senha deve ter no mínimo 6 digitos, digite novamente!")
             return false
-        }else if(viewModel.checkIfPassIsEqual()== false){
+        } else if (viewModel.checkIfPassIsEqual() == false) {
             setUpToast("As senhas não correspondem, digite novamente!")
             return false
-        }else{
+        } else {
             return true
         }
 
@@ -84,8 +84,12 @@ class PatientRegistrationData : AppCompatActivity() {
 
         binding.labelButtonLogin.setOnClickListener {
             val result = checkRegister()
-            if (result){
-                viewModel.crateUser()
+            if (result) {
+                val message = viewModel.crateUser()
+                message.invokeOnCompletion {
+                    setUpToast(message.getCompleted())
+                }
+
             }
         }
 
