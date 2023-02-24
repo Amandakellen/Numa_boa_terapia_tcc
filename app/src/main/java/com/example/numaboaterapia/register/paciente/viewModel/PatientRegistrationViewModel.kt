@@ -8,7 +8,9 @@ import kotlinx.coroutines.launch
 class PatientRegistrationViewModel(val application: Application) :
     ViewModel() {
 
-    private val repository: PatientRegistrationRepository = PatientRegistrationRepository()
+    private val patientRegistrationRepository: PatientRegistrationRepository =
+        PatientRegistrationRepository()
+
 
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
@@ -27,7 +29,6 @@ class PatientRegistrationViewModel(val application: Application) :
 
     private val _confirmPass = MutableLiveData<String>()
     val confirmPass: LiveData<String> = _confirmPass
-
 
     fun nameValue(name: String) {
         _name.value = name
@@ -71,11 +72,30 @@ class PatientRegistrationViewModel(val application: Application) :
 
     fun checkIfPassIsEqual(): Boolean = _pass.value.equals(_confirmPass.value)
 
-    fun crateUser() {
-        viewModelScope.launch {
-            repository.createUser(application, _email.value.toString(), _pass.value.toString())
-        }
+    private fun hashMapData(): HashMap<String, String> {
+         return hashMapOf(
+            "pu_name" to _name.value.toString(),
+            "pu_email" to _email.value.toString(),
+            "pu_phone" to _phone.value.toString(),
+            "pu_cpf" to _cpf.value.toString()
+        )
+
     }
+
+    fun crateUser() {
+
+        viewModelScope.launch {
+            patientRegistrationRepository.createUser(
+                application,
+                _email.value.toString(),
+                _pass.value.toString(),
+                hashMapData()
+            )
+
+        }
+
+    }
+
 
 }
 

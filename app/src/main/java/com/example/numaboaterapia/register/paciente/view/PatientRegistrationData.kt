@@ -84,7 +84,7 @@ class PatientRegistrationData : AppCompatActivity() {
 
         binding.labelButtonLogin.setOnClickListener {
             val result = checkRegister()
-            if ( result){
+            if (result){
                 viewModel.crateUser()
             }
         }
