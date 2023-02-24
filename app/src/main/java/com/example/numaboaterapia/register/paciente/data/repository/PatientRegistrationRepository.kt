@@ -35,6 +35,7 @@ class PatientRegistrationRepository {
             auth
                 .createUserWithEmailAndPassword(email, pass)
                 .await()
+            userData.put("pu_uId", auth.currentUser!!.uid)
             db.collection("patient_users").add(userData)
             Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
         } catch (e: Exception) {

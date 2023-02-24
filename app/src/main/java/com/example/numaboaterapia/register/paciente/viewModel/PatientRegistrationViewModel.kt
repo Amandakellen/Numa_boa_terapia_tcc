@@ -74,10 +74,10 @@ class PatientRegistrationViewModel(val application: Application) :
 
     private fun hashMapData(): HashMap<String, String> {
          return hashMapOf(
-            "name" to _name.value.toString(),
-            "email" to _email.value.toString(),
-            "phone" to _phone.value.toString(),
-            "cpf" to _cpf.value.toString()
+            "pu_name" to _name.value.toString(),
+            "pu_email" to _email.value.toString(),
+            "pu_phone" to _phone.value.toString(),
+            "pu_cpf" to _cpf.value.toString()
         )
 
     }
