@@ -26,21 +26,20 @@ class PatientRegistrationRepository {
     }
 
     suspend fun createUser(
-        application: Application,
         email: String,
         pass: String,
-        userData : HashMap<String, String>
-    ) {
+        userData: HashMap<String, String>
+    ): String {
         try {
             auth
                 .createUserWithEmailAndPassword(email, pass)
                 .await()
             userData.put("pu_uId", auth.currentUser!!.uid)
             db.collection("patient_users").add(userData)
-            Toast.makeText(application, "Sucesso", Toast.LENGTH_SHORT).show();
+            return "Sucesso"
         } catch (e: Exception) {
             val message = checkRequestResult(e.message.toString())
-            Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+            return message
         }
     }
 
