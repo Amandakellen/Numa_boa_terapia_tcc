@@ -11,7 +11,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar_logo"
         android:layout_width="match_parent"
@@ -45,7 +44,7 @@
 
 
             <TextView
-                android:id="@+id/terapia_title"
+                android:id="@+id/tiltle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/chau_philomene_one"
@@ -60,7 +59,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
-                android:id="@+id/back_button"
+                android:id="@+id/patient_back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_back"
@@ -74,6 +73,5 @@
 
 
     </androidx.appcompat.widget.Toolbar>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
