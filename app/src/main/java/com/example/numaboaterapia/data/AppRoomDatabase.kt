@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.numaboaterapia.register.paciente.view.PatientRegistrationData
+import com.example.numaboaterapia.register.pacient.view.PatientRegistrationData
 
 @Database(entities = [PatientRegistrationData::class], version = 1, exportSchema = false)
 abstract class AppRoomDatabase : RoomDatabase() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".register.paciente.view.PatientRegistrationData">
+    tools:context=".register.pacient.view.PatientRegistrationData">
 
     <com.example.numaboaterapia.views.CustomView.CustomToolBar
         android:id="@+id/tool_bar_pacient_register"

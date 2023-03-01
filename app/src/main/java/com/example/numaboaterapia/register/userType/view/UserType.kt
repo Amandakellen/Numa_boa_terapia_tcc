@@ -3,9 +3,8 @@ package com.example.numaboaterapia.register.userType.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.numaboaterapia.Login.view.LoginActivity
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
-import com.example.numaboaterapia.register.paciente.view.PatientRegistrationData
+import com.example.numaboaterapia.register.pacient.view.PatientRegistrationData
 
 
 class UserType : AppCompatActivity() {

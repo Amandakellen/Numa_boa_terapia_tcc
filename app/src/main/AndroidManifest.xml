@@ -14,7 +14,10 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".register.paciente.view.PatientRegistrationData"
+            android:name=".register.pacient.view.teste"
+            android:exported="false" />
+        <activity
+            android:name=".register.pacient.view.PatientRegistrationData"
             android:exported="false" />
         <activity
             android:name=".register.userType.view.UserType"

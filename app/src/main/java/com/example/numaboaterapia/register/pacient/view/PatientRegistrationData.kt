@@ -1,13 +1,11 @@
-package com.example.numaboaterapia.register.paciente.view
+package com.example.numaboaterapia.register.pacient.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
-import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPatientRegistrationDataBinding
-import com.example.numaboaterapia.register.paciente.viewModel.PatientRegistrationViewModel
+import com.example.numaboaterapia.register.pacient.viewModel.PatientRegistrationViewModel
 
 class PatientRegistrationData : AppCompatActivity() {
 
@@ -87,7 +85,12 @@ class PatientRegistrationData : AppCompatActivity() {
             if (result) {
                 val message = viewModel.crateUser()
                 message.invokeOnCompletion {
-                    setUpToast(message.getCompleted())
+                    if (message.getCompleted()!= "Sucesso"){
+                        setUpToast(message.getCompleted())
+                    }else{
+                        //todo
+                    }
+
                 }
 
             }
