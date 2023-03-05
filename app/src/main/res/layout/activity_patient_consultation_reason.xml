@@ -12,7 +12,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
 
-    <com.example.numaboaterapia.views.CustomView.PatientInformationToolBarcontext
+    <com.example.numaboaterapia.views.CustomView.PatientInformationToolBar
         android:id="@+id/patient_information_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
