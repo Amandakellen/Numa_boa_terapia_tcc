@@ -21,7 +21,7 @@ class PatientInformationToolBar(
 
     fun getBackButton(): ImageButton = backButton
 
-//    fun setTitleText(text : Int) = title.setText(text)
-//
-//    fun setStepText(text : Int) = step.setText(text)
+    fun setTitleText(text : Int) = title.setText(text)
+
+    fun setStepText(text : Int) = step.setText(text)
 }

@@ -14,6 +14,8 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityPatientConsultationReasonBinding.inflate(layoutInflater)
+        setUpViews()
+
         val recyclerView = binding.reasonRecyclerView
         viewModel = PatientConsultationReasonViewModel()
 
@@ -21,17 +23,19 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        adapter.data = viewModel.getDataItens()
+//        adapter.data = viewModel.getDataItens()
 
         setContentView(binding.root)
 
     }
 
     private fun setUpViews(){
-        binding.toolbarView.getViewById(R.id.back_button).setOnClickListener {
+        binding.patientInformationToolBar.getBackButton().setOnClickListener {
             finish()
         }
-        binding.toolbarView
+
+        binding.patientInformationToolBar.setStepText(R.string.first_step)
+        binding.patientInformationToolBar.setTitleText(R.string.first_title)
 
 
     }

@@ -18,4 +18,5 @@ class CustomToolBar(
     private val backButton = view.findViewById<ImageButton>(R.id.back_button)
 
     fun getBackButton(): ImageButton = backButton
+
 }
