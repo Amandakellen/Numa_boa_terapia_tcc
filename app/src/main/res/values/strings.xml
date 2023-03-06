@@ -32,11 +32,11 @@
     
     <!--Motivo da co nsulta-->
     <string name="anxiety">Ansiedade</string>
-    <string name="personal_growth">Crescimento Pessoal</string>
+    <string name="personal_growth">Crescimento \nPessoal</string>
     <string name="depression">Depressão</string>
     <string name="grief">Luto</string>
     <string name="couple">Casais</string>
-    <string name="eating_disorder">Transtorno Alimentar</string>
+    <string name="eating_disorder">Transtorno \n Alimentar</string>
     <string name="sexuality">Sexualidade</string>
     <string name="other">Outro</string>
     <string name="first_step">Passo 1 de 4</string>

@@ -12,7 +12,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class PatientConsultationReasonViewModel: ViewModel() {
-    lateinit var itens: ArrayList<ConsultationReasonEnum>
+    var itens: ArrayList<ConsultationReasonEnum> = arrayListOf<ConsultationReasonEnum>()
     private val repository: PatientConsultationReasonRepository =
         PatientConsultationReasonRepository()
 
@@ -20,6 +20,7 @@ class PatientConsultationReasonViewModel: ViewModel() {
     var patientReason: LiveData<ConsultationReasonEnum> = _patientReason
 
     fun getDataItens(): ArrayList<ConsultationReasonEnum> {
+
         itens.add(ConsultationReasonEnum.ANXIETY)
         itens.add(ConsultationReasonEnum.PERSONAL_GROWTH)
         itens.add(ConsultationReasonEnum.DEPRESSION)

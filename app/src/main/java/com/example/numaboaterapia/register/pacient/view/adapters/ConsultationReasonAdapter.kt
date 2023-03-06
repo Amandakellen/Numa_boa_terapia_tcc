@@ -18,7 +18,7 @@ class ConsultationReasonAdapter :
 
            with(binding){
                feelingImage.setImageResource(item.iconResource)
-               feelingLabel.text = item.feelingName.toString()
+               feelingLabel.setText(item.feelingName)
            }
 
        }

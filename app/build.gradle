@@ -52,7 +52,6 @@ dependencies {
     //firestore
     implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
 
-
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'

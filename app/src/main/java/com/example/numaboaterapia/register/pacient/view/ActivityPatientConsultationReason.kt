@@ -2,6 +2,7 @@ package com.example.numaboaterapia.register.pacient.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPatientConsultationReasonBinding
 import com.example.numaboaterapia.register.pacient.view.adapters.ConsultationReasonAdapter
@@ -21,15 +22,17 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
 
         val adapter = ConsultationReasonAdapter()
 
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+
         recyclerView.adapter = adapter
 
-//        adapter.data = viewModel.getDataItens()
+        adapter.data = viewModel.getDataItens()
 
         setContentView(binding.root)
 
     }
 
-    private fun setUpViews(){
+    private fun setUpViews() {
         binding.patientInformationToolBar.getBackButton().setOnClickListener {
             finish()
         }
