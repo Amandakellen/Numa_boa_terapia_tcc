@@ -29,4 +29,24 @@
     <string name="cpf_string">Informe seu CPF</string>
     <string name="password_string"> Senha</string>
     <string name="password_confirm_string">Confirme sua senha</string>
+    
+    <!--Motivo da co nsulta-->
+    <string name="anxiety">Ansiedade</string>
+    <string name="personal_growth">Crescimento \nPessoal</string>
+    <string name="depression">Depressão</string>
+    <string name="grief">Luto</string>
+    <string name="couple">Casais</string>
+    <string name="eating_disorder">Transtorno \n Alimentar</string>
+    <string name="sexuality">Sexualidade</string>
+    <string name="other">Outro</string>
+    <string name="first_step">Passo 1 de 4</string>
+    <string name="first_title">Qual o motivo da sua consulta?</string>
+    
+    
+    
+    
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

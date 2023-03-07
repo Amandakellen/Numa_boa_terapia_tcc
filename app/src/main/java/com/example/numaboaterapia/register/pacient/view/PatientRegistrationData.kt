@@ -1,11 +1,13 @@
 package com.example.numaboaterapia.register.pacient.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.databinding.ActivityPatientRegistrationDataBinding
 import com.example.numaboaterapia.register.pacient.viewModel.PatientRegistrationViewModel
+import com.example.numaboaterapia.register.pacient.view.ActivityPatientConsultationReason
 
 class PatientRegistrationData : AppCompatActivity() {
 
@@ -85,10 +87,11 @@ class PatientRegistrationData : AppCompatActivity() {
             if (result) {
                 val message = viewModel.crateUser()
                 message.invokeOnCompletion {
-                    if (message.getCompleted()!= "Sucesso"){
+                    if (message.getCompleted() != "Sucesso") {
                         setUpToast(message.getCompleted())
-                    }else{
-                        //todo
+                    } else {
+                        startActivity(Intent(this,
+                            ActivityPatientConsultationReason::class.java))
                     }
 
                 }
