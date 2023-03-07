@@ -88,11 +88,6 @@ class PatientRegistrationViewModel() :
         }
         return result
 
-//        result.invokeOnCompletion {
-//            message = result.getCompleted()
-//            return@invokeOnCompletion result.getCompleted()
-//        }
-
 
     }
 

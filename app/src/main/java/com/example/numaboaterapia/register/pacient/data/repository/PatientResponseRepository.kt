@@ -5,9 +5,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.tasks.await
 
-class PatientConsultationReasonRepository {
+class PatientResponseRepository {
 
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
@@ -25,14 +24,15 @@ class PatientConsultationReasonRepository {
     }
 
     suspend fun saveData(
-        collectionPath : String,
+        collectionPath: String,
         userData: HashMap<String, String>
     ): String {
         try {
+            userData.put("pr_uId", auth.currentUser!!.uid)
             db.collection(collectionPath).add(userData)
             return "Sucesso"
         } catch (e: Exception) {
-            return e.message.toString()
+            return "Ocorreu um erro, tente novamente!"
         }
     }
 }

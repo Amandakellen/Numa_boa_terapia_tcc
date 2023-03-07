@@ -1,23 +1,16 @@
 package com.example.numaboaterapia.register.pacient.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.register.pacient.data.ConsultationReasonEnum
-import com.example.numaboaterapia.register.pacient.data.repository.PatientConsultationReasonRepository
-import com.example.numaboaterapia.register.pacient.data.repository.PatientRegistrationRepository
-import com.google.firebase.auth.FirebaseUser
+import com.example.numaboaterapia.register.pacient.data.repository.PatientResponseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class PatientConsultationReasonViewModel: ViewModel() {
     var itens: ArrayList<ConsultationReasonEnum> = arrayListOf<ConsultationReasonEnum>()
-    private val repository: PatientConsultationReasonRepository =
-        PatientConsultationReasonRepository()
-
-    private var _patientReason = MutableLiveData<ConsultationReasonEnum>()
-    var patientReason: LiveData<ConsultationReasonEnum> = _patientReason
+    private val repository: PatientResponseRepository =
+        PatientResponseRepository()
 
     fun getDataItens(): ArrayList<ConsultationReasonEnum> {
 
@@ -34,14 +27,15 @@ class PatientConsultationReasonViewModel: ViewModel() {
 
     }
 
-    fun setPatientReason(selectValue: ConsultationReasonEnum) = _patientReason.value
 
-
-    //  fun saveValue(): Deferred<String> {
-//        val result = viewModelScope.async {
-//
-//        }
-//        return result
-    //}
+      fun saveValue(reason : String): Deferred<String> {
+        val result = viewModelScope.async {
+              repository.saveData(
+                  "patient_reason",
+                  hashMapOf("pr_reason" to reason)
+              )
+        }
+        return result
+    }
 
 }
