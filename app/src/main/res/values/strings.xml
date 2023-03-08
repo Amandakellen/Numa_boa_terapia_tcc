@@ -29,8 +29,8 @@
     <string name="cpf_string">Informe seu CPF</string>
     <string name="password_string"> Senha</string>
     <string name="password_confirm_string">Confirme sua senha</string>
-    
-    <!--Motivo da co nsulta-->
+
+    <!--Motivo da consulta-->
     <string name="anxiety">Ansiedade</string>
     <string name="personal_growth">Crescimento \nPessoal</string>
     <string name="depression">Depressão</string>
@@ -41,10 +41,26 @@
     <string name="other">Outro</string>
     <string name="first_step">Passo 1 de 4</string>
     <string name="first_title">Qual o motivo da sua consulta?</string>
-    
-    
-    
-    
+
+    <!--Estado civil-->
+    <string name="single">Solteiro(a)</string>
+    <string name="relationship">Em um relacionamento</string>
+    <string name="divorced">Divorciado(a) - \n separado(a)</string>
+    <string name="widower">Viúvo(a)</string>
+    <string name="dont_inform">Não desejo informar</string>
+    <string name="second_step">Passo 2 de 4</string>
+    <string name="second_title">Qual o seu estado civil?</string>
+
+    <!--classificacao da situacao financeira-->
+    <string name="third_step">Passo 3 de 4</string>
+    <string name="third_title">Como você classifica a sua \n situação financeira?</string>
+    <string name="excellent">Ótima</string>
+    <string name="good">Boa</string>
+    <string name="stable">Estável</string>
+    <string name="bad">Ruim</string>
+    <string name="dont_know">Não sei</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>

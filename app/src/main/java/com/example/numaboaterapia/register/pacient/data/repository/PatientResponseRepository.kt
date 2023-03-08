@@ -28,7 +28,7 @@ class PatientResponseRepository {
         userData: HashMap<String, String>
     ): String {
         try {
-            userData.put("pr_uId", auth.currentUser!!.uid)
+            userData.put("uId", auth.currentUser!!.uid)
             db.collection(collectionPath).add(userData)
             return "Sucesso"
         } catch (e: Exception) {
