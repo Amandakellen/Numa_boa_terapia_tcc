@@ -14,6 +14,12 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
+            android:name=".register.pacient.view.ActivityFinancialSituation"
+            android:exported="false" />
+        <activity
+            android:name=".register.pacient.view.ActivityCivilStatus"
+            android:exported="false" />
+        <activity
             android:name=".register.pacient.view.ActivityPatientConsultationReason"
             android:exported="false" />
         <activity

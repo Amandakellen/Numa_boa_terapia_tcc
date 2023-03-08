@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.numaboaterapia.databinding.AdapterPatientInformationListBinding
-import com.example.numaboaterapia.register.pacient.data.ConsultationReasonEnum
+import com.example.numaboaterapia.register.pacient.data.PatientResponseEnum
 
 
-class ConsultationReasonAdapter :
-    RecyclerView.Adapter<ConsultationReasonAdapter.ConsultationReasonViewHolder>() {
+class PatientResponseAdapter :
+    RecyclerView.Adapter<PatientResponseAdapter.PatientResponseAdapterViewHolder>() {
 
-    var data = ArrayList<ConsultationReasonEnum>()
+    var data = ArrayList<PatientResponseEnum>()
     private lateinit var mListener: onItemclickListener
 
     interface onItemclickListener {
@@ -22,7 +22,7 @@ class ConsultationReasonAdapter :
     }
 
 
-    inner class ConsultationReasonViewHolder(
+    inner class PatientResponseAdapterViewHolder(
         val binding: AdapterPatientInformationListBinding,
         listener: onItemclickListener
     ) :
@@ -35,7 +35,7 @@ class ConsultationReasonAdapter :
         }
 
 
-        fun bind(item: ConsultationReasonEnum) {
+        fun bind(item: PatientResponseEnum) {
 
             with(binding) {
                 feelingImage.setImageResource(item.iconResource)
@@ -48,14 +48,14 @@ class ConsultationReasonAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ConsultationReasonViewHolder {
+    ): PatientResponseAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = AdapterPatientInformationListBinding.inflate(layoutInflater, parent, false)
 
-        return ConsultationReasonViewHolder(binding, mListener)
+        return PatientResponseAdapterViewHolder(binding, mListener)
     }
 
-    override fun onBindViewHolder(holder: ConsultationReasonViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PatientResponseAdapterViewHolder, position: Int) {
         holder.bind(data[position])
     }
 

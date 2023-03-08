@@ -5,23 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:minHeight="56dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
+    tools:context=".register.pacient.view.ActivityFinancialSituation">
 
     <com.example.numaboaterapia.views.CustomView.PatientInformationToolBar
-        android:id="@+id/patient_information_tool_bar"
+        android:id="@+id/financial_situation_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reason_recycler_view"
+        android:id="@+id/financial_situation_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="128dp"
@@ -29,7 +24,7 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/patient_information_tool_bar"
+        app:layout_constraintTop_toBottomOf="@id/financial_situation_tool_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/adapter_patient_information_list"
         tools:itemCount="5"/>

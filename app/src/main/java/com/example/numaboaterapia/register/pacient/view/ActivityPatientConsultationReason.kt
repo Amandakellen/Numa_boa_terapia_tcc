@@ -7,14 +7,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPatientConsultationReasonBinding
-import com.example.numaboaterapia.databinding.AdapterPatientInformationListBinding
-import com.example.numaboaterapia.register.pacient.view.adapters.ConsultationReasonAdapter
+import com.example.numaboaterapia.register.pacient.view.adapters.PatientResponseAdapter
 import com.example.numaboaterapia.register.pacient.viewModel.PatientConsultationReasonViewModel
 
 class ActivityPatientConsultationReason : AppCompatActivity() {
     private lateinit var binding: ActivityPatientConsultationReasonBinding
     private lateinit var viewModel: PatientConsultationReasonViewModel
-    private var adapter: ConsultationReasonAdapter = ConsultationReasonAdapter()
+    private var adapter: PatientResponseAdapter = PatientResponseAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +39,7 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
         binding.patientInformationToolBar.setStepText(R.string.first_step)
         binding.patientInformationToolBar.setTitleText(R.string.first_title)
 
-        adapter.setOnClickListener(object : ConsultationReasonAdapter.onItemclickListener {
+        adapter.setOnClickListener(object : PatientResponseAdapter.onItemclickListener {
             override fun onItemClick(position: Int) {
                 val result = viewModel.saveValue(getString(adapter.data[position].feelingName))
 
@@ -54,7 +53,12 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
                         ).show()
 
                     } else {
-                        //todo
+                        startActivity(
+                            Intent(
+                                this@ActivityPatientConsultationReason,
+                                ActivityCivilStatus::class.java
+                            )
+                        )
                     }
 
                 }
