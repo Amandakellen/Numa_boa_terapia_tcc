@@ -23,13 +23,39 @@ class ActivityCivilStatus : AppCompatActivity() {
 
         viewModel = PatientCivilStatusViewModel()
 
-        binding.civilStatusRecyclerview.layoutManager = GridLayoutManager(this, 2)
-        binding.civilStatusRecyclerview.adapter = adapter
 
-        adapter.data = viewModel.setDataItens()
+        setUpRecyclerview()
         setUpViews()
 
         setContentView(binding.root)
+    }
+
+    private fun setUpRecyclerview() {
+        binding.civilStatusRecyclerview.layoutManager =
+            GridLayoutManager(this, 2).also {
+                it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+
+                       return if (adapter.itemCount % 2 == 0){
+                             2
+                        }else{
+                            if (position!= adapter.itemCount-1){
+                                 1
+                            }else{
+                                 2
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+        binding.civilStatusRecyclerview.adapter = adapter
+
+
+        adapter.data = viewModel.setDataItens()
     }
 
     private fun setUpViews() {
@@ -54,8 +80,10 @@ class ActivityCivilStatus : AppCompatActivity() {
 
                     } else {
                         startActivity(
-                            Intent(this@ActivityCivilStatus,
-                                ActivityFinancialSituation::class.java)
+                            Intent(
+                                this@ActivityCivilStatus,
+                                ActivityFinancialSituation::class.java
+                            )
                         )
                     }
 

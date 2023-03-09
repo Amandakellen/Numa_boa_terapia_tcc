@@ -14,7 +14,7 @@ class ActivityFinancialSituation : AppCompatActivity() {
 
     private lateinit var binding: ActivityFinancialSituationBinding
     private var adapter = PatientResponseAdapter()
-    private lateinit var viewModel : PatientFinancialSituationViewmodel
+    private lateinit var viewModel: PatientFinancialSituationViewmodel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +25,36 @@ class ActivityFinancialSituation : AppCompatActivity() {
 
         binding.financialSituationRecyclerview.layoutManager =
             GridLayoutManager(this, 2)
-        binding.financialSituationRecyclerview.adapter = adapter
-        adapter.data = viewModel.setDataItens()
 
+        setUpRecyclerview()
         setUpViews()
 
         setContentView(binding.root)
+    }
+
+    fun setUpRecyclerview() {
+
+        binding.financialSituationRecyclerview.layoutManager =
+            GridLayoutManager(this, 2).also {
+            it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (adapter.itemCount % 2 == 0){
+                        2
+                    }else{
+                        if (position!= adapter.itemCount-1){
+                            1
+                        }else{
+                            2
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        binding.financialSituationRecyclerview.adapter = adapter
+        adapter.data = viewModel.setDataItens()
     }
 
     private fun setUpViews() {
@@ -54,7 +78,7 @@ class ActivityFinancialSituation : AppCompatActivity() {
                         ).show()
 
                     } else {
-                       //todo
+                        //todo
                     }
 
                 }
