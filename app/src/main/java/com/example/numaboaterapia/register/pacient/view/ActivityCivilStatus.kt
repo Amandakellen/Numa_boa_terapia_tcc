@@ -23,13 +23,30 @@ class ActivityCivilStatus : AppCompatActivity() {
 
         viewModel = PatientCivilStatusViewModel()
 
-        binding.civilStatusRecyclerview.layoutManager = GridLayoutManager(this, 2)
-        binding.civilStatusRecyclerview.adapter = adapter
 
-        adapter.data = viewModel.setDataItens()
+        setAdapter()
         setUpViews()
 
         setContentView(binding.root)
+    }
+
+    private fun setAdapter(){
+        binding.civilStatusRecyclerview.layoutManager = GridLayoutManager(this, 2).also {
+            it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (position  != 4)
+                        1
+                    else
+                        2
+                }
+            }
+
+        }
+
+        binding.civilStatusRecyclerview.adapter = adapter
+
+
+        adapter.data = viewModel.setDataItens()
     }
 
     private fun setUpViews() {
