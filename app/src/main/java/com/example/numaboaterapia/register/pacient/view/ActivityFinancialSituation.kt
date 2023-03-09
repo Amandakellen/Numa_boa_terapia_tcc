@@ -36,22 +36,22 @@ class ActivityFinancialSituation : AppCompatActivity() {
 
         binding.financialSituationRecyclerview.layoutManager =
             GridLayoutManager(this, 2).also {
-            it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (adapter.itemCount % 2 == 0){
-                        2
-                    }else{
-                        if (position!= adapter.itemCount-1){
-                            1
-                        }else{
+                it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return if (adapter.itemCount % 2 == 0) {
                             2
+                        } else {
+                            if (position != adapter.itemCount - 1) {
+                                1
+                            } else {
+                                2
+                            }
                         }
                     }
+
                 }
 
             }
-
-        }
 
         binding.financialSituationRecyclerview.adapter = adapter
         adapter.data = viewModel.setDataItens()
@@ -59,7 +59,8 @@ class ActivityFinancialSituation : AppCompatActivity() {
 
     private fun setUpViews() {
         binding.financialSituationToolBar.setStepText(R.string.third_step)
-        binding.financialSituationToolBar.setTitleText(R.string.third_title)
+        binding.financialSituationToolBar.
+        setTitleText(R.string.third_title)
         binding.financialSituationToolBar.getBackButton().setOnClickListener {
             finish()
         }
@@ -78,7 +79,12 @@ class ActivityFinancialSituation : AppCompatActivity() {
                         ).show()
 
                     } else {
-                        //todo
+                        startActivity(
+                            Intent(
+                                this@ActivityFinancialSituation,
+                                ActivityAverageIncome::class.java
+                            )
+                        )
                     }
 
                 }
