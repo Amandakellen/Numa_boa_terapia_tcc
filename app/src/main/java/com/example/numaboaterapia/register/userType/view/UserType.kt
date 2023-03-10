@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
+import com.example.numaboaterapia.register.pacient.view.ActivityPatientConsultationReason
 import com.example.numaboaterapia.register.pacient.view.PatientRegistrationData
 
 
