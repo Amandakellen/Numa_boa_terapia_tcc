@@ -27,7 +27,6 @@ class PatientConsultationReasonViewModel: ViewModel() {
 
     }
 
-
       fun saveValue(reason : String): Deferred<String> {
         val result = viewModelScope.async {
               repository.saveData(
