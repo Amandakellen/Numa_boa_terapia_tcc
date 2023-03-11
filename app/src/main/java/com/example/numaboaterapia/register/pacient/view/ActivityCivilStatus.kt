@@ -2,19 +2,18 @@ package com.example.numaboaterapia.register.pacient.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityCivilStatusBinding
-import com.example.numaboaterapia.register.pacient.view.adapters.PatientResponseAdapter
+import com.example.numaboaterapia.register.view.adapter.RegisterResponseAdapter
 import com.example.numaboaterapia.register.pacient.viewModel.PatientCivilStatusViewModel
 
 class ActivityCivilStatus : AppCompatActivity() {
 
     private lateinit var binding: ActivityCivilStatusBinding
-    private var adapter: PatientResponseAdapter = PatientResponseAdapter()
+    private var adapter: RegisterResponseAdapter = RegisterResponseAdapter()
     private lateinit var viewModel: PatientCivilStatusViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +64,7 @@ class ActivityCivilStatus : AppCompatActivity() {
             finish()
         }
 
-        adapter.setOnClickListener(object : PatientResponseAdapter.onItemclickListener {
+        adapter.setOnClickListener(object : RegisterResponseAdapter.onItemclickListener {
             override fun onItemClick(position: Int) {
                 val result = viewModel.saveValue(getString(adapter.data[position].feelingName))
 

@@ -7,13 +7,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPatientConsultationReasonBinding
-import com.example.numaboaterapia.register.pacient.view.adapters.PatientResponseAdapter
+import com.example.numaboaterapia.register.view.adapter.RegisterResponseAdapter
 import com.example.numaboaterapia.register.pacient.viewModel.PatientConsultationReasonViewModel
 
 class ActivityPatientConsultationReason : AppCompatActivity() {
     private lateinit var binding: ActivityPatientConsultationReasonBinding
     private lateinit var viewModel: PatientConsultationReasonViewModel
-    private var adapter: PatientResponseAdapter = PatientResponseAdapter()
+    private var adapter: RegisterResponseAdapter = RegisterResponseAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,7 +39,7 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
         binding.patientInformationToolBar.setStepText(R.string.first_step)
         binding.patientInformationToolBar.setTitleText(R.string.first_title)
 
-        adapter.setOnClickListener(object : PatientResponseAdapter.onItemclickListener {
+        adapter.setOnClickListener(object : RegisterResponseAdapter.onItemclickListener {
             override fun onItemClick(position: Int) {
                 val result = viewModel.saveValue(getString(adapter.data[position].feelingName))
 

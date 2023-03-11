@@ -2,21 +2,21 @@ package com.example.numaboaterapia.register.pacient.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.numaboaterapia.register.pacient.data.PatientResponseEnum
-import com.example.numaboaterapia.register.pacient.data.repository.PatientResponseRepository
+import com.example.numaboaterapia.register.data.RegisterResponseEnum
+import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class PatientCivilStatusViewModel : ViewModel() {
-    var itens: ArrayList<PatientResponseEnum> = arrayListOf()
-    private val repository =  PatientResponseRepository()
+    var itens: ArrayList<RegisterResponseEnum> = arrayListOf()
+    private val repository =  FirebaseResponseRepository()
 
-        fun setDataItens(): ArrayList<PatientResponseEnum> {
-            itens.add(PatientResponseEnum.SINGLE)
-            itens.add(PatientResponseEnum.RELATIONSHIP)
-            itens.add(PatientResponseEnum.DIVORCED)
-            itens.add(PatientResponseEnum.WIDOWER)
-            itens.add(PatientResponseEnum.DONT_INFORM)
+        fun setDataItens(): ArrayList<RegisterResponseEnum> {
+            itens.add(RegisterResponseEnum.SINGLE)
+            itens.add(RegisterResponseEnum.RELATIONSHIP)
+            itens.add(RegisterResponseEnum.DIVORCED)
+            itens.add(RegisterResponseEnum.WIDOWER)
+            itens.add(RegisterResponseEnum.DONT_INFORM)
 
 
             return itens

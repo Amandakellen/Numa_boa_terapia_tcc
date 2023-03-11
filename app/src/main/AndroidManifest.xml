@@ -14,6 +14,9 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
+            android:name=".register.psychologist.view.ActivityPsiServiceAgeRange"
+            android:exported="false" />
+        <activity
             android:name=".register.psychologist.view.ActivityPsiRegistration"
             android:exported="false" />
         <activity

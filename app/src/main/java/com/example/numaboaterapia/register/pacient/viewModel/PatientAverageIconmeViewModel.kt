@@ -3,14 +3,14 @@ package com.example.numaboaterapia.register.pacient.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.numaboaterapia.register.pacient.data.repository.PatientResponseRepository
+import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class PatientAverageIconmeViewModel: ViewModel() {
 
-    private val repository: PatientResponseRepository =
-        PatientResponseRepository()
+    private val repository: FirebaseResponseRepository =
+        FirebaseResponseRepository()
 
     private val _avegareIncome = MutableLiveData<String>()
 

@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.register.pacient.data.repository
+package com.example.numaboaterapia.register.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -7,7 +7,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class PatientRegistrationRepository {
+class UserFirebaseRegistrationRepository {
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
@@ -26,14 +26,15 @@ class PatientRegistrationRepository {
     suspend fun createUser(
         email: String,
         pass: String,
-        userData: HashMap<String, String>
+        userData: HashMap<String, String>,
+        colectionName:String
     ): String {
         try {
             auth
                 .createUserWithEmailAndPassword(email, pass)
                 .await()
-            userData.put("pu_uId", auth.currentUser!!.uid)
-            db.collection("patient_users").add(userData)
+            userData.put("uId", auth.currentUser!!.uid)
+            db.collection(colectionName).add(userData)
             return "Sucesso"
         } catch (e: Exception) {
             val message = checkRequestResult(e.message.toString())

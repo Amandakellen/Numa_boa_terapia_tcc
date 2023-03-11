@@ -1,14 +1,14 @@
-package com.example.numaboaterapia.register.pacient.viewModel
+package com.example.numaboaterapia.register.psychologist.viewModel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.register.data.repository.UserFirebaseRegistrationRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
-class PatientRegistrationViewModel() :
-    ViewModel() {
-
-    private val patientRegistrationRepository: UserFirebaseRegistrationRepository =
+class PsiRegistrationViewModel: ViewModel() {
+    private val repository: UserFirebaseRegistrationRepository =
         UserFirebaseRegistrationRepository()
 
     private val _email = MutableLiveData<String>()
@@ -17,7 +17,9 @@ class PatientRegistrationViewModel() :
 
     private val _phone = MutableLiveData<String>()
 
-    private val _cpf = MutableLiveData<String>()
+    private val _wppLink = MutableLiveData<String>()
+
+    private val _crp = MutableLiveData<String>()
 
     private val _pass = MutableLiveData<String>()
 
@@ -35,8 +37,12 @@ class PatientRegistrationViewModel() :
         _phone.value = phone
     }
 
-    fun cpfValue(cpf: String) {
-        _cpf.value = cpf
+    fun linkWppValue(link : String){
+        _wppLink.value = link
+    }
+
+    fun crpValue(cpf: String) {
+        _crp.value = cpf
     }
 
     fun passValue(pass: String) {
@@ -56,8 +62,10 @@ class PatientRegistrationViewModel() :
                 _name.value?.isNullOrEmpty() == true ||
                 _phone.value?.isNullOrEmpty() == null ||
                 _phone.value?.isNullOrEmpty() == true ||
-                _cpf.value?.isNullOrEmpty() == null ||
-                _cpf.value?.isNullOrEmpty() == true)
+                _crp.value?.isNullOrEmpty() == null ||
+                _crp.value?.isNullOrEmpty() == true||
+                _wppLink.value?.isNullOrEmpty() == null ||
+                _wppLink.value?.isNullOrEmpty() == true)
 
     fun checkPassLength(): Boolean {
         return _pass.value!!.length == 6
@@ -67,21 +75,22 @@ class PatientRegistrationViewModel() :
 
     private fun hashMapData(): HashMap<String, String> {
         return hashMapOf(
-            "pu_name" to _name.value.toString(),
-            "pu_email" to _email.value.toString(),
-            "pu_phone" to _phone.value.toString(),
-            "pu_cpf" to _cpf.value.toString()
+            "psi_name" to _name.value.toString(),
+            "psi_email" to _email.value.toString(),
+            "psi_phone" to _phone.value.toString(),
+            "psi_linkwpp" to _wppLink.value.toString(),
+            "psi_crp" to _crp.value.toString()
         )
 
     }
 
     fun crateUser(): Deferred<String> {
         val result = viewModelScope.async {
-            patientRegistrationRepository.createUser(
+            repository.createUser(
                 _email.value.toString(),
                 _pass.value.toString(),
                 hashMapData(),
-                "patient_users"
+                "psi_users"
             )
         }
         return result
@@ -89,6 +98,4 @@ class PatientRegistrationViewModel() :
 
     }
 
-
 }
-

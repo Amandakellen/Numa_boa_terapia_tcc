@@ -6,10 +6,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.numaboaterapia.R
 
-class PatientInformationToolBar(
+class RegisterInformationToolBar(
     context: Context,
     attrs: AttributeSet
 ) : FrameLayout(context, attrs) {

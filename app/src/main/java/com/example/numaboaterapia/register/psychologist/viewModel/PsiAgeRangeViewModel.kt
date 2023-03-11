@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.register.pacient.viewModel
+package com.example.numaboaterapia.register.psychologist.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,27 +7,26 @@ import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepos
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
-class PatientFinancialSituationViewmodel: ViewModel() {
-
+class PsiAgeRangeViewModel: ViewModel() {
     var itens: ArrayList<RegisterResponseEnum> = arrayListOf()
     private val repository =  FirebaseResponseRepository()
 
     fun setDataItens(): ArrayList<RegisterResponseEnum> {
-        itens.add(RegisterResponseEnum.EXCELLENT)
-        itens.add(RegisterResponseEnum.GOOD)
-        itens.add(RegisterResponseEnum.STABLE)
-        itens.add(RegisterResponseEnum.BAD)
-        itens.add(RegisterResponseEnum.DONT_KNOW)
-
+        itens.add(RegisterResponseEnum.CHILDREN)
+        itens.add(RegisterResponseEnum.TEENAGERS)
+        itens.add(RegisterResponseEnum.ADULTS)
+        itens.add(RegisterResponseEnum.ELDERLY)
+        itens.add(RegisterResponseEnum.COUPLES)
 
         return itens
 
     }
+
     fun saveValue(financialSituation : String): Deferred<String> {
         val result = viewModelScope.async {
             repository.saveData(
-                "patiant_financial_situation",
-                hashMapOf("pfc_financial_situation" to financialSituation)
+                "psi_service_age_range",
+                hashMapOf("psi_service_age_range" to financialSituation)
             )
         }
         return result
