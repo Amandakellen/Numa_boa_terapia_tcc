@@ -29,6 +29,8 @@
     <string name="cpf_string">Informe seu CPF</string>
     <string name="password_string"> Senha</string>
     <string name="password_confirm_string">Confirme sua senha</string>
+    <string name="wpp_link">Link do perfil do whatsapp</string>
+    <string name="crp">Informe o seu CRP</string>
 
     <!--Motivo da consulta-->
     <string name="anxiety">Ansiedade</string>
@@ -71,7 +73,6 @@
     <string name="sixth_average">R$3480,00 a R$6564,00</string>
     <string name="last_average">Acima de R$6554,00</string>
     <string name="label_average_income_button">Começar</string>
-    
 
 
     <!-- TODO: Remove or change this placeholder text -->
