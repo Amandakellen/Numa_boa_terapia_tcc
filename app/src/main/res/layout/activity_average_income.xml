@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context=".register.pacient.view.ActivityAverageIncome">
 
-    <com.example.numaboaterapia.views.CustomView.PatientInformationToolBar
+    <com.example.numaboaterapia.views.CustomView.RegisterInformationToolBar
         android:id="@+id/average_income_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

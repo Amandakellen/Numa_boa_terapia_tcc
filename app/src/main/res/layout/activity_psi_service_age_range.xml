@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".register.pacient.view.ActivityFinancialSituation">
+    tools:context=".register.psychologist.view.ActivityPsiServiceAgeRange">
 
     <com.example.numaboaterapia.views.CustomView.RegisterInformationToolBar
-        android:id="@+id/financial_situation_tool_bar"
+        android:id="@+id/psi_age_range_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/financial_situation_recyclerview"
+        android:id="@+id/psi_age_range_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="128dp"
@@ -25,9 +25,10 @@
         tools:spanCount="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/financial_situation_tool_bar"
+        app:layout_constraintTop_toBottomOf="@id/psi_age_range_toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/adapter_patient_information_list"
-        tools:itemCount="5"/>
+        tools:itemCount="6"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

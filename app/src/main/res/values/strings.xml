@@ -29,6 +29,8 @@
     <string name="cpf_string">Informe seu CPF</string>
     <string name="password_string"> Senha</string>
     <string name="password_confirm_string">Confirme sua senha</string>
+    <string name="wpp_link">Link do perfil do whatsapp</string>
+    <string name="crp">Informe o seu CRP</string>
 
     <!--Motivo da consulta-->
     <string name="anxiety">Ansiedade</string>
@@ -71,7 +73,22 @@
     <string name="sixth_average">R$3480,00 a R$6564,00</string>
     <string name="last_average">Acima de R$6554,00</string>
     <string name="label_average_income_button">Começar</string>
-    
+
+    <!--Cadastro psicologo-->
+    <!--tool bar-->
+    <string name="psi_first_step">Passo 1 de 3</string>
+    <string name="psi_first_title">Quais os públicos que você \n trabalha?</string>
+    <string name="psi_second_step">Passo 2 de 3</string>
+    <string name="psi_second_title">Quais as suas especialidades?</string>
+    <string name="psi_third_step">Passo 3 de 3</string>
+    <string name="psi_third_title">Escreva um pouco mais sobre você</string>
+
+    <!--Público que trabalha-->
+    <string name="children">Crianças</string>
+    <string name="teenagers">Adolescentes</string>
+    <string name="adults">Adultos</string>
+    <string name="elderly">Idosos</string>
+    <string name="couples">Casais</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

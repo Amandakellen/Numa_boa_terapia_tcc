@@ -1,16 +1,16 @@
-package com.example.numaboaterapia.register.pacient.view.adapters
+package com.example.numaboaterapia.register.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.numaboaterapia.databinding.AdapterPatientInformationListBinding
-import com.example.numaboaterapia.register.pacient.data.PatientResponseEnum
+import com.example.numaboaterapia.register.data.RegisterResponseEnum
 
 
-class PatientResponseAdapter :
-    RecyclerView.Adapter<PatientResponseAdapter.PatientResponseAdapterViewHolder>() {
+class RegisterResponseAdapter :
+    RecyclerView.Adapter<RegisterResponseAdapter.PatientResponseAdapterViewHolder>() {
 
-    var data = ArrayList<PatientResponseEnum>()
+    var data = ArrayList<RegisterResponseEnum>()
     private lateinit var mListener: onItemclickListener
 
     interface onItemclickListener {
@@ -35,7 +35,7 @@ class PatientResponseAdapter :
         }
 
 
-        fun bind(item: PatientResponseEnum) {
+        fun bind(item: RegisterResponseEnum) {
 
             with(binding) {
                 feelingImage.setImageResource(item.iconResource)

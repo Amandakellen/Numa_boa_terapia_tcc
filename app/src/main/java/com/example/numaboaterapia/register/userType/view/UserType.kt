@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
 import com.example.numaboaterapia.register.pacient.view.ActivityPatientConsultationReason
 import com.example.numaboaterapia.register.pacient.view.PatientRegistrationData
+import com.example.numaboaterapia.register.psychologist.view.ActivityPsiRegistration
 
 
 class UserType : AppCompatActivity() {
@@ -15,13 +16,13 @@ class UserType : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding= ActivityUserTypeBinding.inflate(layoutInflater)
+        binding = ActivityUserTypeBinding.inflate(layoutInflater)
         setUpViews()
 
         setContentView(binding.root)
     }
 
-    private fun setUpViews(){
+    private fun setUpViews() {
         binding.backButton.setOnClickListener {
             finish()
         }
@@ -29,6 +30,10 @@ class UserType : AppCompatActivity() {
         binding.clientImage.setOnClickListener {
             val intent = Intent(this, PatientRegistrationData::class.java)
             startActivity(intent)
+        }
+
+        binding.psiImage.setOnClickListener {
+            startActivity(Intent(this, ActivityPsiRegistration::class.java))
         }
 
 

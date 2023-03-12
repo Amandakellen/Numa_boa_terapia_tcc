@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.register.pacient.data.repository
+package com.example.numaboaterapia.register.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class PatientResponseRepository {
+class FirebaseResponseRepository {
 
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>

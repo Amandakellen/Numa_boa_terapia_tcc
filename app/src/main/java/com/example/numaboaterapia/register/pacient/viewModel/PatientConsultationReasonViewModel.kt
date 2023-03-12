@@ -2,26 +2,26 @@ package com.example.numaboaterapia.register.pacient.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.numaboaterapia.register.pacient.data.PatientResponseEnum
-import com.example.numaboaterapia.register.pacient.data.repository.PatientResponseRepository
+import com.example.numaboaterapia.register.data.RegisterResponseEnum
+import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 
 class PatientConsultationReasonViewModel: ViewModel() {
-    var itens: ArrayList<PatientResponseEnum> = arrayListOf()
-    private val repository: PatientResponseRepository =
-        PatientResponseRepository()
+    var itens: ArrayList<RegisterResponseEnum> = arrayListOf()
+    private val repository: FirebaseResponseRepository =
+        FirebaseResponseRepository()
 
-    fun getDataItens(): ArrayList<PatientResponseEnum> {
+    fun getDataItens(): ArrayList<RegisterResponseEnum> {
 
-        itens.add(PatientResponseEnum.ANXIETY)
-        itens.add(PatientResponseEnum.PERSONAL_GROWTH)
-        itens.add(PatientResponseEnum.DEPRESSION)
-        itens.add(PatientResponseEnum.GRIEF)
-        itens.add(PatientResponseEnum.COUPLE)
-        itens.add(PatientResponseEnum.EATING_DISORDER)
-        itens.add(PatientResponseEnum.SEXUALITY)
-        itens.add(PatientResponseEnum.OTHER)
+        itens.add(RegisterResponseEnum.ANXIETY)
+        itens.add(RegisterResponseEnum.PERSONAL_GROWTH)
+        itens.add(RegisterResponseEnum.DEPRESSION)
+        itens.add(RegisterResponseEnum.GRIEF)
+        itens.add(RegisterResponseEnum.COUPLE)
+        itens.add(RegisterResponseEnum.EATING_DISORDER)
+        itens.add(RegisterResponseEnum.SEXUALITY)
+        itens.add(RegisterResponseEnum.OTHER)
 
         return itens
 
