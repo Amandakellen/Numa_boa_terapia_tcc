@@ -11,9 +11,9 @@
         android:id="@+id/psi_age_range_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/psi_age_range_recyclerview"
@@ -26,9 +26,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/psi_age_range_toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/label_button_range_button"
         tools:listitem="@layout/adapter_patient_information_list"
-        tools:itemCount="6"/>
+        tools:itemCount="6"
+        tools:ignore="NotSibling" />
+
+    <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
+        android:id="@+id/age_range_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="613dp"
+        android:layout_marginBottom="124dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/psi_age_range_toolbar"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/label_button_range_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chau_philomene_one"
+            android:text="@string/next"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
