@@ -2,7 +2,9 @@ package com.example.numaboaterapia.register.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.AdapterPatientInformationListBinding
 import com.example.numaboaterapia.register.data.RegisterResponseEnum
 
@@ -12,6 +14,7 @@ class RegisterResponseAdapter :
 
     var data = ArrayList<RegisterResponseEnum>()
     private lateinit var mListener: onItemclickListener
+    var itemSelected = ArrayList<String>()
 
     interface onItemclickListener {
         fun onItemClick(position: Int)
@@ -19,6 +22,17 @@ class RegisterResponseAdapter :
 
     fun setOnClickListener(listener: onItemclickListener) {
         mListener = listener
+
+    }
+
+    fun addItem(item: String) {
+        if (!itemSelected.contains(item)) {
+            itemSelected.add(item)
+
+
+        } else {
+            itemSelected.remove(item)
+        }
     }
 
 
@@ -35,6 +49,7 @@ class RegisterResponseAdapter :
         }
 
 
+
         fun bind(item: RegisterResponseEnum) {
 
             with(binding) {
@@ -43,6 +58,7 @@ class RegisterResponseAdapter :
             }
 
         }
+
     }
 
     override fun onCreateViewHolder(
