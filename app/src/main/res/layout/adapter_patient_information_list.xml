@@ -33,12 +33,12 @@
             android:id="@+id/feeling_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/purple"
             android:background="@color/white"
+            android:textAlignment="center"
+            android:textColor="@color/purple"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textAlignment="center"
-            tools:text="@string/anxiety"/>
+            tools:text="@string/anxiety" />
 
 
     </LinearLayout

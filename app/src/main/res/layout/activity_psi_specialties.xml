@@ -15,19 +15,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/select_label"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/specialities_text_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/especialidades"
+        android:inputType="text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        app:boxStrokeColor="@color/purple"
+        app:endIconDrawable="@drawable/baseline_search_24"
+        app:helperText="@string/label"
+        app:endIconMode="custom"
+        app:helperTextTextColor="@color/gray"
+        app:hintTextColor="@color/purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/psi_specialties_tool_bar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/specialities_text_input_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
+        android:id="@+id/age_range_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/chau_philomene_one"
-        android:text="@string/label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/purple"
-        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/label_button_range_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chau_philomene_one"
+            android:text="@string/next"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/psi_specialties_tool_bar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/specialities_text_input_layout"
+        app:layout_constraintBottom_toTopOf="@id/age_range_button"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
