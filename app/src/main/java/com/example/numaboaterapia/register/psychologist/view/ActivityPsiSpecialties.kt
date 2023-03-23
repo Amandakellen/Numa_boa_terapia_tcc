@@ -23,5 +23,7 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
         binding.psiSpecialtiesToolBar.setStepText(R.string.psi_second_step)
         binding.psiSpecialtiesToolBar.setTitleText(R.string.psi_second_title)
+        binding.checkBoxesGroup.addCheckBox(R.string.gravidez, R.id.gravidez_check_box)
+        //binding.checkBoxesGroup.addCheckBox(R.string.adocao, R.id.adocao_checkbox)
     }
 }
