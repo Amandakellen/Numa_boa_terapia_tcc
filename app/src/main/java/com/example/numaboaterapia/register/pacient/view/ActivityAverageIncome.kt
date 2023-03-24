@@ -34,6 +34,7 @@ class ActivityAverageIncome : AppCompatActivity() {
     }
 
     fun setUpViews() {
+        binding.averageIncomeButton.setText(R.string.label_average_income_button)
         binding.averageIncomeToolBar.getBackButton().setOnClickListener {
             finish()
         }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.Login.ViewModel.ForgetPasswordViewModel
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityForgetPasswordBinding
 
 class ForgetPassword : AppCompatActivity() {
@@ -36,6 +37,7 @@ class ForgetPassword : AppCompatActivity() {
                 viewModel.email.value?.isNullOrEmpty() == true)
 
     private fun setUpViews() {
+        binding.forgetPasswordButton.setText(R.string.forget_password)
         binding.forgetPasswordButton.setOnClickListener {
             when (checkEmailIsEmpty()) {
                 true -> {

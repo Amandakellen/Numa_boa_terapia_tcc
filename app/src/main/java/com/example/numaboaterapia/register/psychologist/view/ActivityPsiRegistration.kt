@@ -81,6 +81,7 @@ class ActivityPsiRegistration : AppCompatActivity() {
     }
 
     private fun setUpViews(){
+        binding.psiRegisterButton.setText(R.string.registration_button)
         binding.toolBarPsiRegister.getBackButton().setOnClickListener {
             finish()
         }
