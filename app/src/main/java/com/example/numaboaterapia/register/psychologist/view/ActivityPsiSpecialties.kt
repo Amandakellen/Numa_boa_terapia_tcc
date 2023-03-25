@@ -21,7 +21,8 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
     private fun setUpViews(){
         binding.specialtiesButton.setText(R.string.next)
-        binding.specialtiesCheckboxGroup.setViews(5)
+        binding.specialtiesCheckboxGroup.setSpecialties(viewModel.getSpecialties())
+        binding.specialtiesCheckboxGroup.setSpecialtiesViews()
         binding.psiSpecialtiesToolBar.getBackButton().setOnClickListener {
             finish()
         }

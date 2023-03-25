@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.register.psychologist.data.PsiSpecialtiesEnum
 
 class CheckBoxes(
     context: Context,
@@ -15,23 +16,30 @@ class CheckBoxes(
 ) : ConstraintLayout(context, attrs) {
 
     private val view = View.inflate(context, R.layout.check_boxes_custom, this)
-    fun setViews(size: Int){
+    private var specialties =  ArrayList<PsiSpecialtiesEnum>()
+
+    fun setSpecialties(itens : ArrayList<PsiSpecialtiesEnum>){
+        specialties = itens
+    }
+
+    fun setSpecialtiesViews(){
         var lastId = -1
-        for(i in 1..size){
+        for(i in specialties){
             var checkBox = CheckBox(context)
-            checkBox.setText("Entry"+i)
+            checkBox.setText(i.specialtiesName)
             checkBox.setTextColor(ContextCompat.getColor(context, R.color.gray))
             val id = CheckBox.generateViewId()
+            checkBox.buttonTintList= ContextCompat.getColorStateList(context, R.color.light_purple)
             checkBox.id = id
             val constraint = ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
             )
 
             constraint.startToStart = ConstraintSet.PARENT_ID
             constraint.endToEnd = ConstraintSet.PARENT_ID
 
-            if (i==0){
+            if (i==PsiSpecialtiesEnum.GRAVIDEZ){
                 constraint.topToTop = ConstraintSet.PARENT_ID
             }else{
                 constraint.topToBottom = lastId
