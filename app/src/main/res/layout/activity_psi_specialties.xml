@@ -47,8 +47,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
     <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
-        android:id="@+id/age_range_button"
+        android:id="@+id/specialties_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -56,40 +58,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <TextView
-            android:id="@+id/label_button_range_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/chau_philomene_one"
-            android:text="@string/next"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo>
-
-    <ScrollView
+    <com.example.numaboaterapia.views.CustomView.CheckBoxes
+        android:id="@+id/specialties_checkbox_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/age_range_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="163dp"
         app:layout_constraintTop_toBottomOf="@id/specialities_text_input_layout"
-        app:layout_constraintVertical_bias="0.082">
-
-        <com.example.numaboaterapia.views.CustomView.CheckBoxesGroup
-            android:id="@+id/check_boxes_group"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ScrollView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/specialties_button"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
