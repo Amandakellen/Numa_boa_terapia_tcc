@@ -2,6 +2,7 @@ package com.example.numaboaterapia.views.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.CheckBox
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,21 +17,71 @@ class CheckBoxes(
 ) : ConstraintLayout(context, attrs) {
 
     private val view = View.inflate(context, R.layout.check_boxes_custom, this)
-    private var specialties =  ArrayList<PsiSpecialtiesEnum>()
+    private var specialties = ArrayList<PsiSpecialtiesEnum>()
+    var idsList = ArrayList<Int>()
+    var specialtiesChecked = ArrayList<String>()
 
-    fun setSpecialties(itens : ArrayList<PsiSpecialtiesEnum>){
+    fun setSpecialties(itens: ArrayList<PsiSpecialtiesEnum>) {
         specialties = itens
     }
 
-    fun setSpecialtiesViews(){
+    private fun checkSize(count : Int){
+        if(count == 20){
+            disabled()
+        }else{
+            enabled()
+        }
+    }
+
+    private fun disabled(){
+        idsList.forEach {
+        var checkBox = findViewById<CheckBox>(it)
+            if(!specialtiesChecked.contains( checkBox.text)){
+                checkBox.isEnabled = false
+            }
+        }
+    }
+    private fun enabled(){
+        idsList.forEach {
+            findViewById<CheckBox>(it).isEnabled = true
+        }
+    }
+
+    fun setSpecialtiesViews() {
         var lastId = -1
-        for(i in specialties){
+        var count = 0
+        for (i in specialties) {
             var checkBox = CheckBox(context)
             checkBox.setText(i.specialtiesName)
             checkBox.setTextColor(ContextCompat.getColor(context, R.color.gray))
             val id = CheckBox.generateViewId()
-            checkBox.buttonTintList= ContextCompat.getColorStateList(context, R.color.light_purple)
+            checkBox.buttonTintList = ContextCompat.getColorStateList(context, R.color.light_purple)
             checkBox.id = id
+
+            checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+
+                if (isChecked){
+                    checkBox.buttonTintList = ContextCompat.
+                    getColorStateList(context, R.color.light_purple)
+                    if(!specialtiesChecked.contains(resources.getString(i.specialtiesName))
+                        && count!=20){
+                        count++
+                        specialtiesChecked.add(resources.getString(i.specialtiesName))
+                        checkSize(count)
+                    }
+
+                }else{
+                    if(specialtiesChecked.contains(resources.getString(i.specialtiesName))){
+                        count--
+                        specialtiesChecked.remove(resources.getString(i.specialtiesName))
+                        enabled()
+                    }
+
+                }
+
+
+            }
+
             val constraint = ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 ConstraintLayout.LayoutParams.WRAP_CONTENT
@@ -39,9 +90,9 @@ class CheckBoxes(
             constraint.startToStart = ConstraintSet.PARENT_ID
             constraint.endToEnd = ConstraintSet.PARENT_ID
 
-            if (i==PsiSpecialtiesEnum.GRAVIDEZ){
+            if (i == PsiSpecialtiesEnum.GRAVIDEZ) {
                 constraint.topToTop = ConstraintSet.PARENT_ID
-            }else{
+            } else {
                 constraint.topToBottom = lastId
             }
             checkBox.layoutParams = constraint
@@ -49,11 +100,13 @@ class CheckBoxes(
             view.apply {
                 addView(checkBox)
             }
+            idsList.add(id)
             lastId = id
 
         }
 
     }
+
 }
 
 

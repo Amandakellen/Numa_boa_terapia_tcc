@@ -16,18 +16,24 @@ class ActivityPsiSpecialties : AppCompatActivity() {
         viewModel = PsiSpecialtiesViewModel()
 
         setUpViews()
+        setUpCheckBoxes()
         setContentView(binding.root)
     }
 
     private fun setUpViews(){
         binding.specialtiesButton.setText(R.string.next)
-        binding.specialtiesCheckboxGroup.setSpecialties(viewModel.getSpecialties())
-        binding.specialtiesCheckboxGroup.setSpecialtiesViews()
         binding.psiSpecialtiesToolBar.getBackButton().setOnClickListener {
             finish()
         }
 
         binding.psiSpecialtiesToolBar.setStepText(R.string.psi_second_step)
         binding.psiSpecialtiesToolBar.setTitleText(R.string.psi_second_title)
+    }
+
+    private fun setUpCheckBoxes(){
+        binding.specialtiesCheckboxGroup.setSpecialties(viewModel.getSpecialties())
+        binding.specialtiesCheckboxGroup.setSpecialtiesViews()
+
+
     }
 }
