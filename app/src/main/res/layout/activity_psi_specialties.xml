@@ -30,9 +30,9 @@
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
         app:boxStrokeColor="@color/purple"
-        app:endIconDrawable="@drawable/baseline_search_24"
+
         app:helperText="@string/label"
-        app:endIconMode="custom"
+
         app:helperTextTextColor="@color/gray"
         app:hintTextColor="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +42,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/specialities_text_input_edit"
             android:layout_width="match_parent"
+            android:drawableEnd="@drawable/baseline_search_24"
+
             android:layout_height="match_parent"
             android:textColor="@color/gray" />
     </com.google.android.material.textfield.TextInputLayout>
