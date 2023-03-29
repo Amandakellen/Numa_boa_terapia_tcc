@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPatientRegistrationDataBinding
 import com.example.numaboaterapia.register.pacient.viewModel.PatientRegistrationViewModel
 import com.example.numaboaterapia.register.pacient.view.ActivityPatientConsultationReason
@@ -82,7 +83,9 @@ class PatientRegistrationData : AppCompatActivity() {
 
     private fun setUpViews() {
 
-        binding.labelButtonLogin.setOnClickListener {
+        binding.pacientRegisterButton.setText(R.string.registration_button)
+
+        binding.pacientRegisterButton.setOnClickListener {
             val result = checkRegister()
             if (result) {
                 val message = viewModel.crateUser()

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseUser
 
@@ -69,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun setupViews() {
-
+        binding.botaoLogin.setText(R.string.button_login)
         binding.botaoLogin.setOnClickListener {
             when (checkLoginIsEmpty()) {
                 true -> {

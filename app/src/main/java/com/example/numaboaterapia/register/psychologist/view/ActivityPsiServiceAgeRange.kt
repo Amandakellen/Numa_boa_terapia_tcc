@@ -30,6 +30,7 @@ class ActivityPsiServiceAgeRange : AppCompatActivity() {
 
 
     private fun setUpViews() {
+        binding.ageRangeButton.setText(R.string.next)
         binding.psiAgeRangeToolbar.getBackButton().setOnClickListener {
             finish()
         }
@@ -69,7 +70,7 @@ class ActivityPsiServiceAgeRange : AppCompatActivity() {
         })
     }
 
-    fun setUpRecyclerview() {
+    private fun setUpRecyclerview() {
 
         binding.psiAgeRangeRecyclerview.layoutManager =
             GridLayoutManager(this, 2).also {
