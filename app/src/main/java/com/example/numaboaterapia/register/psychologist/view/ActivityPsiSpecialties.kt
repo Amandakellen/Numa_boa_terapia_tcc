@@ -1,8 +1,10 @@
 package com.example.numaboaterapia.register.psychologist.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
@@ -33,6 +35,19 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
         binding.psiSpecialtiesToolBar.setStepText(R.string.psi_second_step)
         binding.psiSpecialtiesToolBar.setTitleText(R.string.psi_second_title)
+
+        binding.specialtiesButton.setOnClickListener {
+            if (!binding.specialtiesCheckboxGroup.specialtiesChecked.isNullOrEmpty()) {
+                val intent = Intent(this, ConfirmPsiSpecialties::class.java)
+                intent.putExtra("specialties",
+                    binding.specialtiesCheckboxGroup.specialtiesChecked)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this, "Selecione no mínimo 1 item", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun setUpSearch() {
@@ -47,10 +62,10 @@ class ActivityPsiSpecialties : AppCompatActivity() {
             if (!viewModel.searchIsNullOrEmpty()) {
                 if (viewModel.searchSize()!! >= 3) {
 
-                    itens.forEach {iterator->
+                    itens.forEach { iterator ->
                         if (resources.getString(iterator.specialtiesName).lowercase()
                                 .contains(viewModel.getSearch())
-                        ){
+                        ) {
                             itensSearch.add(resources.getString(iterator.specialtiesName))
 
                         }
@@ -59,13 +74,13 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
 
                 }
-            }else{
+            } else {
                 binding.specialtiesCheckboxGroup.visibilityAll()
             }
 
         }
 
-
+        viewModel.setItensSelected(binding.specialtiesCheckboxGroup.specialtiesChecked)
 
     }
 

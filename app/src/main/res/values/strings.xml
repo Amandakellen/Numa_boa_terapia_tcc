@@ -82,6 +82,7 @@
     <string name="psi_second_title">Quais as suas especialidades?</string>
     <string name="psi_third_step">Passo 3 de 3</string>
     <string name="psi_third_title">Escreva um pouco mais sobre você</string>
+    <string name="psi_confirm_specialties">Confirme as especialidades \n selecionadas</string>
 
     <!--Público que trabalha-->
     <string name="children">Crianças</string>
