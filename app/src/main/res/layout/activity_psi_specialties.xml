@@ -30,9 +30,7 @@
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
         app:boxStrokeColor="@color/purple"
-
         app:helperText="@string/label"
-
         app:helperTextTextColor="@color/gray"
         app:hintTextColor="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +41,9 @@
             android:id="@+id/specialities_text_input_edit"
             android:layout_width="match_parent"
             android:drawableEnd="@drawable/baseline_search_24"
-
+            android:inputType="text"
+            app:actionViewClass="android.support.v7.widget.SearchView"
+            android:imeOptions="actionSearch"
             android:layout_height="match_parent"
             android:textColor="@color/gray" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,8 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"/>
-
-
 
     <ScrollView
         android:layout_width="match_parent"

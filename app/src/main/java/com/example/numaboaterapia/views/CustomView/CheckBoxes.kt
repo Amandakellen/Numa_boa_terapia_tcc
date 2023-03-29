@@ -22,6 +22,7 @@ class CheckBoxes(
     var specialtiesChecked = ArrayList<String>()
 
     fun setSpecialties(itens: ArrayList<PsiSpecialtiesEnum>) {
+        specialties = ArrayList<PsiSpecialtiesEnum>()
         specialties = itens
     }
 
@@ -30,6 +31,24 @@ class CheckBoxes(
             disabled()
         }else{
             enabled()
+        }
+    }
+
+     fun changeVisibilitySearch(searchItens : ArrayList<String>){
+         var checkBox: CheckBox
+         idsList.forEach {itSpecialties->
+             checkBox =findViewById<CheckBox>(itSpecialties)
+            if(!searchItens.contains(checkBox.text)){
+                checkBox.visibility = INVISIBLE
+            }else{
+                checkBox.visibility = VISIBLE
+            }
+        }
+    }
+
+    fun visibilityAll(){
+        idsList.forEach {
+            findViewById<CheckBox>(it).visibility = VISIBLE
         }
     }
 
