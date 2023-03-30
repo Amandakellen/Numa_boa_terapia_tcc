@@ -38,10 +38,18 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
         binding.specialtiesButton.setOnClickListener {
             if (!binding.specialtiesCheckboxGroup.specialtiesChecked.isNullOrEmpty()) {
-                val intent = Intent(this, ConfirmPsiSpecialties::class.java)
-                intent.putExtra("specialties",
-                    binding.specialtiesCheckboxGroup.specialtiesChecked)
-                startActivity(intent)
+                val result = viewModel.saveValue()
+                result.invokeOnCompletion {
+                    if (result.getCompleted() != "Sucesso") {
+                        Toast.makeText(
+                            applicationContext, "Ocorreu um erro, tente novamente!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        //startActivity(Intent(this, ActivityPsiSpecialties::class.java))
+                    }
+                }
             } else {
                 Toast.makeText(
                     this, "Selecione no mínimo 1 item", Toast.LENGTH_SHORT
@@ -90,4 +98,5 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
 
     }
+
 }
