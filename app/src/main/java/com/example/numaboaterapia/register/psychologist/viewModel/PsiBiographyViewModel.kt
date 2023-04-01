@@ -9,12 +9,29 @@ class PsiBiographyViewModel: ViewModel() {
     private var repository =  PsiBiographyRepository()
     private var firebaseRepository = UserFirebaseRegistrationRepository()
 
-    private lateinit var _biography : MutableLiveData<String>
-    private lateinit var _cep : MutableLiveData<String>
+    private  var _biography =  MutableLiveData<String>()
+    private  var _cep = MutableLiveData<String>()
+    private lateinit var _typeOfService: MutableLiveData<ArrayList<String>>
+    private var typeOfService : ArrayList<String> = arrayListOf()
+
+
 
     fun setBiography(text : String){
         _biography.value = text
     }
+
+    fun addTypeOfService(item :String) {
+      typeOfService.add(item)
+      _typeOfService.value = typeOfService
+    }
+
+    fun removeTypeOfService(item: String){
+        typeOfService.remove(item)
+        _typeOfService.value = typeOfService
+    }
+
+    fun isTypeOfServiceNullOrEmpty() : Boolean = _typeOfService.value.isNullOrEmpty()
+
 
     fun setCep(cep: String){
         _cep.value = cep

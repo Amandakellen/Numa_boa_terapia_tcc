@@ -168,6 +168,8 @@
     <string name="city">Cidade - estado</string>
     <string name="cep">Digite o seu CEP</string>
     <string name="send_cpf">Enviar CPF</string>
+    <string name="in_person">Atendo presencial</string>
+    <string name="online">Atendo online</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

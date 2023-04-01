@@ -53,11 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="32dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:hint="@string/biography_hint"
-            android:maxLength="800"
             android:textColor="@color/gray"
             android:textColorHint="@color/light_gray" />
 
@@ -68,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="left"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/chau_philomene_one"
         android:text="@string/location"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -150,9 +148,7 @@
                 app:hintTextColor="@color/purple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cep_text_input_layout"
-                android:visibility="gone"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@+id/cep_text_input_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/psi_city_edit_text"
@@ -163,6 +159,30 @@
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/biopgraphy_in_person_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/light_gray"
+                android:gravity="center"
+                android:text="@string/in_person"
+                android:buttonTint="@color/light_purple"
+                app:layout_constraintTop_toBottomOf="@id/cep_text_input_layout"/>
+
+            <CheckBox
+                android:id="@+id/biography_onine_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/light_purple"
+                android:text="@string/online"
+                android:textColor="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="@id/biopgraphy_in_person_checkbox"
+                app:layout_constraintStart_toStartOf="@id/biopgraphy_in_person_checkbox"
+                app:layout_constraintTop_toBottomOf="@id/biopgraphy_in_person_checkbox" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -180,8 +200,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"
-        tools:visibility="visible"
         android:layout_marginBottom="16dp" />
 
 
