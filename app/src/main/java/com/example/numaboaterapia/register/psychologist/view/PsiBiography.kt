@@ -55,6 +55,14 @@ class PsiBiography : AppCompatActivity() {
                viewModel.removeTypeOfService(binding.biographyOnineCheckbox.text.toString())
             }
         }
+
+        binding.biopgraphyInPersonCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                viewModel.addTypeOfService(binding.biopgraphyInPersonCheckbox.text.toString())
+            }else{
+                viewModel.removeTypeOfService(binding.biopgraphyInPersonCheckbox.text.toString())
+            }
+        }
     }
 
     private fun setUpToolBar(){
