@@ -23,8 +23,40 @@ class PsiBiography : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    private fun setUpToast(text : String){
+        Toast.makeText(
+            applicationContext,
+            text, Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun checkIfItensIsEmptyOrNull(): String{
+        if(viewModel.isTypeOfServiceNullOrEmpty() &&
+            viewModel.isBiographyEmptyOrNull() &&
+            viewModel.isCepEmptyOrNull() ){
+            return "Preencha os campos solicitados"
+        }else if(viewModel.isTypeOfServiceNullOrEmpty() && viewModel.isBiographyEmptyOrNull()){
+            return "Digite sua biografia e selecione o tipo de atendimento"
+        }else if(viewModel.isTypeOfServiceNullOrEmpty() && viewModel.isCepEmptyOrNull()){
+            return "Informe o seu cep e selecione o tipo de atendimento"
+        }else if(viewModel.isBiographyEmptyOrNull() && viewModel.isCepEmptyOrNull() ){
+            return "Digite sua biografia e informe o seu cep"
+        }else if(viewModel.isTypeOfServiceNullOrEmpty()){
+            return "Selecione ao menos um tipo de atendimento"
+        }else if(viewModel.isBiographyEmptyOrNull()){
+            return "Digite uma biografia"
+        }else if(viewModel.isCepEmptyOrNull()){
+            return "Informe o seu cep"
+        }
+
+        return "ok"
+    }
+
     private fun setUpViews(){
         binding.psiBiographyEditText.doOnTextChanged { text, start, before, count ->
+            if(text.toString().length==850){
+                setUpToast("Você atingiu a quantidade máxima de caracteres")
+            }
             viewModel.setBiography(text.toString())
         }
         binding.psiCepEditText.doOnTextChanged { text, start, before, count ->
@@ -35,12 +67,12 @@ class PsiBiography : AppCompatActivity() {
         binding.cepButton.setText(R.string.send_cpf)
 
         binding.biographyButton.setOnClickListener {
-            if(viewModel.isTypeOfServiceNullOrEmpty()){
-                Toast.makeText(
-                    applicationContext,
-                    "Selecione ao menos um tipo de atendimento", Toast.LENGTH_LONG
-                ).show()
-            }else{
+            val checkItens = checkIfItensIsEmptyOrNull()
+            if(checkItens != "ok"){
+                setUpToast(checkItens)
+            }
+
+            else{
                 //TODO
             }
         }

@@ -31,6 +31,9 @@ class PsiBiographyViewModel : ViewModel() {
 
     fun isTypeOfServiceNullOrEmpty(): Boolean = _typeOfService.value.isNullOrEmpty()
 
+    fun isBiographyEmptyOrNull(): Boolean = _biography.value.isNullOrEmpty()
+
+    fun isCepEmptyOrNull(): Boolean = _cep.value.isNullOrEmpty()
 
     fun setCep(cep: String) {
         _cep.value = cep

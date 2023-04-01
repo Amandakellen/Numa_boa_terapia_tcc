@@ -55,6 +55,7 @@
                     android:layout_marginVertical="32dp"
                     android:layout_marginHorizontal="8dp"
                     android:background="@android:color/transparent"
+                    android:maxLength="850"
                     android:gravity="center"
                     android:hint="@string/biography_hint"
                     android:textColor="@color/gray"
@@ -142,7 +143,10 @@
                         app:hintTextColor="@color/purple"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cep_text_input_layout">
+                        app:layout_constraintTop_toBottomOf="@+id/cep_text_input_layout"
+                        android:visibility="invisible"
+                        tools:visibility="visible"
+                        >
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/psi_city_edit_text"
