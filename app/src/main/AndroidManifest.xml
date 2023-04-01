@@ -14,7 +14,7 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".register.psychologist.view.ConfirmPsiSpecialties"
+            android:name=".register.psychologist.view.PsiBiography"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiSpecialties"

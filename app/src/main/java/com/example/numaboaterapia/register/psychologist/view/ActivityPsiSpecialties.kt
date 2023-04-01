@@ -3,13 +3,11 @@ package com.example.numaboaterapia.register.psychologist.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPsiSpecialtiesBinding
-import com.example.numaboaterapia.register.psychologist.data.PsiSpecialtiesEnum
 import com.example.numaboaterapia.register.psychologist.viewModel.PsiSpecialtiesViewModel
 
 class ActivityPsiSpecialties : AppCompatActivity() {
@@ -47,7 +45,7 @@ class ActivityPsiSpecialties : AppCompatActivity() {
                         ).show()
 
                     } else {
-                        //startActivity(Intent(this, ActivityPsiSpecialties::class.java))
+                        startActivity(Intent(this, PsiBiography::class.java))
                     }
                 }
             } else {
