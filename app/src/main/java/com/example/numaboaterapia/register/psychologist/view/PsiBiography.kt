@@ -2,10 +2,14 @@ package com.example.numaboaterapia.register.psychologist.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPsiBiographyBinding
+import com.example.numaboaterapia.register.psychologist.data.Cep
 import com.example.numaboaterapia.register.psychologist.viewModel.PsiBiographyViewModel
 
 class PsiBiography : AppCompatActivity() {
@@ -65,6 +69,21 @@ class PsiBiography : AppCompatActivity() {
 
         binding.biographyButton.setText(R.string.next)
         binding.cepButton.setText(R.string.send_cpf)
+        binding.cepButton.setOnClickListener {
+            if(viewModel.isCepEmptyOrNull()){
+                setUpToast("Informe o seu cep")
+            }else{
+                viewModel.getLocation()
+                val logradouro = viewModel.getCepData()?.logradouro
+                if(logradouro.isNullOrEmpty()){
+
+                    binding.psiCityEditText.setText(logradouro,
+                        TextView.BufferType.EDITABLE)
+                    binding.psiCityEditText.visibility = View.VISIBLE
+                }
+
+            }
+        }
 
         binding.biographyButton.setOnClickListener {
             val checkItens = checkIfItensIsEmptyOrNull()
@@ -73,6 +92,7 @@ class PsiBiography : AppCompatActivity() {
             }
 
             else{
+
                 //TODO
             }
         }
