@@ -74,12 +74,12 @@ class PsiBiography : AppCompatActivity() {
                 setUpToast("Informe o seu cep")
             }else{
                 viewModel.getLocation()
-                val logradouro = viewModel.getCepData()?.logradouro
-                if(logradouro.isNullOrEmpty()){
+                val cidade = viewModel.getCepData()?.localidade
+                val uf = viewModel.getCepData()?.uf
 
-                    binding.psiCityEditText.setText(logradouro,
-                        TextView.BufferType.EDITABLE)
-                    binding.psiCityEditText.visibility = View.VISIBLE
+                if(!cidade.isNullOrEmpty()){
+                    binding.psiCityEditText.setText(cidade.plus(" - ").plus(uf))
+                    binding.cityTextInputLayout.visibility = View.VISIBLE
                 }
 
             }

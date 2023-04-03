@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.register.psychologist.data.repository
 
+import com.example.numaboaterapia.register.psychologist.model.ApiService
 
 
 class PsiBiographyRepository {
@@ -11,5 +12,5 @@ class PsiBiographyRepository {
     }
 
 
-
+    suspend fun getCep(apiService: ApiService) = apiService.getCep()
 }

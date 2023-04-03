@@ -1,15 +1,12 @@
 package com.example.numaboaterapia.register.psychologist.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.register.data.repository.UserFirebaseRegistrationRepository
 import com.example.numaboaterapia.register.psychologist.data.Cep
 import com.example.numaboaterapia.register.psychologist.data.repository.PsiBiographyRepository
-import com.example.numaboaterapia.register.psychologist.model.ApiHelper
 import com.example.numaboaterapia.register.psychologist.model.RetrofitBuilder
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class PsiBiographyViewModel : ViewModel() {
@@ -56,7 +53,9 @@ class PsiBiographyViewModel : ViewModel() {
         // Corroutine
         viewModelScope.launch {
             try {
-                val currentCep = ApiHelper(RetrofitBuilder(_cep.value.toString()).apiService).getCep()
+                val currentCep = repository.getCep(RetrofitBuilder(
+                    _cep.value.toString()).apiService)
+
                 cepData.value = currentCep
                 if(currentCep.erro != null){
                     error.value = true
