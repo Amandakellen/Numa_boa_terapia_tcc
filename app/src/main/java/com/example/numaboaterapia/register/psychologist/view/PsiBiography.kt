@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.register.psychologist.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -92,8 +93,18 @@ class PsiBiography : AppCompatActivity() {
             }
 
             else{
+                val result = viewModel.saveValue()
+                result.invokeOnCompletion {
+                    if (result.getCompleted() != "Sucesso") {
+                        Toast.makeText(
+                            applicationContext, "Ocorreu um erro, tente novamente!",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                //TODO
+                    } else {
+                        //startActivity(Intent(this, PsiBiography::class.java))
+                    }
+                }
             }
         }
 

@@ -3,15 +3,17 @@ package com.example.numaboaterapia.register.psychologist.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.numaboaterapia.register.data.repository.UserFirebaseRegistrationRepository
+import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
 import com.example.numaboaterapia.register.psychologist.data.Cep
 import com.example.numaboaterapia.register.psychologist.data.repository.PsiBiographyRepository
 import com.example.numaboaterapia.register.psychologist.model.RetrofitBuilder
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class PsiBiographyViewModel : ViewModel() {
     private var repository = PsiBiographyRepository()
-    private var firebaseRepository = UserFirebaseRegistrationRepository()
+    private var firebaseRepository = FirebaseResponseRepository()
 
     private var _biography = MutableLiveData<String>()
     private var _cep = MutableLiveData<String>()
@@ -75,4 +77,25 @@ class PsiBiographyViewModel : ViewModel() {
     }
 
     fun getCepData() : Cep? = cepData.value
+
+    private fun hashMapData(): HashMap<String, String> {
+        return hashMapOf(
+            "psi_biography" to _biography.value.toString(),
+            "psi_city" to cepData.value?.localidade.toString(),
+            "psi_uf" to cepData.value?.uf.toString(),
+            "psi_type_of_service" to (_typeOfService.value?.joinToString(",") ?:"" )
+
+        )
+
+    }
+    fun saveValue(): Deferred<String> {
+
+        val result = viewModelScope.async {
+            firebaseRepository.saveData(
+                "psi_biography",
+                hashMapData()
+            )
+        }
+        return result
+    }
 }
