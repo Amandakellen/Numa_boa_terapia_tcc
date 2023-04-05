@@ -102,7 +102,7 @@ class PsiBiography : AppCompatActivity() {
                         ).show()
 
                     } else {
-                        //startActivity(Intent(this, PsiBiography::class.java))
+                        startActivity(Intent(this, SelectSignature::class.java))
                     }
                 }
             }

@@ -171,6 +171,17 @@
     <string name="in_person">Atendo presencial</string>
     <string name="online">Atendo online</string>
 
+    <!--pagamento-->
+    <string name="signature_label">Escolha o plano ideal para você</string>
+    <string name="year_value">R$ 620,00 /Ano</string>
+    <string name="year_label"> Assinatura para uso do app por um ano</string>
+    <string name="semester_value">R$ 280,00 /Semestre</string>
+    <string name="semester_label"> Assinatura para uso do app por um semestre</string>
+    <string name="mounth_value">R$ 60,00 /Mês</string>
+    <string name="mounth_label"> Assinatura para uso do app por um mês</string>
+    <string name="signature_button">Selecionar plano</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>
