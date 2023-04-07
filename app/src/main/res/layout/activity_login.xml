@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/login_label"
+        android:id="@+id/card_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -33,7 +33,7 @@
         android:id="@+id/text_input_layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/login_label"
+        app:layout_constraintTop_toBottomOf="@id/card_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Email"

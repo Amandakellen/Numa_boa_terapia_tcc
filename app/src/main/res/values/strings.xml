@@ -181,6 +181,15 @@
     <string name="mounth_label"> Assinatura para uso do app por um mês</string>
     <string name="signature_button">Selecionar plano</string>
 
+    <!--Adicionar cartao-->
+    <string name="label_card"> Adicionar cartão</string>
+    <string name="card_name">Nome no cartão</string>
+    <string name="card_number">Número do cartão</string>
+    <string name="mounth_card">Mês de vencimento</string>
+    <string name="year_card">Ano de vencimento</string>
+    <string name="cvv">CVV</string>
+    <string name="card_button">Adicionar cartão</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

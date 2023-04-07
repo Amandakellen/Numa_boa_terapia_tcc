@@ -1,6 +1,7 @@
 package com.example.numaboaterapia.register.psychologist.view
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
@@ -68,6 +69,10 @@ class SelectSignature : AppCompatActivity() {
                     applicationContext, "Selecione um plano",
                     Toast.LENGTH_SHORT
                 ).show()
+            }else{
+                val intent  = Intent(this, AddCreditCard::class.java )
+                intent.putExtra("signature", signatureValue)
+                startActivity(intent)
             }
         }
     }

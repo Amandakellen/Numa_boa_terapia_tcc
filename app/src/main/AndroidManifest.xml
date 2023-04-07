@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="com.google.android.gms.wallet.api.enabled"
+        android:value="true" />
+
     <application
         android:name=".NumaBoaApplication"
         android:allowBackup="true"
@@ -16,7 +20,7 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".SignatureCustomView"
+            android:name=".register.psychologist.view.AddCreditCard"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.SelectSignature"
