@@ -1,0 +1,14 @@
+<vector android:alpha="0.8" android:autoMirrored="true"
+    android:height="190dp" android:viewportHeight="190"
+    android:viewportWidth="316" android:width="316dp"
+    xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:pathData="M16,0L300,0A16,16 0,0 1,316 16L316,174A16,16 0,0 1,300 190L16,190A16,16 0,0 1,0 174L0,16A16,16 0,0 1,16 0z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="316" android:endY="95"
+                android:startX="0" android:startY="95" android:type="linear">
+                <item android:color="#FF4A02D9" android:offset="0"/>
+                <item android:color="#FF000000" android:offset="1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

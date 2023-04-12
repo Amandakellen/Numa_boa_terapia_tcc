@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.CheckBox
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
@@ -29,6 +30,9 @@ class CheckBoxes(
     private fun checkSize(count : Int){
         if(count == 20){
             disabled()
+            Toast.makeText(context,
+                "Você já selecionou 20 especialidades",
+                Toast.LENGTH_SHORT).show()
         }else{
             enabled()
         }
@@ -78,7 +82,6 @@ class CheckBoxes(
             checkBox.id = id
 
             checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
-
                 if (isChecked){
                     checkBox.buttonTintList = ContextCompat.
                     getColorStateList(context, R.color.light_purple)

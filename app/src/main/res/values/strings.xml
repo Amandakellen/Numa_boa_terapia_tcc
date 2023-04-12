@@ -81,7 +81,8 @@
     <string name="psi_second_step">Passo 2 de 3</string>
     <string name="psi_second_title">Quais as suas especialidades?</string>
     <string name="psi_third_step">Passo 3 de 3</string>
-    <string name="psi_third_title">Escreva um pouco mais sobre você</string>
+    <string name="psi_third_title">Escreva um pouco mais \n sobre você</string>
+    <string name="psi_confirm_specialties">Confirme as especialidades \n selecionadas</string>
 
     <!--Público que trabalha-->
     <string name="children">Crianças</string>
@@ -158,6 +159,37 @@
     <string name="memoria">Treinamento de memória</string>
     <string name="domestica">Violência doméstica</string>
     <string name="sexual">Violência sexual</string>
+
+    <!--especialidades-->
+    <string name="biography_psi">Biografia</string>
+    <string name="biography_hint">Escreva a sua biografia para que os pacientes possam saber mais sobre você</string>
+    <string name="location">Localização</string>
+    <string name="estate">Estado</string>
+    <string name="city">Cidade - estado</string>
+    <string name="cep">Digite o seu CEP</string>
+    <string name="send_cpf">Enviar CEP</string>
+    <string name="in_person">Atendo presencial</string>
+    <string name="online">Atendo online</string>
+
+    <!--pagamento-->
+    <string name="signature_label">Escolha o plano ideal para você</string>
+    <string name="year_value">R$ 620,00 /Ano</string>
+    <string name="year_label"> Assinatura para uso do app por um ano</string>
+    <string name="semester_value">R$ 280,00 /Semestre</string>
+    <string name="semester_label"> Assinatura para uso do app por um semestre</string>
+    <string name="mounth_value">R$ 60,00 /Mês</string>
+    <string name="mounth_label"> Assinatura para uso do app por um mês</string>
+    <string name="signature_button">Selecionar plano</string>
+
+    <!--Adicionar cartao-->
+    <string name="label_card"> Adicionar cartão</string>
+    <string name="card_name">Nome no cartão</string>
+    <string name="card_number">Número do cartão</string>
+    <string name="mounth_card">Mês de vencimento</string>
+    <string name="year_card">Ano de vencimento</string>
+    <string name="cvv">CVV</string>
+    <string name="card_button">Adicionar cartão</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

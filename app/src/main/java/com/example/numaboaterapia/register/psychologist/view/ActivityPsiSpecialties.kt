@@ -1,13 +1,13 @@
 package com.example.numaboaterapia.register.psychologist.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPsiSpecialtiesBinding
-import com.example.numaboaterapia.register.psychologist.data.PsiSpecialtiesEnum
 import com.example.numaboaterapia.register.psychologist.viewModel.PsiSpecialtiesViewModel
 
 class ActivityPsiSpecialties : AppCompatActivity() {
@@ -33,6 +33,27 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
         binding.psiSpecialtiesToolBar.setStepText(R.string.psi_second_step)
         binding.psiSpecialtiesToolBar.setTitleText(R.string.psi_second_title)
+
+        binding.specialtiesButton.setOnClickListener {
+            if (!binding.specialtiesCheckboxGroup.specialtiesChecked.isNullOrEmpty()) {
+                val result = viewModel.saveValue()
+                result.invokeOnCompletion {
+                    if (result.getCompleted() != "Sucesso") {
+                        Toast.makeText(
+                            applicationContext, "Ocorreu um erro, tente novamente!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        startActivity(Intent(this, PsiBiography::class.java))
+                    }
+                }
+            } else {
+                Toast.makeText(
+                    this, "Selecione no mínimo 1 item", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun setUpSearch() {
@@ -47,10 +68,10 @@ class ActivityPsiSpecialties : AppCompatActivity() {
             if (!viewModel.searchIsNullOrEmpty()) {
                 if (viewModel.searchSize()!! >= 3) {
 
-                    itens.forEach {iterator->
+                    itens.forEach { iterator ->
                         if (resources.getString(iterator.specialtiesName).lowercase()
                                 .contains(viewModel.getSearch())
-                        ){
+                        ) {
                             itensSearch.add(resources.getString(iterator.specialtiesName))
 
                         }
@@ -59,13 +80,13 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
 
                 }
-            }else{
+            } else {
                 binding.specialtiesCheckboxGroup.visibilityAll()
             }
 
         }
 
-
+        viewModel.setItensSelected(binding.specialtiesCheckboxGroup.specialtiesChecked)
 
     }
 
@@ -75,4 +96,5 @@ class ActivityPsiSpecialties : AppCompatActivity() {
 
 
     }
+
 }
