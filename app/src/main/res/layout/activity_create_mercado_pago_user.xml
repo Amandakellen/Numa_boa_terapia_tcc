@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".register.psychologist.view.AddCreditCard">
+    tools:context=".register.psychologist.view.CreateMercadoPagoUser">
 
     <com.example.numaboaterapia.views.CustomView.CustomToolBar
         android:id="@+id/tool_bar_credit_card"
@@ -49,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/chau_philomene_one"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/black"
@@ -76,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/chau_philomene_one"
         android:text="@string/label_card"
         android:textAlignment="center"

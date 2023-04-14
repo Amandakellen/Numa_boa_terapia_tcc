@@ -20,7 +20,7 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".register.psychologist.view.AddCreditCard"
+            android:name=".register.psychologist.view.CreateMercadoPagoUser"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.SelectSignature"
