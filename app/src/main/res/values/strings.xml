@@ -182,13 +182,14 @@
     <string name="signature_button">Selecionar plano</string>
 
     <!--Adicionar cartao-->
-    <string name="label_card"> Adicionar cartão</string>
+    <string name="label_card"> Dados para cobrança</string>
     <string name="card_name">Nome no cartão</string>
     <string name="card_number">Número do cartão</string>
     <string name="mounth_card">Mês de vencimento</string>
     <string name="year_card">Ano de vencimento</string>
     <string name="cvv">CVV</string>
     <string name="card_button">Adicionar cartão</string>
+    <string name="signature_selected">Plano Selecionado</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

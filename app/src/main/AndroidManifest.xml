@@ -62,9 +62,6 @@
             android:name=".Login.view.ForgetPassword"
             android:exported="false" />
         <activity
-            android:name=".Login.view.ForgetPassword"
-            android:exported="false" />
-        <activity
             android:name=".Login.view.LoginActivity"
             android:exported="false">
             <meta-data
