@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    android:screenOrientation="portrait"
     tools:context=".register.psychologist.view.CreateMercadoPagoUser">
 
     <com.example.numaboaterapia.views.CustomView.CustomToolBar
@@ -118,6 +119,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/email_string"
+        app:helperText = "Informe o mesmo email para pagamento"
+        app:helperTextTextColor="@color/gray"
         android:textColorHint="@color/gray"
         app:boxBackgroundColor="@color/white"
         app:boxStrokeColor="@color/purple">
@@ -145,6 +148,7 @@
         android:hint="@string/cpf_string"
         android:textColorHint="@color/gray"
         app:boxBackgroundColor="@color/white"
+
         app:boxStrokeColor="@color/purple">
 
 

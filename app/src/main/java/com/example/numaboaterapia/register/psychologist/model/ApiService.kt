@@ -12,7 +12,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("json/")
+    @GET("customers/")
     suspend fun getCep(): Cep
 
 }
