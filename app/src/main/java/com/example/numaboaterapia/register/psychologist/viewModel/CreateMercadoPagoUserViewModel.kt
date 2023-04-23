@@ -5,15 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
-import com.example.numaboaterapia.register.psychologist.data.CreateUserData
-import com.example.numaboaterapia.register.psychologist.data.repository.CreateMercadoPagoUserRepository
+import com.example.numaboaterapia.register.psychologist.data.repository.MercadoPagoRepository
+import com.example.numaboaterapia.register.psychologist.model.RetrofitMercadoPago
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import retrofit2.awaitResponse
 
 class CreateMercadoPagoUserViewModel : ViewModel() {
 
     val firebaseRepository = FirebaseResponseRepository()
-    val createUserRepository = CreateMercadoPagoUserRepository()
+    val repository =  MercadoPagoRepository()
 
     private val _email = MutableLiveData<String>()
     private val _name = MutableLiveData<String>()
@@ -46,21 +48,42 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         (_name.value?.isNullOrEmpty() == null ||
                 _name.value?.isNullOrEmpty() == true ||
                 _cpf.value?.isNullOrEmpty() == null ||
-                _cpf.value?.isNullOrEmpty() == true||
+                _cpf.value?.isNullOrEmpty() == true ||
                 _email.value?.isNullOrEmpty() == null ||
                 _email.value?.isNullOrEmpty() == true)
 
-    fun createUser() {
+    private fun hashMapData(): HashMap<String, String> {
+        return hashMapOf(
+            "email_cobranca" to _email.value.toString(),
+            "cpf" to _cpf.value.toString(),
+            "first_name" to firstName,
+            "last_name" to lastName
+
+        )
+
+    }
+    fun createUser(): Deferred<String> {
         configName()
-        val body =
-            CreateUserData(firstName, lastName, _cpf.value.toString(), _email.value.toString())
+        val result = viewModelScope.async {
+            firebaseRepository.saveData(
+                "psi_mercado_pago",
+                hashMapData()
+            )
+        }
+        return result
+    }
 
-        viewModelScope.launch{
+    fun getPayment(){
+        repository.setEmail(emailValue = _email.value.toString())
+        viewModelScope.launch {
             try{
-                createUserRepository.setBody(body)
-                val result = createUserRepository.getUser()
+                val payment = repository.getPayment(
+                    RetrofitMercadoPago().apiService
+                )
+                payment.request().body()
 
-            }catch (e : Exception){
+
+            }catch (e: Exception){
                 Log.i("erro", e.message.toString())
             }
         }

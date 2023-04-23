@@ -190,6 +190,7 @@
     <string name="cvv">CVV</string>
     <string name="card_button">Adicionar cartão</string>
     <string name="signature_selected">Plano Selecionado</string>
+    <string name="payment_signature">Assinar plano</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

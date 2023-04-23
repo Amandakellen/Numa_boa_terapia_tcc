@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
+
         <activity
             android:name=".register.psychologist.view.CreateMercadoPagoUser"
             android:exported="false" />

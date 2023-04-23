@@ -160,6 +160,7 @@
             android:drawableEnd="@drawable/baseline_assignment_ind_24"
             android:fontFamily="@font/roboto"
             android:inputType="number"
+            android:maxLength="11"
             android:textColor="@color/gray" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -169,7 +170,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="64dp" />
+        android:layout_marginTop="32dp" />
+
+    <com.example.numaboaterapia.views.CustomView.BotaoArredondadoBranco
+        android:id="@+id/checkpayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 
 </LinearLayout>
