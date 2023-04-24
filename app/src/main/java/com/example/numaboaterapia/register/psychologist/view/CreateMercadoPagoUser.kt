@@ -72,8 +72,12 @@ class CreateMercadoPagoUser : AppCompatActivity() {
         }
 
         binding.checkpayment.setOnClickListener {
-            viewModel.getPayment()
-            viewModel.subscription.value
+            val result = viewModel.getPayment()
+            result.invokeOnCompletion {
+                viewModel.verifyPayment()
+                viewModel.subscription.value
+            }
+
 
 
 

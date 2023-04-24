@@ -81,11 +81,23 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         return result
     }
 
-    fun getPayment() {
-        repository.setEmail(_email.value.toString())
-        viewModelScope.launch {
-            val result = repository.getSubscriptionByEmail(RetrofitMercadoPago().apiService)
-            _subscription.value = result
+    fun verifyPayment(){
+        if(_subscription.value != null){
+            val result = _subscription.value!!.results
+            result.forEach {
+                it.dateCreated
+            }
         }
+
+    }
+
+    fun getPayment(): Deferred<Unit> {
+        repository.setEmail(_email.value.toString())
+        val result = viewModelScope.async {
+            val response = repository.getSubscriptionByEmail(RetrofitMercadoPago().apiService)
+            _subscription.value = response
+        }
+
+        return result
     }
 }
