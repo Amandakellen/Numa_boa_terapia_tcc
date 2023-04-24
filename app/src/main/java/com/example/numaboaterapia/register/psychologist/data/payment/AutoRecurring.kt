@@ -5,26 +5,19 @@ import com.google.gson.annotations.SerializedName
 
 data class AutoRecurring (
 
-    @SerializedName("frequency"                )
-    //@Expose
-    var frequency              : Int?     = null,
-    @SerializedName("frequency_type"           )
-    //@Expose
-    var frequencyType          : String?  = null,
-    @SerializedName("transaction_amount"       )
-    //@Expose
-    var transactionAmount      : Int?     = null,
-    @SerializedName("currency_id"              )
-    //@Expose
-    var currencyId             : String?  = null,
-    @SerializedName("start_date"               )
-    //@Expose
-    var startDate              : String?  = null,
-    @SerializedName("has_billing_day"          )
-    //@Expose
-    var hasBillingDay          : Boolean? = null,
-    @SerializedName("billing_day_proportional" )
-    //@Expose
-    var billingDayProportional : Boolean? = null
+    @SerializedName("frequency")
+    val frequency: Int,
+    @SerializedName("frequency_type")
+    val frequencyType: String,
+    @SerializedName("start_date")
+    val startDate: String,
+    @SerializedName("end_date")
+    val endDate: String,
+    @SerializedName("currency_id")
+    val currencyId: String,
+    @SerializedName("transaction_amount")
+    val transactionAmount: Double,
+    @SerializedName("free_trial")
+    val freeTrial: FreeTrial?
 
 )

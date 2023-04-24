@@ -1,15 +1,19 @@
 package com.example.numaboaterapia.register.psychologist.viewModel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
+import com.example.numaboaterapia.register.psychologist.data.payment.CheckPaymentData
 import com.example.numaboaterapia.register.psychologist.data.repository.MercadoPagoRepository
 import com.example.numaboaterapia.register.psychologist.model.RetrofitMercadoPago
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.awaitResponse
 
 class CreateMercadoPagoUserViewModel : ViewModel() {
@@ -23,6 +27,10 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
 
     private lateinit var firstName: String
     private lateinit var lastName: String
+
+    private val _subscription = MutableLiveData<CheckPaymentData?>()
+    val subscription: LiveData<CheckPaymentData?>
+        get() = _subscription
 
     fun nameValue(name: String) {
         _name.value = name
@@ -73,19 +81,11 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         return result
     }
 
-    fun getPayment(){
-        repository.setEmail(emailValue = _email.value.toString())
+    fun getPayment() {
+        repository.setEmail(_email.value.toString())
         viewModelScope.launch {
-            try{
-                val payment = repository.getPayment(
-                    RetrofitMercadoPago().apiService
-                )
-                payment.request().body()
-
-
-            }catch (e: Exception){
-                Log.i("erro", e.message.toString())
-            }
+            val result = repository.getSubscriptionByEmail(RetrofitMercadoPago().apiService)
+            _subscription.value = result
         }
     }
 }

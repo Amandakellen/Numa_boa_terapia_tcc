@@ -6,52 +6,46 @@ import com.google.gson.annotations.SerializedName
 data class Results(
 
     @SerializedName("id")
-    //@Expose
-    var id: String? = null,
-    @SerializedName("status")
-    //@Expose
-    var status: String? = null,
-    @SerializedName("reason")
-    //@Expose
-    var reason: String? = null,
-    @SerializedName("summarized")
-    //@Expose
-    var summarized: Summarized? = Summarized(),
-    @SerializedName("payer_id")
-    //@Expose
-    var payerId: Int? = null,
-    @SerializedName("back_url")
-    //@Expose
-    var backUrl: String? = null,
-    @SerializedName("collector_id")
-    //@Expose
-    var collectorId: Int? = null,
+    val id: String,
+    @SerializedName("version")
+    val version: Int,
     @SerializedName("application_id")
-    //@Expose
-    var applicationId: Int? = null,
-    @SerializedName("external_reference")
-    //@Expose
-    var externalReference: String? = null,
-    @SerializedName("date_created")
-   // @Expose
-    var dateCreated: String? = null,
-    @SerializedName("last_modified")
-    //@Expose
-    var lastModified: String? = null,
+    val applicationId: Long,
+    @SerializedName("collector_id")
+    val collectorId: Int,
     @SerializedName("preapproval_plan_id")
-    //@Expose
-    var preapprovalPlanId: String? = null,
+    val preapprovalPlanId: String,
+    @SerializedName("reason")
+    val reason: String,
+    @SerializedName("external_reference")
+    val externalReference: String,
+    @SerializedName("back_url")
+    val backUrl: String,
+    @SerializedName("init_point")
+    val initPoint: String,
     @SerializedName("auto_recurring")
-    //@Expose
-    var autoRecurring: AutoRecurring? = AutoRecurring(),
-    @SerializedName("payment_method_id")
-    //@Expose
-    var paymentMethodId: String? = null,
+    val autoRecurring: AutoRecurring,
+    @SerializedName("first_invoice_offset")
+    val firstInvoiceOffset: Int,
+    @SerializedName("payer_id")
+    val payerId: Int,
     @SerializedName("payer_first_name")
-    //@Expose
-    var payerFirstName: String? = null,
+    val payerFirstName: String,
     @SerializedName("payer_last_name")
-    //@Expose
-    var payerLastName: String? = null
+    val payerLastName: String,
+    @SerializedName("card_id")
+    val cardId: Long,
+    @SerializedName("payment_method_id")
+    val paymentMethodId: String,
+    @SerializedName("next_payment_date")
+    val nextPaymentDate: String,
+    @SerializedName("date_created")
+    val dateCreated: String,
+    @SerializedName("last_modified")
+    val lastModified: String,
+    @SerializedName("summarized")
+    val summarized: Summarized,
+    @SerializedName("status")
+    val status: String
 
 )
