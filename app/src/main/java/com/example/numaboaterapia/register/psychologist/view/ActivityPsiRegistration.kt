@@ -11,8 +11,8 @@ import com.example.numaboaterapia.register.pacient.view.ActivityPatientConsultat
 import com.example.numaboaterapia.register.psychologist.viewModel.PsiRegistrationViewModel
 
 class ActivityPsiRegistration : AppCompatActivity() {
-    private lateinit var binding : ActivityPsiRegistrationBinding
-    private lateinit var viewModel : PsiRegistrationViewModel
+    private lateinit var binding: ActivityPsiRegistrationBinding
+    private lateinit var viewModel: PsiRegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +56,9 @@ class ActivityPsiRegistration : AppCompatActivity() {
     }
 
     private fun setUpToast(toastMessage: String) {
-         Toast.makeText(
+        Toast.makeText(
             applicationContext,
-             toastMessage, Toast.LENGTH_LONG
+            toastMessage, Toast.LENGTH_LONG
         ).show()
     }
 
@@ -80,7 +80,7 @@ class ActivityPsiRegistration : AppCompatActivity() {
 
     }
 
-    private fun setUpViews(){
+    private fun setUpViews() {
         binding.psiRegisterButton.setText(R.string.registration_button)
         binding.toolBarPsiRegister.getBackButton().setOnClickListener {
             finish()
@@ -94,7 +94,7 @@ class ActivityPsiRegistration : AppCompatActivity() {
                     if (message.getCompleted() != "Sucesso") {
                         setUpToast(message.getCompleted())
                     } else {
-                       //todo
+                        startActivity(Intent(this, ActivityPsiServiceAgeRange::class.java))
                     }
 
                 }

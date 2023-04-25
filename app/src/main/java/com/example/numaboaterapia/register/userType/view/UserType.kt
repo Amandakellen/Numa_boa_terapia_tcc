@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.databinding.ActivityUserTypeBinding
 import com.example.numaboaterapia.register.pacient.view.PatientRegistrationData
+import com.example.numaboaterapia.register.psychologist.view.ActivityPsiRegistration
+import com.example.numaboaterapia.register.psychologist.view.PsiBiography
 import com.example.numaboaterapia.register.psychologist.view.SelectSignature
 
 
@@ -32,8 +34,8 @@ class UserType : AppCompatActivity() {
         }
 
         binding.psiImage.setOnClickListener {
-           // startActivity(Intent(this, ActivityPsiRegistration::class.java))
-            startActivity(Intent(this, SelectSignature::class.java))
+           //startActivity(Intent(this, ActivityPsiRegistration::class.java))
+            startActivity(Intent(this, PsiBiography::class.java))
         }
 
 
