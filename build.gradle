@@ -9,6 +9,10 @@ buildscript {
         //jcenter()
         mavenCentral()  // Maven Central repository
 
+        maven{
+            setUrl('https://mvnrepository.com/artifact/com.mercadopago/sdk')
+        }
+
     }
     ext{
         room_version = '2.5.0'

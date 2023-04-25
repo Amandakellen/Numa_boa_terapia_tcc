@@ -1,10 +1,7 @@
 package com.example.numaboaterapia.register.psychologist.view
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -70,7 +67,7 @@ class SelectSignature : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }else{
-                val intent  = Intent(this, AddCreditCard::class.java )
+                val intent  = Intent(this, CreateMercadoPagoUser::class.java )
                 intent.putExtra("signature", signatureValue)
                 startActivity(intent)
             }

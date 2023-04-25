@@ -20,52 +20,68 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".register.psychologist.view.AddCreditCard"
+            android:name=".Home.psychologist.PsiHome"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".register.psychologist.view.CreateMercadoPagoUser"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.SelectSignature"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.PsiBiography"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiSpecialties"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiServiceAgeRange"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiRegistration"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.pacient.view.ActivityAverageIncome"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.pacient.view.ActivityFinancialSituation"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.pacient.view.ActivityCivilStatus"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.pacient.view.ActivityPatientConsultationReason"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.pacient.view.PatientRegistrationData"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".register.userType.view.UserType"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Login.view.PasswordRecoveryMessage"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Login.view.ForgetPassword"
-            android:exported="false" />
-        <activity
-            android:name=".Login.view.ForgetPassword"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Login.view.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -73,6 +89,7 @@
         </activity>
         <activity
             android:name=".views.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
