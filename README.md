@@ -21,6 +21,7 @@ O layout pensado para o projeto pose ser encontrado no [Figma](https://www.figma
 # Apis externas
 
 * Consulta de CEP : [viacep.com.br/ws/{cep}/json/](https://viacep.com.br/)
+* Consulta de pagamento : [https://api.mercadopago.com/preapproval/search?payer_email=email](https://www.mercadopago.com.br/developers/pt/reference/subscriptions/_preapproval_search/get)
 
 # Códigos externos
 Parte do código utilizado para a pesquisa do cep foi retirado do [uware](https://uware.com.br/pegar-endereco-com-cep-usando-coroutines-e-retrofit-em-kotlin/)
