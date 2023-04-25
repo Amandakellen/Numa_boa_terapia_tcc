@@ -1,6 +1,9 @@
 package com.example.numaboaterapia.register.psychologist.viewModel
 
-import android.util.Log
+import android.os.Build
+import androidx.annotation.RequiresApi
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,15 +14,14 @@ import com.example.numaboaterapia.register.psychologist.data.repository.MercadoP
 import com.example.numaboaterapia.register.psychologist.model.RetrofitMercadoPago
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.awaitResponse
+import java.text.SimpleDateFormat
+import java.time.temporal.ChronoUnit
+import java.util.*
 
 class CreateMercadoPagoUserViewModel : ViewModel() {
 
     val firebaseRepository = FirebaseResponseRepository()
-    val repository =  MercadoPagoRepository()
+    val repository = MercadoPagoRepository()
 
     private val _email = MutableLiveData<String>()
     private val _name = MutableLiveData<String>()
@@ -70,6 +72,7 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         )
 
     }
+
     fun createUser(): Deferred<String> {
         configName()
         val result = viewModelScope.async {
@@ -81,14 +84,73 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         return result
     }
 
-    fun verifyPayment(){
-        if(_subscription.value != null){
-            val result = _subscription.value!!.results
-            result.forEach {
-                it.dateCreated
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun checkPaymentDate(paymentDate: ZonedDateTime?, type: String): String {
+        val currentDateTime = ZonedDateTime.now()
+        var hasPassed: Boolean = true
+        when (type) {
+            "m" -> {
+                hasPassed = ChronoUnit.MONTHS.between(paymentDate, currentDateTime) >= 1
+
+            }
+
+            "a" -> {
+                hasPassed = ChronoUnit.YEARS.between(paymentDate, currentDateTime) >= 1
+            }
+
+            else -> {
+                hasPassed = ChronoUnit.MONTHS.between(paymentDate, currentDateTime) >= 6
             }
         }
 
+        if (hasPassed) {
+            return "canceled"
+        } else {
+            return "authorized"
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun verifyPayment(): String? {
+        var dateTimeString: String? = null
+        val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+        var paymentDate: ZonedDateTime? = null
+        var status: String? = null
+
+
+        if (_subscription.value != null) {
+            if (_subscription.value!!.results != null) {
+                val result = _subscription.value!!.results
+                result.forEach {
+                    dateTimeString = it.dateCreated
+                    paymentDate = ZonedDateTime.parse(dateTimeString, formatter)
+
+                    if (it.status == "authorized") {
+                        when (it.externalReference) {
+                            "NUMABOAMENSAL" -> {
+                                status = checkPaymentDate(paymentDate, "m")
+                            }
+
+                            "NUMABOAANUAL" -> {
+                                status = checkPaymentDate(paymentDate, "a")
+                            }
+
+                            else -> {
+                                status = checkPaymentDate(paymentDate, "s")
+                            }
+                        }
+
+                    }
+
+                }
+            } else {
+                return "erro"
+            }
+
+        }
+
+        return status
     }
 
     fun getPayment(): Deferred<Unit> {

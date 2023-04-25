@@ -2,13 +2,16 @@ package com.example.numaboaterapia.register.psychologist.view
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import com.example.numaboaterapia.Home.psychologist.PsiHome
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityCreateMercadoPagoUserBinding
 import com.example.numaboaterapia.register.psychologist.viewModel.CreateMercadoPagoUserViewModel
@@ -44,6 +47,7 @@ class CreateMercadoPagoUser : AppCompatActivity() {
         }
     }
 
+
     private fun setUpViews() {
         binding.toolBarCreditCard.getBackButton().setOnClickListener {
             finish()
@@ -74,12 +78,17 @@ class CreateMercadoPagoUser : AppCompatActivity() {
         binding.checkpayment.setOnClickListener {
             val result = viewModel.getPayment()
             result.invokeOnCompletion {
-                viewModel.verifyPayment()
-                viewModel.subscription.value
+                val payment = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    viewModel.verifyPayment()
+                } else {
+                    TODO("VERSION.SDK_INT < O")
+                }
+                if(payment!= "authorized"){
+                    setUpToast("Erro!Verifique se o email digitado é o mesmo do pagamento.")
+                }else{
+                    startActivity(Intent(this, PsiHome ::class.java))
+                }
             }
-
-
-
 
         }
 
