@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/github"
+        android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"
         android:title="Início"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/code"
+        android:id="@+id/search"
         android:icon="@drawable/baseline_search_24"
         android:title="Psicólogos"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/paint"
+        android:id="@+id/conta"
         android:icon="@drawable/baseline_person_24"
         android:title="Conta"
         app:showAsAction="always" />

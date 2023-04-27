@@ -2,7 +2,15 @@ package com.example.numaboaterapia.appNavigation.pacient.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import androidx.fragment.app.Fragment
+import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientHomeFragment
+import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientPsiList
 import com.example.numaboaterapia.databinding.ActivityPacientAppViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener
+import com.google.android.material.navigation.NavigationBarView
 
 
 class PacientApp : AppCompatActivity() {
@@ -11,6 +19,45 @@ class PacientApp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPacientAppViewBinding.inflate(layoutInflater)
+        setUpViews()
+        loadFragment(PacientHomeFragment())
         setContentView(binding.root)
     }
+
+
+    private fun setUpViews() {
+        binding.toolBarPacientHome.getBackButton().visibility = View.INVISIBLE
+        var bottomNavigation = binding.bottomNavigationView
+        bottomNavigation.setOnItemSelectedListener(object :
+            NavigationBarView.OnItemSelectedListener {
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when(item.itemId){
+                    R.id.search->{
+                        loadFragment(PacientPsiList())
+                    }
+                    R.id.home->{
+                        loadFragment(PacientHomeFragment())
+                    }
+                    else->{
+                        //todo
+                    }
+                }
+                return true
+            }
+
+//            override fun onNavigationItemReselected(item: MenuItem) {
+//                // código a ser executado quando um item do menu for reselecionado
+//            }
+        })
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        // carrega o fragmento na view
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.pacient_home_layout, fragment)
+            .commit()
+    }
 }
+
+
+
