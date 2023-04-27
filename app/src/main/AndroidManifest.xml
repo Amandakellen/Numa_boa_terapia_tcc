@@ -20,77 +20,81 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".Home.psychologist.PsiHome"
+            android:name=".appNavigation.pacient.views.PacientApp"
             android:screenOrientation="portrait"
             android:exported="false" />
+        <activity
+            android:name=".appNavigation.psychologist.PsiHome"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.CreateMercadoPagoUser"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.SelectSignature"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.PsiBiography"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiSpecialties"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiServiceAgeRange"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.psychologist.view.ActivityPsiRegistration"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.pacient.view.ActivityAverageIncome"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.pacient.view.ActivityFinancialSituation"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.pacient.view.ActivityCivilStatus"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.pacient.view.ActivityPatientConsultationReason"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.pacient.view.PatientRegistrationData"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".register.userType.view.UserType"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login.view.PasswordRecoveryMessage"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login.view.ForgetPassword"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login.view.LoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".views.MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

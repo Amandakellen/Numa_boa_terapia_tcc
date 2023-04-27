@@ -1,8 +1,7 @@
-package com.example.numaboaterapia.Home.psychologist
+package com.example.numaboaterapia.appNavigation.psychologist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityPsiHomeBinding
 
 class PsiHome : AppCompatActivity() {

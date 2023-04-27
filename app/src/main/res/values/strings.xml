@@ -192,6 +192,14 @@
     <string name="signature_selected">Plano Selecionado</string>
     <string name="payment_signature">Assinar plano</string>
 
+    <!--Home do paciente-->
+    <string name="schedule_section">Agende sua \n sessão</string>
+    <string name="psi_seacrh">Procurar profissionais</string>
+    <string name="diary_title">Diário emocional</string>
+    <string name="diary_label">Você ainda não possui registro de emoções</string>
+    <string name="diary_first_button">Realize o seu primeiro \n registro</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

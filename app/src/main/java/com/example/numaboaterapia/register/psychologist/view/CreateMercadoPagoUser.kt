@@ -5,17 +5,14 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import com.example.numaboaterapia.Home.psychologist.PsiHome
+import com.example.numaboaterapia.appNavigation.psychologist.PsiHome
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityCreateMercadoPagoUserBinding
 import com.example.numaboaterapia.register.psychologist.viewModel.CreateMercadoPagoUserViewModel
-import retrofit2.awaitResponse
 
 
 class CreateMercadoPagoUser : AppCompatActivity() {

@@ -7,6 +7,6 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:screenOrientation="portrait"
-    tools:context=".Home.psychologist.PsiHome">
+    tools:context=".appNavigation.psychologist.PsiHome">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
