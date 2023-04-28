@@ -31,9 +31,7 @@
         app:itemIconSize="25dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/psi_menu"
-
-        />
+        app:menu="@menu/pacient_menu" />
 
 
 </LinearLayout>

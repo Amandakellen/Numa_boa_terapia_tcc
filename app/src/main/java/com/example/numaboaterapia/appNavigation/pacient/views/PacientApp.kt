@@ -9,7 +9,6 @@ import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientHomeFragment
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientPsiList
 import com.example.numaboaterapia.databinding.ActivityPacientAppViewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener
 import com.google.android.material.navigation.NavigationBarView
 
 
@@ -45,9 +44,6 @@ class PacientApp : AppCompatActivity() {
                 return true
             }
 
-//            override fun onNavigationItemReselected(item: MenuItem) {
-//                // código a ser executado quando um item do menu for reselecionado
-//            }
         })
     }
 

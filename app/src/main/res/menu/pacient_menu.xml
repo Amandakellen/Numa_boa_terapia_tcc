@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/psi_home"
+        android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"
         android:title="Início"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/sessoes"
-        android:icon="@drawable/baseline_calendar_today_24"
-        android:title="Sessões"
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Psicólogos"
         app:showAsAction="always" />
 
     <item
