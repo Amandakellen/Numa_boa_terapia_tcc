@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientHomeFragment
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientPsiList
+import com.example.numaboaterapia.appNavigation.psychologist.fragment.PsiHomeFragment
 import com.example.numaboaterapia.databinding.ActivityPsiHomeBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -17,6 +18,7 @@ class PsiHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPsiHomeBinding.inflate(layoutInflater)
         setUpViews()
+        loadFragment(PsiHomeFragment())
         setContentView(binding.root)
     }
 
@@ -29,7 +31,7 @@ class PsiHome : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when(item.itemId){
                     R.id.psi_home->{
-                        //loadFragment()
+                        loadFragment(PsiHomeFragment())
                     }
                     R.id.sessoes->{
                         //loadFragment()

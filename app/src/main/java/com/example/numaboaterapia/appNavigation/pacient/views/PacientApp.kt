@@ -18,14 +18,17 @@ class PacientApp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPacientAppViewBinding.inflate(layoutInflater)
-        setUpViews()
+        setUpBottomNavigation()
+        setUpviews()
         loadFragment(PacientHomeFragment())
         setContentView(binding.root)
     }
 
-
-    private fun setUpViews() {
+    private fun setUpviews(){
         binding.toolBarPacientHome.getBackButton().visibility = View.INVISIBLE
+    }
+    private fun setUpBottomNavigation() {
+
         var bottomNavigation = binding.bottomNavigationView
         bottomNavigation.setOnItemSelectedListener(object :
             NavigationBarView.OnItemSelectedListener {
