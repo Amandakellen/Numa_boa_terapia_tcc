@@ -9,7 +9,7 @@
     tools:context=".appNavigation.pacient.views.EmocionalDiaryActivity">
 
     <com.example.numaboaterapia.views.CustomView.RegisterInformationToolBar
-        android:id="@+id/patient_information_tool_bar"
+        android:id="@+id/patient_emotional_diary_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,6 +20,10 @@
         android:id="@+id/recycleview_diary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_marginTop="24dp"
+        tools:spanCount="3"
+        tools:itemCount="12"
+        tools:listitem="@layout/diary_item" />
 
 </LinearLayout>

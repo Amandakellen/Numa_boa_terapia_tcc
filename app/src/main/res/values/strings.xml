@@ -203,7 +203,7 @@
     <string name="feelings">O que você está sentindo?\n</string>
     <string name="amor">Amor</string>
     <string name="felicidade">Felicidade</string>
-    <string name="leveza">leveza</string>
+    <string name="leveza">Leveza</string>
     <string name="tranquilidade">Tranquilidade</string>
     <string name="ansiedade_diary">Ansiedade</string>
     <string name="tristeza">Tristeza</string>
@@ -213,6 +213,10 @@
     <string name="estresse_diary">Estresse</string>
     <string name="medo_diary">Medo</string>
     <string name="vergonha">Vergonha</string>
+    <string name="diary">Qual o motivo desse\n sentimento?\n</string>
+    <string name="diary_subtitle">Descreva aqui o que provocou suas emoções. O que aconteceu, onde, com quem, como seu corpo reagiu e quando?</string>
+    <string name="diary_edit_text_hint">Escreva aqui o que aconteceu</string>
+    <string name="diary_button">Salvar</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

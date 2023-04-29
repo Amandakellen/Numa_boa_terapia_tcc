@@ -32,12 +32,12 @@ class ActivityPatientConsultationReason : AppCompatActivity() {
     }
 
     private fun setUpViews() {
-        binding.patientInformationToolBar.getBackButton().setOnClickListener {
+        binding.patientInformtionToolbar.getBackButton().setOnClickListener {
             finish()
         }
 
-        binding.patientInformationToolBar.setStepText(R.string.first_step)
-        binding.patientInformationToolBar.setTitleText(R.string.first_title)
+        binding.patientInformtionToolbar.setStepText(R.string.first_step)
+        binding.patientInformtionToolbar.setTitleText(R.string.first_title)
 
         adapter.setOnClickListener(object : RegisterResponseAdapter.onItemclickListener {
             override fun onItemClick(position: Int) {
