@@ -32,6 +32,7 @@ class EmocionalDiaryActivity : AppCompatActivity() {
 
     }
 
+
     private fun setUpAdapter(){
         adapter.data = viewModel.setDataItens()
         val intent = Intent(this, RegisterEmotionActivity::class.java)
@@ -40,7 +41,6 @@ class EmocionalDiaryActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
 
                 val item = resources.getString(adapter.data.get(position).feelingName)
-
                 intent.putExtra("itemSelected",item)
                 startActivity(intent)
 

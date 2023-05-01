@@ -89,8 +89,8 @@
                 app:layout_constraintTop_toBottomOf="@id/psi_title" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/psi_biography_cardview"
-                android:layout_width="wrap_content"
+                android:id="@+id/psi_diaryy_cardview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="16dp"
@@ -154,7 +154,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:visibility="invisible"
+                        android:visibility="gone"
+                        tools:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/diary_button"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.483"
@@ -166,14 +167,15 @@
                         android:id="@+id/diary_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="128dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/chau_philomene_one"
                         android:gravity="center"
                         android:text="@string/diary_first_button"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/purple"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@id/diary_subtitle"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 

@@ -1,6 +1,5 @@
 package com.example.numaboaterapia.appNavigation.pacient.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,18 +7,22 @@ import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.RegisterEmotionViewModel
 import com.example.numaboaterapia.databinding.ActivityRegisterEmotionBinding
-import com.example.numaboaterapia.register.psychologist.view.SelectSignature
 
 class RegisterEmotionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterEmotionBinding
     private lateinit var viewModel : RegisterEmotionViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =  ActivityRegisterEmotionBinding.inflate(layoutInflater)
         viewModel = RegisterEmotionViewModel()
         setUpViews()
-        getIntent().getStringExtra("itemSelected")?.let { viewModel.setFeeling(it) }
+        setDatas()
         setContentView(binding.root)
+    }
+
+    private fun setDatas(){
+        getIntent().getStringExtra("itemSelected")?.let { viewModel.setFeeling(it) }
     }
 
     private fun setUpViews(){
@@ -44,7 +47,7 @@ class RegisterEmotionActivity : AppCompatActivity() {
                     setUpToast("Ocorreu um erro, tente novamente!")
 
                 } else {
-                    val data = viewModel.getData()
+
                     //startActivity(Intent(this, SelectSignature::class.java))
                 }
             }
@@ -53,6 +56,7 @@ class RegisterEmotionActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun setUpToast(text : String){
         Toast.makeText(

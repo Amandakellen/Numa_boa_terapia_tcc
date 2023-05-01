@@ -3,7 +3,7 @@ package com.example.numaboaterapia.appNavigation.pacient.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.numaboaterapia.appNavigation.data.repository.FirebaseDataRepository
+import com.example.numaboaterapia.appNavigation.pacient.data.repository.PatientDiaryRepository
 import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
@@ -12,10 +12,10 @@ import java.time.format.DateTimeFormatter
 
 class RegisterEmotionViewModel : ViewModel() {
     private val repository =  FirebaseResponseRepository()
-    private val firebaseDataRepository  = FirebaseDataRepository("patient_diary")
     private var _diaryText = MutableLiveData<String>()
     private var _feeling = MutableLiveData<String>()
     private var _dateTime = MutableLiveData<String>()
+
 
     fun setFeeling(feeling: String){
         _feeling.value = feeling
@@ -53,8 +53,9 @@ class RegisterEmotionViewModel : ViewModel() {
         return result
     }
 
-    fun getData(){
-        firebaseDataRepository.getColection()
-    }
+
+
+
+
 
 }

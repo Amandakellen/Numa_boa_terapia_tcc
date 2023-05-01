@@ -198,6 +198,8 @@
     <string name="diary_title">Diário emocional</string>
     <string name="diary_label">Você ainda não possui registro de emoções</string>
     <string name="diary_first_button">Realize o seu primeiro \n registro</string>
+    <string name="diary_button_register">Registre agora</string>
+    <string name="diary_register">Histórico de resgistros</string>
 
     <!--Diario emocional-->
     <string name="feelings">O que você está sentindo?\n</string>

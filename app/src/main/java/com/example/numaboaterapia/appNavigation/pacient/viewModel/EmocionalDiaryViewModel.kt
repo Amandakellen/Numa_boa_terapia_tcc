@@ -1,13 +1,21 @@
 package com.example.numaboaterapia.appNavigation.pacient.viewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.numaboaterapia.appNavigation.pacient.data.DiaryItensEnum
+import com.example.numaboaterapia.appNavigation.pacient.data.repository.PatientDiaryRepository
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class EmocionalDiaryViewModel: ViewModel() {
 
     private var itens: ArrayList<DiaryItensEnum> = arrayListOf()
+    private val firebaseDataRepository = PatientDiaryRepository("patient_diary")
+    private lateinit var data: HashMap<Int, Any>
 
-    fun setDataItens():ArrayList<DiaryItensEnum>{
+    fun setDataItens(): ArrayList<DiaryItensEnum> {
 
         itens.add(DiaryItensEnum.AMOR)
         itens.add(DiaryItensEnum.FELICIDADE)
@@ -24,4 +32,23 @@ class EmocionalDiaryViewModel: ViewModel() {
 
         return itens
     }
+
+    fun getCollection() : Deferred<Unit> {
+
+       val result = viewModelScope.async {
+            firebaseDataRepository.getCollection().collect { dataHashMap ->
+                data = dataHashMap
+
+            }
+
+        }
+
+        return result
+
+    }
+
+
+    fun isPatiantDiaryEmpty(): Boolean = data.isEmpty()
+
+
 }
