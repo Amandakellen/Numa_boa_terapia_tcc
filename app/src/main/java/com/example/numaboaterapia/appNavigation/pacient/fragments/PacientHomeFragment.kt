@@ -31,14 +31,26 @@ class PacientHomeFragment : Fragment() {
     }
 
     private fun verifyIfDiaryIsEmpty(){
+         binding.psiDiaryyCardview.visibility =  View.GONE
+         binding.pacientSearchPsiCardView.visibility = View.GONE
+         binding.progressBarFragmetHome.visibility = View.VISIBLE
+         binding.diaryTitle.visibility = View.GONE
 
         val result = viewModel.getCollection()
         result.invokeOnCompletion {
             if(viewModel.isPatiantDiaryEmpty()){
+                binding.progressBarFragmetHome.visibility = View.GONE
+                binding.diaryTitle.visibility = View.VISIBLE
+                binding.psiDiaryyCardview.visibility =  View.VISIBLE
+                binding.pacientSearchPsiCardView.visibility = View.VISIBLE
                 binding.diarySubtitle.visibility = View.VISIBLE
                 binding.diaryButton.text = getString(R.string.diary_first_button)
                 binding.historyOfRecordsButton.visibility = View.GONE
             }else{
+                binding.progressBarFragmetHome.visibility = View.GONE
+                binding.diaryTitle.visibility = View.VISIBLE
+                binding.psiDiaryyCardview.visibility =  View.VISIBLE
+                binding.pacientSearchPsiCardView.visibility = View.VISIBLE
                 binding.diarySubtitle.visibility = View.GONE
                 binding.historyOfRecordsButton.visibility = View.VISIBLE
                 binding.diaryButton.text = getString(R.string.diary_button_register)

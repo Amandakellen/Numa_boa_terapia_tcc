@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.appNavigation.pacient.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -48,7 +49,7 @@ class RegisterEmotionActivity : AppCompatActivity() {
 
                 } else {
 
-                    //startActivity(Intent(this, SelectSignature::class.java))
+                    startActivity(Intent(this, HistoricActivity::class.java))
                 }
             }
 
