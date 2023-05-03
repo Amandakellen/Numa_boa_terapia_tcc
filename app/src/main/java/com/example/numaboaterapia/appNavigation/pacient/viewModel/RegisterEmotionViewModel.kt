@@ -38,7 +38,7 @@ class RegisterEmotionViewModel : ViewModel() {
 
     private fun setDate(){
         val currentDateTime = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm")
         _dateTime.value = currentDateTime.format(formatter)
     }
 

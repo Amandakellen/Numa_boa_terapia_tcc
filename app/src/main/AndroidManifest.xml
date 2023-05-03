@@ -20,13 +20,17 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".appNavigation.pacient.views.RegisterEmotionActivity"
+            android:name=".appNavigation.pacient.views.HistoricActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
+            android:name=".appNavigation.pacient.views.RegisterEmotionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".appNavigation.pacient.views.EmocionalDiaryActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".appNavigation.pacient.views.PacientApp"
             android:exported="false"

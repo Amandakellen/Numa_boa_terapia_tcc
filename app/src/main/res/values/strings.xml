@@ -200,6 +200,7 @@
     <string name="diary_first_button">Realize o seu primeiro \n registro</string>
     <string name="diary_button_register">Registre agora</string>
     <string name="diary_register">Histórico de resgistros</string>
+    <string name="loremipusum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
 
     <!--Diario emocional-->
     <string name="feelings">O que você está sentindo?\n</string>
