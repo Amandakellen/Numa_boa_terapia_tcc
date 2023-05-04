@@ -14,6 +14,9 @@ class EmocionalDiaryViewModel: ViewModel() {
     private var itens: ArrayList<DiaryItensEnum> = arrayListOf()
     private val firebaseDataRepository = PatientDiaryRepository("patient_diary")
     private lateinit var data: HashMap<Int, Any>
+    private var textList = ArrayList<String>()
+    private var dateList = ArrayList<String>()
+    private var feelingList = ArrayList<String>()
 
     fun setDataItens(): ArrayList<DiaryItensEnum> {
 
@@ -42,13 +45,25 @@ class EmocionalDiaryViewModel: ViewModel() {
             }
 
         }
-
+        setHistoricData()
         return result
 
     }
 
+    private fun setHistoricData(){
+        textList =  firebaseDataRepository.textList
+        dateList = firebaseDataRepository.dateList
+        feelingList = firebaseDataRepository.feelingList
 
+    }
+    fun getData(): HashMap<Int,Any> = data
     fun isPatiantDiaryEmpty(): Boolean = data.isEmpty()
+
+    fun getTextList(): ArrayList<String> = textList
+
+    fun getDateList(): ArrayList<String> = dateList
+
+    fun getFeelingList(): ArrayList<String> = feelingList
 
 
 }

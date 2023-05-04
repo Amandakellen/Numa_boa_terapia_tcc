@@ -19,8 +19,10 @@ class PatientDiaryRepository(val colectionName :String) {
 
     val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     val userLoggedMutableLiveData: MutableLiveData<Boolean>
-    //private  var dataHashMap =  HashMap<Int,Any>()
-    val dataList = ArrayList<String>()
+
+    var textList = ArrayList<String>()
+    var dateList = ArrayList<String>()
+    var feelingList = ArrayList<String>()
     private val auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
 
@@ -50,6 +52,9 @@ class PatientDiaryRepository(val colectionName :String) {
                  "diary_text" to document.data.getValue("diary_text"),
                  "diary_date" to document.data.getValue("diary_date")
              )
+             textList.add(document.data.getValue("diary_text").toString())
+             dateList.add(document.data.getValue("diary_date").toString())
+             feelingList.add(document.data.getValue("diary_feeling").toString())
              dataHashMap.put(i, hasMapFirebase)
              i++
          }

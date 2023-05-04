@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:screenOrientation="portrait">
 
@@ -11,9 +11,9 @@
         android:id="@+id/historic_diary_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        android:layout_gravity="center"
         android:outlineAmbientShadowColor="@color/purple"
         android:outlineSpotShadowColor="@color/purple"
         app:cardBackgroundColor="@color/white"
@@ -39,16 +39,17 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/chau_philomene_one"
                 android:gravity="center"
-                tools:text="@string/felicidade"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/purple"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/historic_image"
                 app:layout_constraintEnd_toEndOf="@id/historic_image"
-                app:layout_constraintTop_toBottomOf="@id/historic_image"/>
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/historic_image"
+                app:layout_constraintTop_toBottomOf="@id/historic_image"
+                tools:text="@string/felicidade" />
 
             <TextView
-                android:id="@+id/historic_data"
+                android:id="@+id/historic_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/chau_philomene_one"
@@ -79,7 +80,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.431"
                 app:layout_constraintStart_toEndOf="@id/historic_image"
-                app:layout_constraintTop_toBottomOf="@id/historic_data"
+                app:layout_constraintTop_toBottomOf="@id/historic_date"
                 tools:text="@string/loremipusum" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
