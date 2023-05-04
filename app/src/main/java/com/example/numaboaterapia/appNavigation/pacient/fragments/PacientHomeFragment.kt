@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.EmocionalDiaryViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.EmocionalDiaryActivity
+import com.example.numaboaterapia.appNavigation.pacient.views.HistoricActivity
 import com.example.numaboaterapia.databinding.FragmentPacientHomeBinding
 
 class PacientHomeFragment : Fragment() {
@@ -66,6 +67,10 @@ class PacientHomeFragment : Fragment() {
         }
 
         binding.historyOfRecordsButton.setText(R.string.diary_register)
+
+        binding.historyOfRecordsButton.setOnClickListener {
+            startActivity(Intent(activity, HistoricActivity::class.java))
+        }
 
     }
 
