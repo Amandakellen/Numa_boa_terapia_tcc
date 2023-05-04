@@ -4,4 +4,14 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/ItemAtivo</item>
+        <item name="itemIconTint">@color/purple</item>
+    </style>
+
+    <style name="ItemAtivo" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/purple</item>
+    </style>
+
 </resources>

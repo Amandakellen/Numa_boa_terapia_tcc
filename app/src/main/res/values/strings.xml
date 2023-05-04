@@ -192,6 +192,34 @@
     <string name="signature_selected">Plano Selecionado</string>
     <string name="payment_signature">Assinar plano</string>
 
+    <!--Home do paciente-->
+    <string name="schedule_section">Agende sua \n sessão</string>
+    <string name="psi_seacrh">Procurar profissionais</string>
+    <string name="diary_title">Diário emocional</string>
+    <string name="diary_label">Você ainda não possui registro de emoções</string>
+    <string name="diary_first_button">Realize o seu primeiro \n registro</string>
+    <string name="diary_button_register">Registre agora</string>
+    <string name="diary_register">Histórico de resgistros</string>
+    <string name="loremipusum">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <!--Diario emocional-->
+    <string name="feelings">O que você está sentindo?\n</string>
+    <string name="amor">Amor</string>
+    <string name="felicidade">Felicidade</string>
+    <string name="leveza">Leveza</string>
+    <string name="tranquilidade">Tranquilidade</string>
+    <string name="ansiedade_diary">Ansiedade</string>
+    <string name="tristeza">Tristeza</string>
+    <string name="cansaco">Cansaço</string>
+    <string name="irritacao">Irritação</string>
+    <string name="frustracao">Frustração</string>
+    <string name="estresse_diary">Estresse</string>
+    <string name="medo_diary">Medo</string>
+    <string name="vergonha">Vergonha</string>
+    <string name="diary">Qual o motivo desse\n sentimento?\n</string>
+    <string name="diary_subtitle">Descreva aqui o que provocou suas emoções. O que aconteceu, onde, com quem, como seu corpo reagiu e quando?</string>
+    <string name="diary_edit_text_hint">Escreva aqui o que aconteceu</string>
+    <string name="diary_button">Salvar</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
