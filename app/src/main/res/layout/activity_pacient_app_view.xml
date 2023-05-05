@@ -8,17 +8,12 @@
     android:orientation="vertical"
     tools:context=".appNavigation.pacient.views.PacientApp">
 
-    <com.example.numaboaterapia.views.CustomView.CustomToolBar
-        android:id="@+id/tool_bar_pacient_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/pacient_home_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="32dp"/>
+        android:layout_weight="1" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

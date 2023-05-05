@@ -8,6 +8,10 @@
     android:screenOrientation="portrait"
     tools:context=".appNavigation.pacient.fragments.PacientHomeFragment">
 
+    <com.example.numaboaterapia.views.CustomView.CustomToolBar
+        android:id="@+id/tool_bar_pacient_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pacient_search_psi_card_view"

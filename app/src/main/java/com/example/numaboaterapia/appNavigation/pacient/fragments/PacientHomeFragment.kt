@@ -62,6 +62,7 @@ class PacientHomeFragment : Fragment() {
     }
 
     private fun setUpViews(){
+        binding.toolBarPacientHome.getBackButton().visibility = View.INVISIBLE
         binding.diaryButton.setOnClickListener {
             startActivity(Intent(activity, EmocionalDiaryActivity::class.java))
         }

@@ -220,6 +220,14 @@
     <string name="diary_edit_text_hint">Escreva aqui o que aconteceu</string>
     <string name="diary_button">Salvar</string>
 
+    <!--profile do paciente-->
+    <string name="saudacao">Olá, Amanda </string>
+    <string name="email">pacienteemail@email.com</string>
+    <string name="my_data">Meus dados</string>
+    <string name="my_diary">Meu diário </string>
+    <string name="share_data">Compartilhamento de dados</string>
+    <string name="logout">Sair</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
