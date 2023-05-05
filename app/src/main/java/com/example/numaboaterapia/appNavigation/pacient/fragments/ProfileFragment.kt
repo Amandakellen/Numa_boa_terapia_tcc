@@ -41,6 +41,9 @@ class ProfileFragment : Fragment() {
         binding.shareDataPacient.setOnClickListener {
             startActivity(Intent(activity, ShareDataActivity::class.java))
         }
+        binding.sharePatient.setOnClickListener {
+            startActivity(Intent(activity, ShareDataActivity::class.java))
+        }
     }
 
 
