@@ -56,7 +56,7 @@ class EmocionalDiaryViewModel: ViewModel() {
         feelingList = firebaseDataRepository.feelingList
 
     }
-    fun getData(): HashMap<Int,Any> = data
+
     fun isPatiantDiaryEmpty(): Boolean = data.isEmpty()
 
     fun getTextList(): ArrayList<String> = textList

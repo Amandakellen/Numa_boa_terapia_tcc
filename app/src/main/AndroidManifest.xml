@@ -20,9 +20,12 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".appNavigation.pacient.views.ShareDataActivity"
-            android:screenOrientation="portrait"
+            android:name=".appNavigation.pacient.views.MyDataActivity"
             android:exported="false" />
+        <activity
+            android:name=".appNavigation.pacient.views.ShareDataActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".appNavigation.pacient.views.HistoricActivity"
             android:exported="false"
