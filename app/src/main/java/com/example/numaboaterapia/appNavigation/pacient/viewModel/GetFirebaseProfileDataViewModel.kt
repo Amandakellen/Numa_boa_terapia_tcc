@@ -3,6 +3,7 @@ package com.example.numaboaterapia.appNavigation.pacient.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.numaboaterapia.Login.data.repository.LoginRepository
 import com.example.numaboaterapia.appNavigation.pacient.data.repository.GetFirebaseProfileRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
@@ -10,6 +11,8 @@ import kotlinx.coroutines.async
 class GetFirebaseProfileDataViewModel: ViewModel() {
 
     private var repository = GetFirebaseProfileRepository()
+    private var loginRepository = LoginRepository()
+
     private var data = MutableLiveData<ArrayList<String>>()
 
 
@@ -28,6 +31,6 @@ class GetFirebaseProfileDataViewModel: ViewModel() {
 
     }
 
-
+    fun signOut() = loginRepository.signOut()
     fun getProfileData() : ArrayList<String>? = data.value
 }

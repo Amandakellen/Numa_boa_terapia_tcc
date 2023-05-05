@@ -14,25 +14,26 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.MyDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.ShareDataActivity
+import com.example.numaboaterapia.views.MainActivity
 
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var viewModel : GetFirebaseProfileDataViewModel
+    private lateinit var viewModel: GetFirebaseProfileDataViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProfileBinding.inflate(layoutInflater,container,false)
+        binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         viewModel = GetFirebaseProfileDataViewModel()
         setImage()
         setUpViews()
         return binding.root
     }
 
-    private fun setImage(){
+    private fun setImage() {
         Glide.with(this)
             .load(R.mipmap.pacient_gray)
             .transform(CircleCrop())
@@ -40,7 +41,7 @@ class ProfileFragment : Fragment() {
 
     }
 
-    private fun setUpViews(){
+    private fun setUpViews() {
         binding.progressBarFragmetProfilePatient.visibility = View.VISIBLE
 
         binding.profilePatientButton.setText(R.string.logout)
@@ -55,11 +56,11 @@ class ProfileFragment : Fragment() {
         result.invokeOnCompletion {
             binding.progressBarFragmetProfilePatient.visibility = View.GONE
             val data = viewModel.getProfileData()
-            val name = data?.get(0) ?:" "
-            val email = data?.get(1) ?:" "
-            val phone = data?.get(2) ?:" "
+            val name = data?.get(0) ?: " "
+            val email = data?.get(1) ?: " "
+            val phone = data?.get(2) ?: " "
 
-            binding.patientProfileName.text = "Olá, "+ name
+            binding.patientProfileName.text = "Olá, " + name
             binding.patientProfileEmail.text = email
 
             binding.myProfileDataPacient.setOnClickListener {
@@ -77,6 +78,11 @@ class ProfileFragment : Fragment() {
 
                 startActivity(intent)
             }
+        }
+
+        binding.profilePatientButton.setOnClickListener {
+            viewModel.signOut()
+            startActivity(Intent(activity, MainActivity::class.java))
         }
     }
 

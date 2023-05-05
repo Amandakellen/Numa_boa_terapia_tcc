@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".appNavigation.pacient.views.MyDataActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.example.numaboaterapia.views.CustomView.CustomToolBar
+        android:id="@+id/info_data_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/info_data_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chau_philomene_one"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/purple"
+        android:textSize="24sp"
+        android:text="@string/my_data_title"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/info_data_email_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:fontFamily="@font/chau_philomene_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:paddingBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/email_string"
+        android:inputType="text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/purple"
+        app:boxStrokeColor="@color/purple"
+        app:helperTextTextColor="@color/gray"
+        app:hintTextColor="@color/purple"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/info_data_email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/info_data_phone_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:fontFamily="@font/chau_philomene_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:paddingBottom="16dp"
+        android:hint="@string/phone_string"
+        android:inputType="text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/purple"
+        app:boxStrokeColor="@color/purple"
+        app:helperTextTextColor="@color/gray"
+        app:hintTextColor="@color/purple"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/info_data_phone_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="@color/gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
+        android:id="@+id/delete_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -229,6 +229,8 @@
     <string name="logout">Sair</string>
     <string name="share_info">Para que possamos cobrar um valor justo para a sua consulta, compartilhamos a sua renda media com o psicologo que você entra em contato.
 Não compartilhamos nenhum outro dado seu.</string>
+    <string name="my_data_title">Meus dados</string>
+    <string name="delete_account">Deletar conta</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
