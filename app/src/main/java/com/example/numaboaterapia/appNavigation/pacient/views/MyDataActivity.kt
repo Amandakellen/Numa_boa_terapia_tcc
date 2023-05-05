@@ -1,16 +1,21 @@
 package com.example.numaboaterapia.appNavigation.pacient.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.databinding.ActivityMyDataBinding
+import com.example.numaboaterapia.views.MainActivity
 
 class MyDataActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyDataBinding
+    private lateinit var viewModel: GetFirebaseProfileDataViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyDataBinding.inflate(layoutInflater)
+        viewModel = GetFirebaseProfileDataViewModel()
         setUpViews()
 
         setContentView(binding.root)
@@ -32,6 +37,10 @@ class MyDataActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.deleteAccountButton.setOnClickListener {
+            viewModel.deleteAccount()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
     }
 }

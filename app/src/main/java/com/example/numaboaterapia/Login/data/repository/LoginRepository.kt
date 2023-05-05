@@ -58,5 +58,10 @@ class LoginRepository {
         auth.signOut()
         userLoggedMutableLiveData.postValue(true)
     }
+
+       fun deleteUser() {
+        val user = auth.currentUser
+         var message = ""
+        user?.delete() }
 }
 

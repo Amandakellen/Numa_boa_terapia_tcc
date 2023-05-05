@@ -32,5 +32,7 @@ class GetFirebaseProfileDataViewModel: ViewModel() {
     }
 
     fun signOut() = loginRepository.signOut()
+
+    fun deleteAccount() =  loginRepository.deleteUser()
     fun getProfileData() : ArrayList<String>? = data.value
 }
