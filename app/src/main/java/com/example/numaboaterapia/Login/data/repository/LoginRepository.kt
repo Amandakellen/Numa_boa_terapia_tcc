@@ -61,7 +61,6 @@ class LoginRepository {
 
        fun deleteUser() {
         val user = auth.currentUser
-         var message = ""
         user?.delete() }
 }
 

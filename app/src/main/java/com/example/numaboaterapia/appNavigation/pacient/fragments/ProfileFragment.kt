@@ -14,6 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.MyDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.ShareDataActivity
+import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
+import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
 import com.example.numaboaterapia.views.MainActivity
 
 
@@ -83,6 +85,11 @@ class ProfileFragment : Fragment() {
         binding.profilePatientButton.setOnClickListener {
             viewModel.signOut()
             startActivity(Intent(activity, MainActivity::class.java))
+        }
+
+        binding.changePatientPhoto.setOnClickListener {
+            ChangeProfilephotoBottomSheet().show(parentFragmentManager,
+                "DeleteAccountBottomSheet")
         }
     }
 
