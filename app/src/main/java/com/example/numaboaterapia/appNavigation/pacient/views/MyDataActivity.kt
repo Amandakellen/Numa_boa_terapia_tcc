@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
+import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
 import com.example.numaboaterapia.databinding.ActivityMyDataBinding
 import com.example.numaboaterapia.views.MainActivity
 
@@ -38,8 +39,7 @@ class MyDataActivity : AppCompatActivity() {
         }
 
         binding.deleteAccountButton.setOnClickListener {
-            viewModel.deleteAccount()
-            startActivity(Intent(this, MainActivity::class.java))
+            DeleteAccountBottomSheet().show(supportFragmentManager, "DeleteAccountBottomSheet")
         }
 
     }

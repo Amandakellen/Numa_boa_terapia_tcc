@@ -231,6 +231,10 @@
 Não compartilhamos nenhum outro dado seu.</string>
     <string name="my_data_title">Meus dados</string>
     <string name="delete_account">Deletar conta</string>
+    <string name="delete_account_confirmation">Tem certeza que deseja excluir sua conta?</string>
+    <string name="yes">Sim</string>
+    <string name="delete_confirmation">Sua conta foi excluída com sucesso</string>
+    <string name="ok">Ok</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
