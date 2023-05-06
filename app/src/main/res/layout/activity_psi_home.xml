@@ -8,16 +8,14 @@
     android:orientation="vertical"
     tools:context=".appNavigation.psychologist.views.PsiHome">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" >
+
         <FrameLayout
             android:id="@+id/psi_home_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
-    </ScrollView>
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/PsibottomNavigationView"

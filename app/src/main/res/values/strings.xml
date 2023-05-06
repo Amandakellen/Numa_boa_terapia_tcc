@@ -244,10 +244,14 @@ Não compartilhamos nenhum outro dado seu.</string>
     <!--Home do psicologo-->
     <string name="sections_title">Esse mês:</string>
     <string name="views_profile">Acessos ao seu perfil</string>
-    <string name="views_profile_subtitle">Verifique informações dos pacientes que entraram em contato</string>
+    <string name="views_profile_subtitle">Verifique informações dos \n pacientes que entraram \n em contato</string>
+    <string name="pacients_views">Acesse as informações dos \n seus pacientes</string>
     <string name="views_profile_button_text">Verificar acessos</string>
-    <string name="patients">Pacientes</string>
-    <string name="patients_button_text">Cadastrar paciente</string>
+    <string name="pacients">Pacientes</string>
+    <string name="pacients_button_text">Cadastrar paciente</string>
+    <string name="sections">Sessões</string>
+    <string name="done">Atendidas</string>
+    <string name="info">Faltas</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
