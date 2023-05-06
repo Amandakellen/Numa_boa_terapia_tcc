@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.appNavigation.psychologist
+package com.example.numaboaterapia.appNavigation.psychologist.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,7 +24,6 @@ class PsiHome : AppCompatActivity() {
 
 
     private fun setUpViews() {
-        binding.toolBarPsiHome.getBackButton().visibility = View.INVISIBLE
         var bottomNavigation = binding.PsibottomNavigationView
         bottomNavigation.setOnItemSelectedListener(object :
             NavigationBarView.OnItemSelectedListener {
