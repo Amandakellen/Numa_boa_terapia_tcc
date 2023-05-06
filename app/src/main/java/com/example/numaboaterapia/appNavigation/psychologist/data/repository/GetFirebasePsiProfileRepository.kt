@@ -29,20 +29,45 @@ class GetFirebasePsiProfileRepository {
         }
     }
 
-    fun getCollection(): Flow<ArrayList<String>> = flow {
+    fun getRegiterCollection(): Flow<ArrayList<String>> = flow {
         val userUUID = auth.currentUser!!.uid
-        val docRef = db.collection("patient_users")
+        val docRef = db.collection("psi_users")
         val query = docRef.whereEqualTo("uId", userUUID)
-        val profileList = ArrayList<String>()
+        val registerList = ArrayList<String>()
         val documents = query.get().await()
         for (document in documents) {
 
-            profileList.add(document.data.getValue("pu_name").toString())
-            profileList.add(document.data.getValue("pu_email").toString())
-            profileList.add(document.data.getValue("pu_phone").toString())
+            registerList.add(document.data.getValue("psi_name").toString())
+            registerList.add(document.data.getValue("psi_email").toString())
+            registerList.add(document.data.getValue("psi_phone").toString())
+            registerList.add(document.data.getValue("psi_linkwpp").toString())
+            registerList.add(document.data.getValue("psi_time").toString())
+            registerList.add(document.data.getValue("psi_crp").toString())
+            registerList.add(document.data.getValue("_psi_especializacao").toString())
+
 
         }
-        emit(profileList)
+        emit(registerList)
+    }.catch { exception ->
+        Log.e("getCollection", "Error getting collection", exception)
+        emit(ArrayList<String>())
+    }.flowOn(Dispatchers.IO)
+
+    fun getBiographyrCollection(): Flow<ArrayList<String>> = flow {
+        val userUUID = auth.currentUser!!.uid
+        val docRef = db.collection("psi_biography")
+        val query = docRef.whereEqualTo("uId", userUUID)
+        val biographyList = ArrayList<String>()
+        val documents = query.get().await()
+        for (document in documents) {
+
+            biographyList.add(document.data.getValue("psi_biography").toString())
+            biographyList.add(document.data.getValue("psi_city").toString())
+            biographyList.add(document.data.getValue("psi_uf").toString())
+            biographyList.add(document.data.getValue("psi_type_of_service").toString())
+
+        }
+        emit(biographyList)
     }.catch { exception ->
         Log.e("getCollection", "Error getting collection", exception)
         emit(ArrayList<String>())

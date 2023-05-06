@@ -255,6 +255,14 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="done">Atendidas</string>
     <string name="info">Faltas</string>
 
+    <!--Profile do psicologo-->
+    <string name="city_string">Cidade</string>
+    <string name="my_data_time">Durção da sessão</string>
+    <string name="my_data_in_person">Atendimento presencial</string>
+    <string name="my_online">Atendimento online</string>
+    <string name="my_profile_psi">Meu Perfil</string>
+    <string name="edit_data_profile">Editar dados</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_button">Dummy Button</string>
