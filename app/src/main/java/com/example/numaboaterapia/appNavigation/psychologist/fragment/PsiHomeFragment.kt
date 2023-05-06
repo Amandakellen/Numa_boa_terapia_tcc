@@ -16,9 +16,10 @@ class PsiHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        
-        setUpViews()
+
         binding = FragmentPsiHomeBinding.inflate(inflater,container,false)
+        setUpViews()
+
         return binding.root
     }
 
