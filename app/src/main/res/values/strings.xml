@@ -220,6 +220,25 @@
     <string name="diary_edit_text_hint">Escreva aqui o que aconteceu</string>
     <string name="diary_button">Salvar</string>
 
+    <!--profile do paciente-->
+    <string name="saudacao">Olá, Amanda </string>
+    <string name="email">pacienteemail@email.com</string>
+    <string name="my_data">Meus dados</string>
+    <string name="my_diary">Meu diário </string>
+    <string name="share_data">Compartilhamento de dados</string>
+    <string name="logout">Sair</string>
+    <string name="share_info">Para que possamos cobrar um valor justo para a sua consulta, compartilhamos a sua renda media com o psicologo que você entra em contato.
+Não compartilhamos nenhum outro dado seu.</string>
+    <string name="my_data_title">Meus dados</string>
+    <string name="delete_account">Deletar conta</string>
+    <string name="delete_account_confirmation">Tem certeza que deseja excluir sua conta?</string>
+    <string name="yes">Sim</string>
+    <string name="delete_confirmation">Sua conta foi excluída com sucesso</string>
+    <string name="ok">Ok</string>
+    <string name="change_photo_title">Tem certeza que deseja alterar a sua foto de perfil?</string>
+    <string name="select_from_galery">Selecionar da galeria</string>
+    <string name="take_picture">Tirar foto</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

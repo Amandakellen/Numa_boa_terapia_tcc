@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.EmocionalDiaryViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.EmocionalDiaryActivity
+import com.example.numaboaterapia.appNavigation.pacient.views.HistoricActivity
 import com.example.numaboaterapia.databinding.FragmentPacientHomeBinding
 
 class PacientHomeFragment : Fragment() {
@@ -61,11 +62,16 @@ class PacientHomeFragment : Fragment() {
     }
 
     private fun setUpViews(){
+        binding.toolBarPacientHome.getBackButton().visibility = View.INVISIBLE
         binding.diaryButton.setOnClickListener {
             startActivity(Intent(activity, EmocionalDiaryActivity::class.java))
         }
 
         binding.historyOfRecordsButton.setText(R.string.diary_register)
+
+        binding.historyOfRecordsButton.setOnClickListener {
+            startActivity(Intent(activity, HistoricActivity::class.java))
+        }
 
     }
 

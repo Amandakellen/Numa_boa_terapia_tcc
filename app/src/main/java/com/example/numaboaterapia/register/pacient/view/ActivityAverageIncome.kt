@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.pacient.views.PacientApp
 import com.example.numaboaterapia.databinding.ActivityAverageIncomeBinding
 import com.example.numaboaterapia.register.pacient.viewModel.PatientAverageIconmeViewModel
 
@@ -51,11 +52,7 @@ class ActivityAverageIncome : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
-                    Toast.makeText(
-                        this@ActivityAverageIncome,
-                        "sucesso",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    startActivity(Intent(this, PacientApp::class.java))
                 }
             }
         }

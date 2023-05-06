@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <meta-data
         android:name="com.google.android.gms.wallet.api.enabled"
@@ -20,9 +22,17 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
-            android:name=".appNavigation.pacient.views.HistoricActivity"
+            android:name=".appNavigation.pacient.views.MyDataActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
+        <activity
+            android:name=".appNavigation.pacient.views.ShareDataActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".appNavigation.pacient.views.HistoricActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".appNavigation.pacient.views.RegisterEmotionActivity"
             android:exported="false"

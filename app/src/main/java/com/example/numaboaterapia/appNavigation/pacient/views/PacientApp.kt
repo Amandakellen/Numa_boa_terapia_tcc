@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientHomeFragment
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientPsiList
+import com.example.numaboaterapia.appNavigation.pacient.fragments.ProfileFragment
 import com.example.numaboaterapia.databinding.ActivityPacientAppViewBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -19,14 +20,10 @@ class PacientApp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPacientAppViewBinding.inflate(layoutInflater)
         setUpBottomNavigation()
-        setUpviews()
         loadFragment(PacientHomeFragment())
         setContentView(binding.root)
     }
 
-    private fun setUpviews(){
-        binding.toolBarPacientHome.getBackButton().visibility = View.INVISIBLE
-    }
     private fun setUpBottomNavigation() {
 
         var bottomNavigation = binding.bottomNavigationView
@@ -41,7 +38,7 @@ class PacientApp : AppCompatActivity() {
                         loadFragment(PacientHomeFragment())
                     }
                     else->{
-                        //todo
+                        loadFragment(ProfileFragment())
                     }
                 }
                 return true
