@@ -53,6 +53,15 @@ class ActivityPsiRegistration : AppCompatActivity() {
         binding.textInputPsiRegisterConfirmPassword.doOnTextChanged { text, start, before, count ->
             viewModel.passConfirmValue(text.toString())
         }
+
+        binding.textInputPsiRegisterEspecialization.doOnTextChanged { text, start, before, count ->
+            viewModel.especializacaoValue(text.toString())
+        }
+
+        binding.textInputPsiRegisterTime.doOnTextChanged { text, start, before, count ->
+            viewModel.timeValue(text.toString())
+        }
+
     }
 
     private fun setUpToast(toastMessage: String) {

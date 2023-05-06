@@ -27,6 +27,8 @@
     <string name="name_string">Nome Completo</string>
     <string name="phone_string">Telefone</string>
     <string name="cpf_string">Informe seu CPF</string>
+    <string name="especialization">Especialização</string>
+    <string name="time">Duração da sessão(em minutos)</string>
     <string name="password_string"> Senha</string>
     <string name="password_confirm_string">Confirme sua senha</string>
     <string name="wpp_link">Link do perfil do whatsapp</string>
