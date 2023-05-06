@@ -17,5 +17,6 @@
     <color name="black_overlay">#66000000</color>
     <color name="light_gray">#A1A5AC</color>
     <string name="diary_item_color">#BB9FF3</string>
+    <string name="green">#A3F17C</string>
 
 </resources>

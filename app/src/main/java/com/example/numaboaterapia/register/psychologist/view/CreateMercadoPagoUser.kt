@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import com.example.numaboaterapia.appNavigation.psychologist.PsiHome
+import com.example.numaboaterapia.appNavigation.psychologist.views.PsiHome
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityCreateMercadoPagoUserBinding
 import com.example.numaboaterapia.register.psychologist.viewModel.CreateMercadoPagoUserViewModel

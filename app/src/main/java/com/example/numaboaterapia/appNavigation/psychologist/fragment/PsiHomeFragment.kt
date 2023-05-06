@@ -11,17 +11,19 @@ import com.example.numaboaterapia.databinding.FragmentPsiHomeBinding
 
 class PsiHomeFragment : Fragment() {
     private lateinit var binding: FragmentPsiHomeBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        
+        setUpViews()
         binding = FragmentPsiHomeBinding.inflate(inflater,container,false)
         return binding.root
+    }
+
+    private fun setUpViews(){
+        binding.toolBarPsiHome.getBackButton().visibility = View.GONE
     }
 
 
