@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
+import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiProfileViewModel
 import com.example.numaboaterapia.databinding.ActivityPsiMyDataBinding
 
@@ -96,5 +97,9 @@ class PsiMyDataActivity : AppCompatActivity() {
         }
 
         binding.editUserButtonPsi.setText(R.string.edit_data_profile)
+
+        binding.deleteAccountButtonPsi.setOnClickListener {
+            DeleteAccountBottomSheet().show(supportFragmentManager, "DeleteAccountBottomSheet")
+        }
     }
 }
