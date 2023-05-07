@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.core.widget.doOnTextChanged
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.EditDataViewModel
+import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.databinding.ActivityEditMyDataPsiBinding
 
 class EditMyDataPsiActivity : AppCompatActivity() {
@@ -15,12 +16,14 @@ class EditMyDataPsiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditMyDataPsiBinding
     private lateinit var viewModel : EditDataViewModel
+    private lateinit var myDataViewModel : GetFirebasePsiMyDataViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditMyDataPsiBinding.inflate(layoutInflater)
         viewModel = EditDataViewModel()
+        myDataViewModel = GetFirebasePsiMyDataViewModel()
         setUpViews()
         setDataValue()
         setUpEditText()
@@ -28,7 +31,6 @@ class EditMyDataPsiActivity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
-        binding.editMyDataProgressBar.visibility = View.GONE
         binding.editDataToolBar.setTitleText(R.string.edit_my_data)
         binding.editDataToolBar.getBackButton().setOnClickListener {
             finish()
@@ -49,21 +51,30 @@ class EditMyDataPsiActivity : AppCompatActivity() {
     }
 
     private fun setDataValue() {
-        val register = getIntent().getStringArrayListExtra("register") as ArrayList<String>
+        binding.editMyDataProgressBar.visibility = View.VISIBLE
+        binding.editMyDataPsiScrollView.visibility = View.GONE
 
-        viewModel.registerValue(register)
+        val result = myDataViewModel.getRegisterCollection()
+        result.invokeOnCompletion {
+            binding.editMyDataPsiScrollView.visibility = View.VISIBLE
+            binding.editMyDataProgressBar.visibility = View.GONE
+            var register = myDataViewModel.getRegisterData()
 
-        with(binding) {
-            editMyDataPsiNameEditText.setText(register?.get(0))
-            editMyDataPsiEmailEditText.setText(register?.get(1))
-            editMyDataPsiPhoneEditText.setText(register?.get(2))
-            editMyDataPsiWppEditText.setText(register?.get(3))
-            editMyDataPsiTimeEditText.setText((register?.get(4)))
-            editMyDataPsiCrpEditText.setText(register?.get(5))
-            editMyDataPsiEspecializationEditText.setText(register?.get(6))
+            register?.let { it1 -> viewModel.registerValue(it1) }
 
+            with(binding) {
+                editMyDataPsiNameEditText.setText(register?.get(0))
+                editMyDataPsiEmailEditText.setText(register?.get(1))
+                editMyDataPsiPhoneEditText.setText(register?.get(2))
+                editMyDataPsiWppEditText.setText(register?.get(3))
+                editMyDataPsiTimeEditText.setText((register?.get(4)))
+                editMyDataPsiCrpEditText.setText(register?.get(5))
+                editMyDataPsiEspecializationEditText.setText(register?.get(6))
+
+            }
+            enabledEditText()
         }
-        enabledEditText()
+
     }
 
     private fun enabledEditText() {
@@ -79,28 +90,28 @@ class EditMyDataPsiActivity : AppCompatActivity() {
     }
 
     private fun setUpEditText() {
-        val register = getIntent().getStringArrayListExtra("register") as ArrayList<String>
+
         with(binding) {
             editMyDataPsiEmailEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.emailValue(text?.toString()?: register.get(1))
+                text?.toString()?.let { viewModel.emailValue(it) }
             }
             editMyDataPsiNameEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.nameValue(text?.toString()?: register.get(0))
+                text?.toString()?.let { viewModel.nameValue(it) }
             }
             editMyDataPsiPhoneEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.phoneValue(text?.toString()?: register.get(2))
+                text?.toString()?.let { viewModel.phoneValue(it) }
             }
             editMyDataPsiWppEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.linkWppValue(text?.toString()?: register.get(3))
+                text?.toString()?.let { viewModel.linkWppValue(it) }
             }
             editMyDataPsiTimeEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.timeValue(text?.toString()?: register.get(4))
+                text?.toString()?.let { viewModel.timeValue(it) }
             }
             editMyDataPsiCrpEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.crpValue(text?.toString()?: register.get(5))
+                text?.toString()?.let { viewModel.crpValue(it) }
             }
             editMyDataPsiEspecializationEditText.doOnTextChanged { text, start, before, count ->
-                viewModel.especializacaoValue(text?.toString()?: register.get(6))
+                text?.toString()?.let { viewModel.especializacaoValue(it) }
             }
 
         }

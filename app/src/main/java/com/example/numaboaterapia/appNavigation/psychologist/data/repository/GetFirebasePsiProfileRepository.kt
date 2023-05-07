@@ -53,7 +53,7 @@ class GetFirebasePsiProfileRepository {
         emit(ArrayList<String>())
     }.flowOn(Dispatchers.IO)
 
-    fun getBiographyrCollection(): Flow<ArrayList<String>> = flow {
+    fun getBiographyCollection(): Flow<ArrayList<String>> = flow {
         val userUUID = auth.currentUser!!.uid
         val docRef = db.collection("psi_biography")
         val query = docRef.whereEqualTo("uId", userUUID)
@@ -68,6 +68,26 @@ class GetFirebasePsiProfileRepository {
 
         }
         emit(biographyList)
+    }.catch { exception ->
+        Log.e("getCollection", "Error getting collection", exception)
+        emit(ArrayList<String>())
+    }.flowOn(Dispatchers.IO)
+
+    fun getSpecialtiesCollection(): Flow<ArrayList<String>> = flow {
+        val userUUID = auth.currentUser!!.uid
+        val docRef = db.collection("psi_specialties")
+        val query = docRef.whereEqualTo("uId", userUUID)
+        var specialtiesList = ArrayList<String>()
+        val documents = query.get().await()
+        for (document in documents) {
+
+            specialtiesList =
+                document.data.getValue("psi_biography").
+                toString().split(",") as ArrayList<String>
+
+
+        }
+        emit(specialtiesList)
     }.catch { exception ->
         Log.e("getCollection", "Error getting collection", exception)
         emit(ArrayList<String>())
