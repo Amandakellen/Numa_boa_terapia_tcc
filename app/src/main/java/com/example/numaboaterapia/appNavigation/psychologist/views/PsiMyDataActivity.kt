@@ -4,12 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
+import com.example.numaboaterapia.appNavigation.psychologist.fragment.PsiProfileFragment
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.databinding.ActivityPsiMyDataBinding
 
 class PsiMyDataActivity : AppCompatActivity() {
+    private lateinit var myActivityResultLauncher: ActivityResultLauncher<Intent>
 
     private lateinit var binding: ActivityPsiMyDataBinding
     private lateinit var viewModel: GetFirebasePsiMyDataViewModel
@@ -18,10 +24,23 @@ class PsiMyDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPsiMyDataBinding.inflate(layoutInflater)
         viewModel = GetFirebasePsiMyDataViewModel()
-
+        myActivityResultLauncher = registerForActivityResult(MyActivityResultContract()) { result ->
+            when (result) {
+                is MyResult.Success -> {
+                    setUpEditText()
+                }
+                is MyResult.Canceled -> {
+                    // Handle canceled result
+                }
+                is MyResult.Failure -> {
+                    // Handle failure result
+                }
+            }
+        }
         setUpViews()
         setContentView(binding.root)
     }
+
 
     private fun setUpEditText() {
         val register = viewModel.getRegisterData()

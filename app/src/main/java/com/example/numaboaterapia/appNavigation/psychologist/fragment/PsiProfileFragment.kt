@@ -6,17 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
 import com.example.numaboaterapia.views.MainActivity
 
 class PsiProfileFragment : Fragment() {
-
+    private lateinit var myActivityResultLauncher: ActivityResultLauncher<Intent>
   private lateinit var binding : FragmentPsiProfileBinding
   private lateinit var loginViewModel: GetFirebaseProfileDataViewModel
   private lateinit var viewModel : GetFirebasePsiMyDataViewModel
@@ -29,6 +32,7 @@ class PsiProfileFragment : Fragment() {
         binding = FragmentPsiProfileBinding.inflate(inflater,container,false)
         viewModel = GetFirebasePsiMyDataViewModel()
         loginViewModel = GetFirebaseProfileDataViewModel()
+
         setImage()
         setUpViews()
         return binding.root
