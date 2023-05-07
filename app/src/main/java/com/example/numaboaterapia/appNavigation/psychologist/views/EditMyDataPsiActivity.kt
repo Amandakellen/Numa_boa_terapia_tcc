@@ -59,6 +59,7 @@ class EditMyDataPsiActivity : AppCompatActivity() {
             editMyDataPsiPhoneEditText.setText(register?.get(2))
             editMyDataPsiWppEditText.setText(register?.get(3))
             editMyDataPsiTimeEditText.setText((register?.get(4)))
+            editMyDataPsiCrpEditText.setText(register?.get(5))
             editMyDataPsiEspecializationEditText.setText(register?.get(6))
 
         }
@@ -72,6 +73,7 @@ class EditMyDataPsiActivity : AppCompatActivity() {
             editMyDataPsiPhoneEditText.isEnabled = true
             editMyDataPsiWppEditText.isEnabled = true
             editMyDataPsiTimeEditText.isEnabled = true
+            editMyDataPsiCrpEditText.isEnabled = true
             editMyDataPsiEspecializationEditText.isEnabled  = true
         }
     }
@@ -93,6 +95,9 @@ class EditMyDataPsiActivity : AppCompatActivity() {
             }
             editMyDataPsiTimeEditText.doOnTextChanged { text, start, before, count ->
                 viewModel.timeValue(text?.toString()?: register.get(4))
+            }
+            editMyDataPsiCrpEditText.doOnTextChanged { text, start, before, count ->
+                viewModel.crpValue(text?.toString()?: register.get(5))
             }
             editMyDataPsiEspecializationEditText.doOnTextChanged { text, start, before, count ->
                 viewModel.especializacaoValue(text?.toString()?: register.get(6))

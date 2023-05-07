@@ -25,8 +25,13 @@ class EditDataViewModel : ViewModel() {
 
     private val _time = MutableLiveData<String>()
 
+    private val _crp = MutableLiveData<String>()
+
     private val _register = MutableLiveData<ArrayList<String>>()
 
+    fun crpValue(crp: String){
+        _crp.value = crp
+    }
     fun registerValue(register: ArrayList<String>){
         _register.value = register
     }
@@ -62,6 +67,7 @@ class EditDataViewModel : ViewModel() {
             "psi_email" to (_email.value ?: _register.value?.get(1).toString()),
             "psi_phone" to (_phone.value ?: _register.value?.get(2).toString()),
             "psi_linkwpp" to (_wppLink.value ?: _register.value?.get(3).toString()),
+            "psi_crp" to (_crp.value ?: _register.value?.get(5).toString()),
             "_psi_especializacao" to (_especializacao.value ?: _register.value?.get(6).toString()),
             "psi_time" to (_time.value ?: _register.value?.get(4).toString()) )
 
