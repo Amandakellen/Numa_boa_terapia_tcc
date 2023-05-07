@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
-import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiProfileViewModel
+import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
 import com.example.numaboaterapia.views.MainActivity
@@ -19,7 +19,7 @@ class PsiProfileFragment : Fragment() {
 
   private lateinit var binding : FragmentPsiProfileBinding
   private lateinit var loginViewModel: GetFirebaseProfileDataViewModel
-  private lateinit var viewModel : GetFirebasePsiProfileViewModel
+  private lateinit var viewModel : GetFirebasePsiMyDataViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class PsiProfileFragment : Fragment() {
     ): View? {
 
         binding = FragmentPsiProfileBinding.inflate(inflater,container,false)
-        viewModel = GetFirebasePsiProfileViewModel()
+        viewModel = GetFirebasePsiMyDataViewModel()
         loginViewModel = GetFirebaseProfileDataViewModel()
         setImage()
         setUpViews()
