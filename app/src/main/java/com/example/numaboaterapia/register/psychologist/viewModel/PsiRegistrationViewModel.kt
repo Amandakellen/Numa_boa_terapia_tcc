@@ -25,6 +25,18 @@ class PsiRegistrationViewModel: ViewModel() {
 
     private val _confirmPass = MutableLiveData<String>()
 
+    private val _especializacao = MutableLiveData<String>()
+
+    private val _time = MutableLiveData<String>()
+
+    fun especializacaoValue(especializacao: String){
+        _especializacao.value = especializacao
+    }
+
+    fun timeValue(time : String){
+        _time.value = time
+    }
+
     fun nameValue(name: String) {
         _name.value = name
     }
@@ -65,7 +77,11 @@ class PsiRegistrationViewModel: ViewModel() {
                 _crp.value?.isNullOrEmpty() == null ||
                 _crp.value?.isNullOrEmpty() == true||
                 _wppLink.value?.isNullOrEmpty() == null ||
-                _wppLink.value?.isNullOrEmpty() == true)
+                _wppLink.value?.isNullOrEmpty() == true||
+                _especializacao.value?.isNullOrEmpty() == null||
+                _especializacao.value?.isNullOrEmpty() == true||
+                _time.value?.isNullOrEmpty() == null ||
+                _time.value?.isNullOrEmpty() == true)
 
     fun checkPassLength(): Boolean {
         return _pass.value!!.length == 6
@@ -79,7 +95,9 @@ class PsiRegistrationViewModel: ViewModel() {
             "psi_email" to _email.value.toString(),
             "psi_phone" to _phone.value.toString(),
             "psi_linkwpp" to _wppLink.value.toString(),
-            "psi_crp" to _crp.value.toString()
+            "psi_crp" to _crp.value.toString(),
+            "_psi_especializacao" to _especializacao.value.toString(),
+            "psi_time" to _time.value.toString()
         )
 
     }

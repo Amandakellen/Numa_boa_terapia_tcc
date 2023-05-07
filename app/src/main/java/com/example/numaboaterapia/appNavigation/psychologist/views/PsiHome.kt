@@ -9,6 +9,7 @@ import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientHomeFragment
 import com.example.numaboaterapia.appNavigation.pacient.fragments.PacientPsiList
 import com.example.numaboaterapia.appNavigation.psychologist.fragment.PsiHomeFragment
+import com.example.numaboaterapia.appNavigation.psychologist.fragment.PsiProfileFragment
 import com.example.numaboaterapia.databinding.ActivityPsiHomeBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -36,7 +37,7 @@ class PsiHome : AppCompatActivity() {
                         //loadFragment()
                     }
                     else->{
-                        //todo
+                        loadFragment(PsiProfileFragment())
                     }
                 }
                 return true
