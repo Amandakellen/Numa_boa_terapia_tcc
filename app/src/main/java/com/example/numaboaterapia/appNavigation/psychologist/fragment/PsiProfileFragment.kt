@@ -38,6 +38,11 @@ class PsiProfileFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        setUpViews()
+    }
+
     private fun setImage() {
         Glide.with(this)
             .load(R.mipmap.psi_gray)
