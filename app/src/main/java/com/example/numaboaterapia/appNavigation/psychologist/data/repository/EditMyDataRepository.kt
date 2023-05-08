@@ -56,5 +56,20 @@ class EditMyDataRepository {
     }.catch {
         emit(false)}
 
+    fun updatePsiBiography(register : HashMap<String, String>): Flow<Boolean> = flow{
+        val userUUID = auth.currentUser!!.uid
+        register.put("uId", auth.currentUser!!.uid)
+        val docRef = db.collection("psi_biography")
+        val query = docRef.whereEqualTo("uId", userUUID)
+        val documents = query.get().await()
+        for (document in documents) {
+
+            document.reference.update(register as Map<String, Any>).await()
+            emit(true)
+        }
+
+    }.catch {
+        emit(false)}
+
 
 }
