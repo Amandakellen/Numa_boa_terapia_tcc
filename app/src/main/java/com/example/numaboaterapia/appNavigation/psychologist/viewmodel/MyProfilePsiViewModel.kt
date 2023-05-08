@@ -49,7 +49,7 @@ class MyProfilePsiViewModel: ViewModel() {
     fun getSpecialtiesCollection() : Deferred<Unit> {
 
         val result = viewModelScope.async {
-            repository.getBiographyCollection().collect { it ->
+            repository.getSpecialtiesCollection().collect { it ->
                 specialtiesData.value = it
 
             }

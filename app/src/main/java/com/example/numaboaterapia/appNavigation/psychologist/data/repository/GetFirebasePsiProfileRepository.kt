@@ -82,7 +82,7 @@ class GetFirebasePsiProfileRepository {
         for (document in documents) {
 
             specialtiesList =
-                document.data.getValue("psi_biography").
+                document.data.getValue("psi_specialties").
                 toString().split(",") as ArrayList<String>
 
 

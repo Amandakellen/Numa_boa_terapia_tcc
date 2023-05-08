@@ -1,15 +1,17 @@
 package com.example.numaboaterapia.appNavigation.psychologist.views
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
-import com.example.numaboaterapia.appNavigation.psychologist.fragment.PsiProfileFragment
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.MyProfilePsiViewModel
 import com.example.numaboaterapia.databinding.ActivityMyProfilePsiBinding
+import com.google.android.material.chip.Chip
 
 class MyProfilePsiActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyProfilePsiBinding
@@ -68,7 +70,7 @@ class MyProfilePsiActivity : AppCompatActivity() {
 
                 val specialties = viewModel.getSpecialtiesCollection()
                 specialties.invokeOnCompletion {
-                    viewModel.getSpecialtiesData()?.let { it1 -> setUpCheckBox(it1) }
+                    viewModel.getSpecialtiesData()?.let { it1 -> setUpChipGroup(it1) }
                     binding.myPsiProfileScrollview.visibility = View.VISIBLE
                     binding.myProfilePsiProgressBar.visibility = View.GONE
 
@@ -77,7 +79,22 @@ class MyProfilePsiActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpCheckBox(array : ArrayList<String>){
+    private fun setUpChipGroup(array : ArrayList<String>){
+            val typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+            binding.myProfileTime.setTypeface(typeface)
+            array.forEach {
 
+                val chip = Chip(this)
+                chip.text = it
+                chip.isClickable = false
+                chip.isCheckable = false
+                chip.setTextColor(ContextCompat.getColor(this, R.color.purple))
+                chip.setChipBackgroundColorResource(R.color.white)
+                chip.setChipStrokeColorResource(R.color.purple)
+                chip.setTypeface(typeface)
+
+                binding.myProfileChipGroupSpecialties.addView(chip)
+
+            }
     }
 }
