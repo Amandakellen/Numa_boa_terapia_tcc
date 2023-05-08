@@ -26,7 +26,21 @@ class EditMyDataRepository {
             firebaseUserMutableLiveData.postValue(auth.currentUser)
         }
     }
+    fun updatePsiSpecialtiesRegister(register : HashMap<String, String>): Flow<Boolean> = flow{
+        val userUUID = auth.currentUser!!.uid
+        register.put("uId", auth.currentUser!!.uid)
+        val docRef = db.collection("psi_specialties")
+        val query = docRef.whereEqualTo("uId", userUUID)
+        val documents = query.get().await()
+        for (document in documents) {
 
+            document.reference.update(register as Map<String, Any>).await()
+            emit(true)
+        }
+
+    }.catch {
+        emit(false)
+    }
     fun updatePsiRegister(register : HashMap<String, String>): Flow<Boolean> = flow{
         val userUUID = auth.currentUser!!.uid
         register.put("uId", auth.currentUser!!.uid)
@@ -40,7 +54,7 @@ class EditMyDataRepository {
             }
 
     }.catch {
-        emit(false)
-    }
+        emit(false)}
+
 
 }

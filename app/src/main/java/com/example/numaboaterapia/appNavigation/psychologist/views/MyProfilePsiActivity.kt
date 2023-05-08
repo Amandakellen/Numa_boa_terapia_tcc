@@ -5,15 +5,20 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
+import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.MyProfilePsiViewModel
 import com.example.numaboaterapia.databinding.ActivityMyProfilePsiBinding
 import com.google.android.material.chip.Chip
 
 class MyProfilePsiActivity : AppCompatActivity() {
+    private lateinit var myActivityResultLauncher: ActivityResultLauncher<Intent>
+
     private lateinit var binding: ActivityMyProfilePsiBinding
     private lateinit var viewModel: MyProfilePsiViewModel
 
@@ -21,6 +26,23 @@ class MyProfilePsiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyProfilePsiBinding.inflate(layoutInflater)
         viewModel = MyProfilePsiViewModel()
+
+        myActivityResultLauncher = registerForActivityResult(MyActivityResultContract()) { result ->
+            when (result) {
+                is MyResult.Success -> {
+                    setUpViews()
+                    setUpData()
+                    setUpProfileImage()
+                }
+                is MyResult.Canceled -> {
+                    // Handle canceled result
+                }
+                is MyResult.Failure -> {
+                    // Handle failure result
+                }
+            }
+        }
+
         setUpData()
         setUpViews()
         setUpProfileImage()
