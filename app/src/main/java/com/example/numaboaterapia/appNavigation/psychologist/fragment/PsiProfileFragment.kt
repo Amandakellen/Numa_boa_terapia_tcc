@@ -14,6 +14,7 @@ import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebasePro
 import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
 import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
+import com.example.numaboaterapia.appNavigation.psychologist.views.MyProfilePsiActivity
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
 import com.example.numaboaterapia.views.MainActivity
@@ -78,6 +79,16 @@ class PsiProfileFragment : Fragment() {
         binding.myProfileDataPsi.setOnClickListener {
             startActivity(Intent(activity, PsiMyDataActivity::class.java))
         }
+
+
+        binding.myProfilePsi.setOnClickListener {
+            startActivity(Intent(activity, MyProfilePsiActivity::class.java))
+        }
+
+        binding.shareDataPsi.setOnClickListener {
+            startActivity(Intent(activity, MyProfilePsiActivity::class.java))
+        }
+
 
     }
 

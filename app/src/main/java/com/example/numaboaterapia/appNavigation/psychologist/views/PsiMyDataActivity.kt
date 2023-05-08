@@ -51,6 +51,7 @@ class PsiMyDataActivity : AppCompatActivity() {
             myDataPsiPhoneEditText.setText(register?.get(2) ?: " ")
             myDataPsiWppEditText.setText(register?.get(3) ?: " ")
             myDataPsiTimeEditText.setText((register?.get(4) ?: " ")+ " minutos")
+            myDataPsiCrpEditText.setText(register?.get(5) ?: " ")
             myDataPsiEspecializationEditText.setText(register?.get(6) ?: " ")
         }
         disableEditText()
@@ -63,6 +64,7 @@ class PsiMyDataActivity : AppCompatActivity() {
                 myDataPsiPhoneEditText.isEnabled = false
                 myDataPsiWppEditText.isEnabled = false
                 myDataPsiTimeEditText.isEnabled = false
+                myDataPsiCrpEditText.isEnabled = false
                 myDataPsiEspecializationEditText.isEnabled  = false
             }
     }

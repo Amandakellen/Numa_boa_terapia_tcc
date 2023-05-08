@@ -37,12 +37,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:textStyle="bold"
                 android:fontFamily="@font/chau_philomene_one"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/purple"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 tools:text="@string/button_login" />
 
         </RelativeLayout>

@@ -190,6 +190,33 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_my_data_psi_crp_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:fontFamily="@font/chau_philomene_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:paddingBottom="4dp"
+                android:hint="CRP"
+                android:inputType="text"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/purple"
+                app:boxStrokeColor="@color/purple"
+                app:helperTextTextColor="@color/gray"
+                app:hintTextColor="@color/purple"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_my_data_psi_crp_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:textColor="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
                 android:id="@+id/edit_my_data_user_button_psi"
