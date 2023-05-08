@@ -106,8 +106,8 @@ class EditSpecialtiesActivity : AppCompatActivity() {
                     val updateResult = viewModel.UpdateSpecialtiesCollection()
                     updateResult.invokeOnCompletion {
                         val intent = Intent(this, MyProfilePsiActivity::class.java)
-                        startActivity(intent)
-                        //myActivityResultLauncher.launch(intent)
+
+                        myActivityResultLauncher.launch(intent)
                     }
                 }
             }
