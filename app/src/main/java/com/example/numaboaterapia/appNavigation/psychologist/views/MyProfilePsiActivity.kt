@@ -35,6 +35,11 @@ class MyProfilePsiActivity : AppCompatActivity() {
         binding.myProfileEditRegister.setOnClickListener {
             startActivity(Intent(this, PsiMyDataActivity::class.java))
         }
+
+        binding.myProfileEditSpecialties.setOnClickListener {
+            startActivity(Intent(this, EditSpecialtiesActivity::class.java))
+        }
+
     }
 
     private fun setUpProfileImage() {
@@ -90,11 +95,14 @@ class MyProfilePsiActivity : AppCompatActivity() {
                 chip.isCheckable = false
                 chip.setTextColor(ContextCompat.getColor(this, R.color.purple))
                 chip.setChipBackgroundColorResource(R.color.white)
-                chip.setChipStrokeColorResource(R.color.purple)
+                chip.setChipStrokeColorResource(R.color.light_purple)
+                chip.setChipStrokeWidth(2F)
                 chip.setTypeface(typeface)
 
                 binding.myProfileChipGroupSpecialties.addView(chip)
 
             }
+
+
     }
 }
