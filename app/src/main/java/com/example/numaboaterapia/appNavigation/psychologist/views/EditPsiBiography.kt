@@ -1,15 +1,16 @@
-package com.example.numaboaterapia.appNavigation.psychologist.viewmodel
+package com.example.numaboaterapia.appNavigation.psychologist.views
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.MyProfilePsiViewModel
 import com.example.numaboaterapia.appNavigation.psychologist.views.MyProfilePsiActivity
 import com.example.numaboaterapia.databinding.ActivityEditPsiBiographyBinding
 import com.example.numaboaterapia.register.psychologist.viewModel.PsiBiographyViewModel
@@ -27,7 +28,7 @@ class EditPsiBiography : AppCompatActivity() {
         viewModel = MyProfilePsiViewModel()
         biographyViewModel = PsiBiographyViewModel()
         setUpViews()
-        setUpCheckBoxes()
+        //setUpCheckBoxes()
         lifecycleScope.launch {
             setData()
         }
@@ -42,6 +43,8 @@ class EditPsiBiography : AppCompatActivity() {
     }
 
     private fun checkIfItensIsEmptyOrNull(): String {
+        checkIfIsChecked(binding.editBiographyOnineCheckbox)
+        checkIfIsChecked(binding.editBiopgraphyInPersonCheckbox)
         if (biographyViewModel.isTypeOfServiceNullOrEmpty() &&
             biographyViewModel.isBiographyEmptyOrNull()
         ) {
@@ -96,6 +99,8 @@ class EditPsiBiography : AppCompatActivity() {
             if (checkItens != "ok") {
                 setUpToast(checkItens)
             } else {
+                checkIfIsChecked(binding.editBiographyOnineCheckbox)
+                checkIfIsChecked(binding.editBiopgraphyInPersonCheckbox)
                 val locality = binding.editPsiCityEditText.text?.split(" - ")
                 val biography = biographyViewModel.getBiography()
                 val typeOfService = biographyViewModel.getTypeOfService()
@@ -120,6 +125,8 @@ class EditPsiBiography : AppCompatActivity() {
     fun checkIfIsChecked(checkBox: CheckBox) {
         if (checkBox.isChecked) {
             biographyViewModel.addTypeOfService(checkBox.text.toString())
+        }else{
+            biographyViewModel.removeTypeOfService(checkBox.text.toString())
         }
 
     }
@@ -148,7 +155,7 @@ class EditPsiBiography : AppCompatActivity() {
                     biography?.get(3)!!.split(",")
                             as ArrayList<String>, "Atendo presencial"
                 )
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             if (biography?.get(3)?.contains("Atendo online") == true) {
                 binding.editBiographyOnineCheckbox.isChecked = true
             } else {
@@ -157,30 +164,34 @@ class EditPsiBiography : AppCompatActivity() {
         }
 
 
-
-
-        checkIfIsChecked(binding.editBiographyOnineCheckbox)
-        checkIfIsChecked(binding.editBiopgraphyInPersonCheckbox)
     }
 
     private fun setUpCheckBoxes() {
         binding.editBiographyOnineCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                biographyViewModel.addTypeOfService(
-                    binding.editBiographyOnineCheckbox.text.toString())
+                if (biographyViewModel.getTypeOfService()
+                        ?.contains(binding.editBiographyOnineCheckbox.text.toString()) == false
+                ){
+                    biographyViewModel.addTypeOfService(
+                        binding.editBiographyOnineCheckbox.text.toString()
+                    )
+                }
             } else {
                 biographyViewModel.removeTypeOfService(
-                    binding.editBiographyOnineCheckbox.text.toString())
+                    binding.editBiographyOnineCheckbox.text.toString()
+                )
             }
         }
 
         binding.editBiopgraphyInPersonCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 biographyViewModel.addTypeOfService(
-                    binding.editBiopgraphyInPersonCheckbox.text.toString())
+                    binding.editBiopgraphyInPersonCheckbox.text.toString()
+                )
             } else {
                 biographyViewModel.removeTypeOfService(
-                    binding.editBiopgraphyInPersonCheckbox.text.toString())
+                    binding.editBiopgraphyInPersonCheckbox.text.toString()
+                )
             }
         }
     }
