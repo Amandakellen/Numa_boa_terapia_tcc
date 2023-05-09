@@ -17,6 +17,7 @@ class GetFirebasePsiProfileRepository {
     private val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     private val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
+     lateinit var listBiography: ArrayList<String>
     val db = FirebaseFirestore.getInstance()
 
     init {
@@ -65,7 +66,7 @@ class GetFirebasePsiProfileRepository {
             biographyList.add(document.data.getValue("psi_city").toString())
             biographyList.add(document.data.getValue("psi_uf").toString())
             biographyList.add(document.data.getValue("psi_type_of_service").toString())
-
+            listBiography = biographyList
         }
         emit(biographyList)
     }.catch { exception ->

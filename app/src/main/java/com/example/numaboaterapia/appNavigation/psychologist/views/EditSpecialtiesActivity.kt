@@ -103,7 +103,7 @@ class EditSpecialtiesActivity : AppCompatActivity() {
                     ).show()
                 }else{
                     viewModel.setItensSelected(binding.editSpecialtiesCheckboxGroup.ischecked())
-                    val updateResult = viewModel.UpdateSpecialtiesCollection()
+                    val updateResult = viewModel.updateSpecialtiesCollection()
                     updateResult.invokeOnCompletion {
                         val intent = Intent(this, MyProfilePsiActivity::class.java)
 

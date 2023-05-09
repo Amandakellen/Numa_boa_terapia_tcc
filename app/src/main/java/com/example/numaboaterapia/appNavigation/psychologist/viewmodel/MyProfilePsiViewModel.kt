@@ -82,7 +82,7 @@ class MyProfilePsiViewModel : ViewModel() {
         return result
     }
 
-    fun UpdateSpecialtiesCollection(): Deferred<Unit> {
+    fun updateSpecialtiesCollection(): Deferred<Unit> {
         val result = viewModelScope.async {
             updateDataRepository.updatePsiSpecialtiesRegister(
                 hashMapOf(
@@ -91,6 +91,47 @@ class MyProfilePsiViewModel : ViewModel() {
                     )
                 )
             ).collect({})
+        }
+
+        return result
+    }
+
+
+    private fun hashMapData(
+        biography: String,
+        city: String,
+        uf: String,
+        typeOfService: ArrayList<String>
+    ): HashMap<String, String> {
+        return hashMapOf(
+            "psi_biography" to biography,
+            "psi_city" to city,
+            "psi_uf" to uf,
+            "psi_type_of_service" to (typeOfService?.joinToString(",") ?: "")
+
+        )
+
+    }
+
+    fun updateBiographyCollection(
+        biography: String,
+        city: String?,
+        uf: String?,
+        typeOfService: ArrayList<String>?
+    ): Deferred<Unit?> {
+        val result = viewModelScope.async {
+            city?.let {
+                uf?.let { it1 ->
+                    typeOfService?.let { it2 ->
+                        hashMapData(biography,
+                            it, it1, it2
+                        )
+                    }
+                }
+            }?.let {
+                updateDataRepository.updatePsiBiography(it)
+                    .collect({})
+            }
         }
 
         return result

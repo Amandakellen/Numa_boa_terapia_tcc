@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -109,6 +110,7 @@ class PsiBiography : AppCompatActivity() {
         }
 
     }
+
 
     private fun setUpCheckBoxes(){
         binding.biographyOnineCheckbox.setOnCheckedChangeListener{ buttonView, isChecked->
