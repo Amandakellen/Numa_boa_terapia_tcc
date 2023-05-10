@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
+import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
 import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
 import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
@@ -87,6 +88,11 @@ class PsiProfileFragment : Fragment() {
 
         binding.shareDataPsi.setOnClickListener {
             startActivity(Intent(activity, MyProfilePsiActivity::class.java))
+        }
+
+
+        binding.changePsiPhoto.setOnClickListener {
+            ChangeProfilephotoBottomSheet().show(parentFragmentManager, "changePhoto")
         }
 
 
