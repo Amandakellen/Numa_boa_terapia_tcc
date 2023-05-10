@@ -8,6 +8,7 @@
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+
     <meta-data
         android:name="com.google.android.gms.wallet.api.enabled"
         android:value="true" />
@@ -23,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
+        <activity
+            android:name=".camera.views.bottomsheets.ChangePhotoBottomSheet"
+            android:exported="false" />
         <activity
             android:name=".appNavigation.psychologist.views.EditPsiBiography"
             android:exported="false"
