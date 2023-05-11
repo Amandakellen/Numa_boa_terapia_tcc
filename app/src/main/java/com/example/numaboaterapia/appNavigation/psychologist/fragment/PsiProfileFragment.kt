@@ -92,7 +92,11 @@ class PsiProfileFragment : Fragment() {
 
 
         binding.changePsiPhoto.setOnClickListener {
-            ChangeProfilephotoBottomSheet().show(parentFragmentManager, "changePhoto")
+            val bundle = Bundle()
+            bundle.putString("type", "psi")
+            val bottomSheet = ChangeProfilephotoBottomSheet()
+            bottomSheet.arguments = bundle
+            bottomSheet.show(parentFragmentManager, "changePhoto")
         }
 
 

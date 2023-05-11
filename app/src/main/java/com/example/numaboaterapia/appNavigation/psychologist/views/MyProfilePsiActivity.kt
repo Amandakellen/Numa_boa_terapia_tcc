@@ -68,7 +68,11 @@ class MyProfilePsiActivity : AppCompatActivity() {
         }
 
         binding.myProfileChangePsiPhoto.setOnClickListener {
-            ChangeProfilephotoBottomSheet().show(supportFragmentManager, "changePhoto")
+            val bundle = Bundle()
+            bundle.putString("type", "psi")
+            val bottomSheet = ChangeProfilephotoBottomSheet()
+            bottomSheet.arguments = bundle
+            bottomSheet.show(supportFragmentManager, "changePhoto")
         }
 
     }
