@@ -12,6 +12,7 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class FirebaseStorageRepository {
@@ -30,28 +31,32 @@ class FirebaseStorageRepository {
         }
     }
 
-    fun uploadImageToFirebaseStorage(imagePath: String, type: String): Flow<Result<Unit>> =
-        callbackFlow {
-            val storageRef = Firebase.storage.reference
-            val imageFileName = FirebaseAuth.getInstance().currentUser?.uid + ".jpg"
-            val storageReference =
-                FirebaseStorage.getInstance().reference.child("$type/$imageFileName")
-            val imageFile = Uri.fromFile(File(imagePath))
-            val uploadTask = storageReference.putFile(imageFile)
+    fun uploadImageToFirebaseStorage(type: String, dataImage: ByteArray): Flow<String> = callbackFlow {
+        // Definir o nome do arquivo que será salvo no Firebase Storage
+        val filename = FirebaseAuth.getInstance().currentUser?.uid + ".jpg"
 
-            uploadTask.addOnSuccessListener {
-                // A imagem foi carregada com sucesso
-                Log.d("TAG", "Imagem carregada com sucesso")
-                trySend(Result.success(Unit)).isSuccess
-                close()
-            }.addOnFailureListener { exception ->
-                // Ocorreu um erro ao carregar a imagem
-                Log.e("TAG", "Erro ao carregar a imagem", exception)
-                trySend(Result.failure(exception)).isSuccess
-                close(exception)
-            }
+        // Obter uma referência ao nó do Firebase Storage onde o arquivo será armazenado
+        val storageRef = Firebase.storage.reference.child("$type/$filename")
 
-            awaitClose()
+        // Enviar o arquivo para o Firebase Storage
+        val uploadTask = storageRef.putBytes(dataImage)
+
+        // Lidar com o resultado do upload (opcional)
+        uploadTask.addOnSuccessListener {
+            // O upload foi bem-sucedido
+            trySend("sucesso").isSuccess
+        }.addOnFailureListener {
+            // Ocorreu um erro durante o upload
+            trySend("erro").isSuccess
         }
+
+        // CallbackFlow should be closed when no longer needed.
+        awaitClose()
+    }
+
+
+
+
+
 
 }

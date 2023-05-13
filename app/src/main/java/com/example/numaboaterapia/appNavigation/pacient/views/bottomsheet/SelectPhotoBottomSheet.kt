@@ -17,8 +17,10 @@ import com.example.numaboaterapia.R
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.databinding.SelectPhotoBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 
 class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
@@ -62,39 +64,34 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    private val takePictureResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val data: Intent? = result.data
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            viewModel.bitmapToFile(imageBitmap, arguments?.getString("type"))
+    private val takePictureResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                val imageBitmap = data?.extras?.get("data") as Bitmap
+
+                // Converter o Bitmap em um ByteArray
+                val outputStream = ByteArrayOutputStream()
+                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                val dataImage = outputStream.toByteArray()
+                CoroutineScope(Dispatchers.IO).launch {
+                    val resultado =
+                        arguments?.getString("type")
+                            ?.let { viewModel.sendToFirebase(dataImage, it) }
+                    withContext(Dispatchers.Main) {
+                        // Aqui você pode atualizar a UI com o resultado, por exemplo
+                        if (resultado == "sucesso") {
+                            // Ação para quando o upload for bem-sucedido
+                        } else {
+                            // Ação para quando ocorrer um erro no upload
+                        }
+                    }
+                }
 
 
-            // Converter o Bitmap em um ByteArray
-            val outputStream = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-            val dataImage = outputStream.toByteArray()
-
-            // Definir o nome do arquivo que será salvo no Firebase Storage
-            val filename = "imagem_camera22222.jpg"
-
-            // Obter uma referência ao nó do Firebase Storage onde o arquivo será armazenado
-            val storageRef = Firebase.storage.reference.child("psi/$filename")
-
-            // Enviar o arquivo para o Firebase Storage
-            val uploadTask = storageRef.putBytes(dataImage)
-
-            // Lidar com o resultado do upload (opcional)
-            uploadTask.addOnSuccessListener {
-                // O upload foi bem-sucedido
-            }.addOnFailureListener {
-                // Ocorreu um erro durante o upload
-            }
-            val result = viewModel.sendToFirebase()
-            result.invokeOnCompletion {
 
             }
         }
-    }
 
     private fun takePicture() {
         if (ContextCompat.checkSelfPermission(
