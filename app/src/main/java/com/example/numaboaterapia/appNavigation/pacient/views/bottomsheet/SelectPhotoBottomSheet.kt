@@ -10,21 +10,24 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.databinding.SelectPhotoBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 
 class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var binding: SelectPhotoBottomSheetBinding
-    private lateinit var viewModel:CameraViewModel
+    private lateinit var viewModel: CameraViewModel
 
     private val REQUEST_CAMERA_PERMISSION = 1
-    private val REQUEST_IMAGE_CAPTURE = 2
+    private val REQUEST_IMAGE_CAPTURE = "image_capture"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,36 +58,37 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
             }
         }
         binding.selectPhotoFromCamera.setOnClickListener {
-
             takePicture()
         }
-
     }
 
-    private fun takePicture() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA),
-                REQUEST_CAMERA_PERMISSION)
-        } else {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
-                                            grantResults: IntArray) {
-        if (requestCode == REQUEST_CAMERA_PERMISSION) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                takePicture()
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+    private val takePictureResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data: Intent? = result.data
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            viewModel.bitmapToFile(imageBitmap,arguments?.getString("type"))
+            viewModel.bitmapToFile(imageBitmap, arguments?.getString("type"))
+
+
+            // Converter o Bitmap em um ByteArray
+            val outputStream = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            val dataImage = outputStream.toByteArray()
+
+            // Definir o nome do arquivo que será salvo no Firebase Storage
+            val filename = "imagem_camera22222.jpg"
+
+            // Obter uma referência ao nó do Firebase Storage onde o arquivo será armazenado
+            val storageRef = Firebase.storage.reference.child("psi/$filename")
+
+            // Enviar o arquivo para o Firebase Storage
+            val uploadTask = storageRef.putBytes(dataImage)
+
+            // Lidar com o resultado do upload (opcional)
+            uploadTask.addOnSuccessListener {
+                // O upload foi bem-sucedido
+            }.addOnFailureListener {
+                // Ocorreu um erro durante o upload
+            }
             val result = viewModel.sendToFirebase()
             result.invokeOnCompletion {
 
@@ -92,23 +96,33 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-
-
-    companion object {
-        private const val REQUEST_IMAGE_CAPTURE = 1
+    private fun takePicture() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CAMERA),
+                REQUEST_CAMERA_PERMISSION
+            )
+        } else {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            takePictureResult.launch(takePictureIntent)
+        }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takePicture()
+            }
+        }
+    }
 
-//    private fun tirarPhoto() {
-//
-//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//
-//        val someActivityResultLauncher =
-//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//                if (result.resultCode == Activity.RESULT_OK) {
-//                    // Handle the result.
-//                }
-//            }
-//        someActivityResultLauncher.launch(intent)
-//    }
 }
