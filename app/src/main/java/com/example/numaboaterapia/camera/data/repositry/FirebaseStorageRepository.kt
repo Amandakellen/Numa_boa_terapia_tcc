@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.camera.data.repositry
 
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -18,6 +19,7 @@ import java.io.File
 class FirebaseStorageRepository {
     private val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     private val userLoggedMutableLiveData: MutableLiveData<Boolean>
+    private  var firebaseImage = ByteArray(2)
     private val auth: FirebaseAuth
     val db = FirebaseFirestore.getInstance()
 
@@ -29,6 +31,44 @@ class FirebaseStorageRepository {
         if (auth.currentUser != null) {
             firebaseUserMutableLiveData.postValue(auth.currentUser)
         }
+    }
+    fun getImageByteArray():ByteArray =firebaseImage
+
+    fun getFirebaseFileImage(type : String): Flow<String> = callbackFlow {
+        val filename = FirebaseAuth.getInstance().currentUser?.uid + ".jpg"
+        val storageRef = Firebase.storage.reference.child("$type/$filename")
+        val ONE_MEGABYTE: Long = 1024 * 1024
+        storageRef.getBytes(ONE_MEGABYTE)
+            .addOnSuccessListener { bytes ->
+                firebaseImage = bytes
+                trySend("success").isSuccess
+            }
+            .addOnFailureListener { exception ->
+                trySend("erro").isSuccess
+            }
+        awaitClose()
+    }
+
+    fun existsFile(type: String): Flow<String> = callbackFlow {
+        val filename = FirebaseAuth.getInstance().currentUser?.uid + ".jpg"
+        val storageRef = Firebase.storage.reference.child("$type/$filename")
+        // Verifique se o arquivo existe
+        storageRef.listAll()
+            .addOnSuccessListener { listResult ->
+                val fileExists = listResult.items.any { item ->
+                    item.name == storageRef.name
+                }
+                if (fileExists) {
+                    trySend("exist").isSuccess
+                } else {
+                    trySend("notExist").isSuccess
+                }
+            }
+            .addOnFailureListener { exception ->
+                trySend("erro").isSuccess
+            }
+
+        awaitClose()
     }
 
     fun uploadImageToFirebaseStorage(type: String, dataImage: ByteArray): Flow<String> = callbackFlow {
