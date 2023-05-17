@@ -1,12 +1,14 @@
 package com.example.numaboaterapia.appNavigation.psychologist.fragment
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
@@ -17,14 +19,17 @@ import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.appNavigation.psychologist.views.MyProfilePsiActivity
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
+import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
 import com.example.numaboaterapia.views.MainActivity
+import kotlinx.coroutines.launch
 
 class PsiProfileFragment : Fragment() {
     private lateinit var myActivityResultLauncher: ActivityResultLauncher<Intent>
   private lateinit var binding : FragmentPsiProfileBinding
   private lateinit var loginViewModel: GetFirebaseProfileDataViewModel
   private lateinit var viewModel : GetFirebasePsiMyDataViewModel
+  private lateinit var cameraViewModel: CameraViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,7 @@ class PsiProfileFragment : Fragment() {
         binding = FragmentPsiProfileBinding.inflate(inflater,container,false)
         viewModel = GetFirebasePsiMyDataViewModel()
         loginViewModel = GetFirebaseProfileDataViewModel()
+        cameraViewModel = CameraViewModel()
 
         setImage()
         setUpViews()
@@ -46,11 +52,28 @@ class PsiProfileFragment : Fragment() {
     }
 
     private fun setImage() {
-        Glide.with(this)
-            .load(R.mipmap.psi_gray)
-            .transform(CircleCrop())
-            .into(binding.profilePsiPhoto)
+        binding.progressBarFragmetProfilePsi.visibility = View.VISIBLE
 
+
+        lifecycleScope.launch {
+            cameraViewModel.getFirebaseFileImage("psi").await().collect { value ->
+                when (value) {
+                    "success" -> {
+                        val bitArray = cameraViewModel.getImageByteArray()
+                        val bitmap =
+                            bitArray?.let {
+                                BitmapFactory.decodeByteArray(bitArray, 0, it.size)
+                            }
+                        binding.profilePsiPhoto.setImageBitmap(bitmap)
+                    }
+
+                    else -> {
+                        binding.profilePsiPhoto.setImageResource(R.mipmap.psi_gray)
+                    }
+                }
+            }
+            binding.progressBarFragmetProfilePsi.visibility = View.GONE
+        }
     }
 
     private fun setUpViews(){
