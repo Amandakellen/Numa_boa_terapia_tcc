@@ -61,9 +61,40 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
         }
         binding.selectPhotoFromCamera.setOnClickListener {
             takePicture()
-            //dismiss()
+        }
+
+        binding.selecPhotoFromGalery.setOnClickListener {
+            openGallery()
         }
     }
+
+    private val pickImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            dismiss()
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                val selectedImageUri = data?.data
+                selectedImageUri?.let {
+                    val bitmap =
+                        MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it)
+                    // Converter o Bitmap em um ByteArray
+                    val outputStream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                    val dataImage = outputStream.toByteArray()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val resultado =
+                            arguments?.getString("type")
+                                ?.let { viewModel.sendToFirebase(dataImage, it) }
+                        withContext(Dispatchers.Main) {
+
+                            if (resultado == "sucesso") {
+                                requireActivity().recreate()
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
     private val takePictureResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -81,16 +112,12 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
                         arguments?.getString("type")
                             ?.let { viewModel.sendToFirebase(dataImage, it) }
                     withContext(Dispatchers.Main) {
-                        // Aqui você pode atualizar a UI com o resultado, por exemplo
+
                         if (resultado == "sucesso") {
-//                            dismiss()
                             requireActivity().recreate()
-                        } else {
-                            // Ação para quando ocorrer um erro no upload
                         }
                     }
                 }
-
 
 
             }
@@ -124,5 +151,13 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
             }
         }
     }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        if (intent.resolveActivity(requireContext().packageManager) != null) {
+            pickImageResult.launch(intent)
+        }
+    }
+
 
 }
