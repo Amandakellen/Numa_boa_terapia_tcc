@@ -61,11 +61,13 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
         }
         binding.selectPhotoFromCamera.setOnClickListener {
             takePicture()
+            //dismiss()
         }
     }
 
     private val takePictureResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            dismiss()
             if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
                 val imageBitmap = data?.extras?.get("data") as Bitmap
@@ -81,7 +83,8 @@ class SelectPhotoBottomSheet : BottomSheetDialogFragment() {
                     withContext(Dispatchers.Main) {
                         // Aqui você pode atualizar a UI com o resultado, por exemplo
                         if (resultado == "sucesso") {
-                            // Ação para quando o upload for bem-sucedido
+//                            dismiss()
+                            requireActivity().recreate()
                         } else {
                             // Ação para quando ocorrer um erro no upload
                         }
