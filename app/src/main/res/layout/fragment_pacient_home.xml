@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pacient_home_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -35,7 +36,7 @@
                         android:layout_height="96dp"
                         android:layout_marginHorizontal="8dp"
                         android:layout_marginVertical="8dp"
-                        android:src="@mipmap/ic_psi_simbol_home_round"
+                        android:src="@mipmap/ic_psi_simbol_home"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.127"
@@ -93,7 +94,7 @@
                 app:layout_constraintTop_toBottomOf="@id/psi_title" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/psi_diaryy_cardview"
+                android:id="@+id/pacient_diaryy_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"

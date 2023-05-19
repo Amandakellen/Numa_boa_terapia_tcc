@@ -27,20 +27,6 @@ class CameraViewModel:ViewModel() {
 
         return result
     }
-    suspend fun verifyIfExists(userType : String) : String{
-        val result = viewModelScope.async{
-            repository.existsFile(userType)
-        }
-        var retorno = ""
-        result.await().collect{
-            when(it){
-                "exist" -> { retorno = "exist"}
-                "notExist"->{ retorno = "notExist"}
-                else->{retorno = "erro"}
-            }
-        }
-        return retorno
-    }
 
     suspend fun sendToFirebase(dataImage: ByteArray, userType: String): String {
         val result = viewModelScope.async {

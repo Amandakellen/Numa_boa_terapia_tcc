@@ -49,27 +49,6 @@ class FirebaseStorageRepository {
         awaitClose()
     }
 
-    fun existsFile(type: String): Flow<String> = callbackFlow {
-        val filename = FirebaseAuth.getInstance().currentUser?.uid + ".jpg"
-        val storageRef = Firebase.storage.reference.child("$type/$filename")
-        // Verifique se o arquivo existe
-        storageRef.listAll()
-            .addOnSuccessListener { listResult ->
-                val fileExists = listResult.items.any { item ->
-                    item.name == storageRef.name
-                }
-                if (fileExists) {
-                    trySend("exist").isSuccess
-                } else {
-                    trySend("notExist").isSuccess
-                }
-            }
-            .addOnFailureListener { exception ->
-                trySend("erro").isSuccess
-            }
-
-        awaitClose()
-    }
 
     fun uploadImageToFirebaseStorage(type: String, dataImage: ByteArray): Flow<String> = callbackFlow {
         // Definir o nome do arquivo que será salvo no Firebase Storage
