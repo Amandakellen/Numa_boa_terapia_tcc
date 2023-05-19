@@ -4,12 +4,31 @@
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".appNavigation.pacient.fragments.PacientPsiList">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.example.numaboaterapia.views.CustomView.CustomToolBar
+        android:id="@+id/tool_bar_psi_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/psi_list_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:id="@+id/psi_list_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/psi_list_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </ScrollView>
 
 </LinearLayout>

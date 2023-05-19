@@ -36,7 +36,7 @@ class PacientHomeFragment : Fragment() {
         binding.progressBarFragmetHome.visibility = View.VISIBLE
         binding.diaryTitle.visibility = View.GONE
 
-        binding.psiTitle.setOnClickListener {
+        binding.pacientSearchPsiCardView.setOnClickListener {
 //            val intent = Intent(requireContext(), PacientPsiListActivity::class.java)
 //            startActivity(intent)
             loadFragment(PacientPsiList())
