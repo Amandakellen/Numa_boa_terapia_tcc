@@ -10,10 +10,14 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 
-class LoginViewModel(val application: Application) : ViewModel() {
+class LoginViewModel() : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
@@ -42,13 +46,31 @@ class LoginViewModel(val application: Application) : ViewModel() {
         _pass.value = senha
     }
 
+    fun getErrorMessage() : String =  repository.getErrorMessage()
 
-    fun verifyLogin() {
-        viewModelScope.launch {
-            repository.login(application, _email.value.toString(), _pass.value.toString())
+    fun verifyLogin() : Deferred<Flow<Boolean>> {
+        val result = viewModelScope.async {
+            repository.login(_email.value.toString(), _pass.value.toString())
         }
 
+        return result
+
     }
+
+    fun verifyValueInCollections() {
+        viewModelScope.launch {
+            repository.checkValueInCollections().collect { (collectionName, valueFound) ->
+                if (valueFound) {
+                    // Valor encontrado na coleção: collectionName
+                    // Faça algo com o valor encontrado
+                } else {
+                    // Valor não encontrado em nenhuma das coleções
+                    // Faça algo quando o valor não for encontrado
+                }
+            }
+        }
+    }
+
 
 
 }

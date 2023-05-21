@@ -7,10 +7,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.launch
 
 
 class LoginActivity : AppCompatActivity() {
@@ -25,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        viewModel = LoginViewModel(this.application)
+        viewModel = LoginViewModel()
 
         setUpEditText()
         setupViews()
@@ -77,9 +79,27 @@ class LoginActivity : AppCompatActivity() {
                     setUpToast("Digite seu login e senha")
                     toastLoginIsNull.show()
                 }
+
                 else -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
-                    viewModel.verifyLogin()
+                    lifecycleScope.launch {
+                        viewModel.verifyLogin().await().collect {
+                            when (it) {
+                                true -> {
+
+                                }
+
+                                else -> {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        viewModel.getErrorMessage(),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+                    }
+
                     binding.loginProgressBar.visibility = View.INVISIBLE
                 }
             }
