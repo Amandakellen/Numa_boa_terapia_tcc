@@ -57,19 +57,32 @@ class LoginViewModel() : ViewModel() {
 
     }
 
-    fun verifyValueInCollections() {
-        viewModelScope.launch {
-            repository.checkValueInCollections().collect { (collectionName, valueFound) ->
-                if (valueFound) {
-                    // Valor encontrado na coleção: collectionName
-                    // Faça algo com o valor encontrado
-                } else {
-                    // Valor não encontrado em nenhuma das coleções
-                    // Faça algo quando o valor não for encontrado
-                }
-            }
+    suspend fun verifyIfIsPacient():Boolean{
+        var result =viewModelScope.async{
+            repository.checkValueInPacientTable()
         }
+
+        var retorno = false
+        result.await().collect{
+            retorno = it== true
+        }
+        return retorno
     }
+
+    suspend fun verifyIfIsPsi():Boolean{
+        var result =viewModelScope.async{
+            repository.checkValueInPsiTable()
+        }
+
+        var retorno = false
+        result.await().collect{
+            retorno = it== true
+        }
+        return retorno
+    }
+
+
+
 
 
 

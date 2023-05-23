@@ -45,27 +45,49 @@ class LoginRepository {
         awaitClose()
     }
 
-    fun checkValueInCollections(): Flow<Pair<String, Boolean>> = flow {
+
+    fun checkValueInPsiTable(): Flow<Boolean> = callbackFlow {
         val userUUID = auth.currentUser!!.uid
         val firestore = FirebaseFirestore.getInstance()
+        val collectionRef = firestore.collection("psi_users")
 
-        // Lista de nomes das coleções para verificar
-        val collectionNames = mapOf(
-            "psi" to "psi_users",
-            "pacient" to "patient_users"
-        )
-
-        for ((collectionId, collectionName) in collectionNames) {
-            val query = firestore.collection(collectionId).whereEqualTo("valueField", userUUID)
-            val querySnapshot = query.get().await()
-
-            if (!querySnapshot.isEmpty) {
-                emit(collectionName to true) // Valor encontrado na coleção correspondente
-                return@flow
+        collectionRef
+            .whereEqualTo("uId", userUUID)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val exists = !querySnapshot.isEmpty
+                trySend(exists).isSuccess // Envia o resultado da verificação
+                close()
             }
-        }
+            .addOnFailureListener { exception ->
+                // Ocorreu um erro ao acessar o Firebase Firestore
+                println("Erro ao acessar o Firestore: $exception")
+                close(exception)
+            }
 
-        emit("" to false) // Valor não encontrado em nenhuma das coleções
+        awaitClose()
+    }
+
+    fun checkValueInPacientTable(): Flow<Boolean> = callbackFlow {
+        val userUUID = auth.currentUser!!.uid
+        val firestore = FirebaseFirestore.getInstance()
+        val collectionRef = firestore.collection("patient_users")
+
+        collectionRef
+            .whereEqualTo("uId", userUUID)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val exists = !querySnapshot.isEmpty
+                trySend(exists).isSuccess // Envia o resultado da verificação
+                close()
+            }
+            .addOnFailureListener { exception ->
+                // Ocorreu um erro ao acessar o Firebase Firestore
+                println("Erro ao acessar o Firestore: $exception")
+                close(exception)
+            }
+
+        awaitClose()
     }
 
     private fun checkLoginResult(loginResult: String): String {

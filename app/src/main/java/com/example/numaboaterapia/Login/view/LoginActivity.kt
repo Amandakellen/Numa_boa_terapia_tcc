@@ -10,9 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.numaboaterapia.Login.ViewModel.LoginViewModel
 import com.example.numaboaterapia.R
+import com.example.numaboaterapia.appNavigation.pacient.views.PacientApp
+import com.example.numaboaterapia.appNavigation.psychologist.views.PsiHome
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class LoginActivity : AppCompatActivity() {
@@ -86,7 +91,40 @@ class LoginActivity : AppCompatActivity() {
                         viewModel.verifyLogin().await().collect {
                             when (it) {
                                 true -> {
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        val result = viewModel.verifyIfIsPacient()
+                                        withContext(Dispatchers.Main) {
+                                            if (result) {
+                                                startActivity(
+                                                    Intent(
+                                                        applicationContext,
+                                                        PacientApp::class.java
+                                                    )
+                                                )
 
+                                            }else{
+                                                CoroutineScope(Dispatchers.IO).launch {
+                                                    val isPsi = viewModel.verifyIfIsPsi()
+                                                    withContext(Dispatchers.Main) {
+                                                        if(isPsi){
+                                                            startActivity(
+                                                                Intent(
+                                                                    applicationContext,
+                                                                    PsiHome::class.java
+                                                                )
+                                                            )
+                                                        }else{
+                                                            Toast.makeText(
+                                                                applicationContext,
+                                                                "Usuário não encontrado",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
 
                                 else -> {
