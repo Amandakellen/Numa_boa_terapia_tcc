@@ -26,6 +26,8 @@ class ChangeProfilephotoBottomSheet: BottomSheetDialogFragment()  {
     }
 
     private fun setUpButtons(){
+        val type = arguments?.getString("type")
+
         binding.changePhotoBack.setOnClickListener {
             dismiss()
         }
@@ -33,7 +35,13 @@ class ChangeProfilephotoBottomSheet: BottomSheetDialogFragment()  {
 
         binding.changePhotoButton.setOnClickListener {
             dismiss()
-            SelectPhotoBottomSheet().show(
+
+            val bundle = Bundle()
+            bundle.putString("type", type)
+            val bottomSheet = SelectPhotoBottomSheet()
+            bottomSheet.arguments = bundle
+
+            bottomSheet.show(
                 requireActivity().supportFragmentManager,
                 "SelectPhotoBottomSheet"
             )

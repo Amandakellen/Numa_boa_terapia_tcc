@@ -17,12 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
+      <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_psi_photo"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="36dp"
         android:scaleType="centerCrop"
+          app:civ_border_color="@color/purple"
         android:src="@mipmap/pacient_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

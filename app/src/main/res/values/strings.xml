@@ -269,6 +269,15 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="my_specialties">Minhas especialidades</string>
     <string name="edit_specialties">Edição de especialidades</string>
     <string name="add_specialties">Adicionar especialidades</string>
+    <string name="edit_biography">Edição da biografia</string>
+
+    <!--Mudar de foto-->
+    <string name="change_photo_title_bottomsheet">Deseja alterar sua foto de perfil?</string>
+    <string name="take_picture_bottom_sheet">Tirar foto</string>
+    <string name="select_from_galery_bottom_sheet">Selecionar da galeria</string>
+
+    <!--lista de psicologo-->
+    <string name="profile">Ver perfil completo</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

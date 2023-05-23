@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-permission
         android:name="android.permission.CAMERA"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.camera.any" /> <!-- <uses-permission -->
+    <!-- android:name="android.permission.CAMERA" -->
+    <!-- tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <meta-data
         android:name="com.google.android.gms.wallet.api.enabled"
         android:value="true" />
@@ -23,6 +28,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
+        <activity
+            android:name=".appNavigation.pacient.views.PacientPsiListActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".camera.views.PreviewPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".appNavigation.pacient.fragments.PacientPsiList"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".appNavigation.psychologist.views.EditPsiBiography"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".appNavigation.psychologist.views.EditSpecialtiesActivity"
             android:exported="false"

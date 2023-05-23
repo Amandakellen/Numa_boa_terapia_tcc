@@ -1,11 +1,13 @@
 package com.example.numaboaterapia.appNavigation.pacient.fragments
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.FragmentProfileBinding
 import com.bumptech.glide.Glide
@@ -16,13 +18,16 @@ import com.example.numaboaterapia.appNavigation.pacient.views.MyDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.ShareDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
+import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.views.MainActivity
+import kotlinx.coroutines.launch
 
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: GetFirebaseProfileDataViewModel
+    private lateinit var cameraViewModel: CameraViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +35,31 @@ class ProfileFragment : Fragment() {
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         viewModel = GetFirebaseProfileDataViewModel()
+        cameraViewModel = CameraViewModel()
         setImage()
         setUpViews()
         return binding.root
     }
 
     private fun setImage() {
+
+        lifecycleScope.launch {
+            cameraViewModel.getFirebaseFileImage("pacient").await().collect { value ->
+                when (value) {
+                    "success" -> {
+                        val bitArray = cameraViewModel.getImageByteArray()
+                        val bitmap =
+                            bitArray?.let {
+                                BitmapFactory.decodeByteArray(bitArray, 0, it.size) }
+                        binding.profilePacientPhoto.setImageBitmap(bitmap)
+                    }
+
+                    else -> {
+                        binding.profilePacientPhoto.setImageResource(R.mipmap.pacient_gray)
+                    }
+                }
+            }
+        }
         Glide.with(this)
             .load(R.mipmap.pacient_gray)
             .transform(CircleCrop())
@@ -88,8 +112,11 @@ class ProfileFragment : Fragment() {
         }
 
         binding.changePatientPhoto.setOnClickListener {
-            ChangeProfilephotoBottomSheet().show(parentFragmentManager,
-                "DeleteAccountBottomSheet")
+            val bundle = Bundle()
+            bundle.putString("type", "pacient")
+            val bottomSheet = ChangeProfilephotoBottomSheet()
+            bottomSheet.arguments = bundle
+            bottomSheet.show(parentFragmentManager, "changePhoto")
         }
     }
 

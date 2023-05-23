@@ -25,6 +25,9 @@ class PsiBiographyViewModel : ViewModel() {
     val cepData = MutableLiveData<Cep>()
 
 
+    fun getBiography(): String = _biography.value.toString()
+    fun getTypeOfService(): ArrayList<String>? = _typeOfService.value
+
     fun setBiography(text: String) {
         _biography.value = text
     }
