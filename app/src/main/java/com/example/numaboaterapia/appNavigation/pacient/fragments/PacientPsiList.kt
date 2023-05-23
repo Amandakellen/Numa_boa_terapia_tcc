@@ -1,6 +1,7 @@
 package com.example.numaboaterapia.appNavigation.pacient.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,8 +48,7 @@ class PacientPsiList : Fragment() {
                 adapter.biography = psiBiographyData
                 adapter.setOnClickListener(object : PsiListAdapter.onItemclickListener {
                     override fun onItemClick(position: Int) {
-
-
+                        Log.i("cliquei","click")
                     }
                 })
 
