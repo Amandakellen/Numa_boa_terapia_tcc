@@ -36,8 +36,8 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
         fun bind(position: Int) {
             with(binding) {
                 psiListItemName.text = psiUser[position]["name"]
-                psiListItemLocation.text =
-                    biography[position]["city"] + " - " + biography[position]["uf"]
+//                psiListItemLocation.text =
+//                    biography[position]["city"] + " - " + biography[position]["uf"]
                 psiListItemCrp.text = psiUser[position]["crp"]
                 psiListItemEspecializacao.text= psiUser[position]["especializacao"]
                 psiListTime.text = "Duração da sessão: "+ psiUser[position]["time"] + " min"
