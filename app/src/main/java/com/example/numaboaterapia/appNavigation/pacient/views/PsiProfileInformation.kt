@@ -10,6 +10,14 @@ class PsiProfileInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPsiProfileInformationBinding.inflate(layoutInflater)
+        setUpViews()
         setContentView(binding.root)
+    }
+
+
+    private fun setUpViews(){
+        binding.psiProfileInformationToolBar.getBackButton().setOnClickListener {
+            finish()
+        }
     }
 }
