@@ -1,10 +1,14 @@
 package com.example.numaboaterapia.appNavigation.pacient.views.adapter
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.PsiListItemBinding
+import java.io.ByteArrayOutputStream
 
 class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHolder>() {
 
@@ -13,6 +17,12 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
     var biography: ArrayList<HashMap<String, String>> = ArrayList()
     var psiImage = mutableListOf<ByteArray>()
 
+    private fun convertImageToByteArray(context: Context, resourceId: Int): ByteArray {
+        val bitmap = BitmapFactory.decodeResource(context.resources, resourceId)
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        return outputStream.toByteArray()
+    }
     interface onItemclickListener {
         fun onItemClick(position: Int)
     }
@@ -24,7 +34,8 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
 
     inner class PsiListAdapterViewHolder(
         val binding: PsiListItemBinding,
-        listener: PsiListAdapter.onItemclickListener
+        listener: onItemclickListener,
+        val context: Context
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -36,8 +47,9 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
 
 
         fun bind(position: Int) {
-            val bitmap =
-                BitmapFactory.decodeByteArray(psiImage[position], 0, psiImage[position].size)
+            val bitmap = BitmapFactory.decodeByteArray(psiImage[position], 0, psiImage[position].size)
+
+
             with(binding) {
                 psiListItemName.text = psiUser[position]["name"]
                 psiListItemLocation.text =
@@ -45,10 +57,21 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
                 psiListItemCrp.text = psiUser[position]["crp"]
                 psiListItemEspecializacao.text = psiUser[position]["especializacao"]
                 psiListTime.text = "Duração da sessão: " + psiUser[position]["time"] + " min"
-                psiListPhoto.setImageBitmap(bitmap)
+                if(bitmap==null){
+                    psiListPhoto.setImageResource(R.mipmap.psi_gray)
+                }else{
+                    psiListPhoto.setImageBitmap(bitmap)
+                }
+
             }
         }
+
+
     }
+
+
+
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -56,8 +79,9 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
     ): PsiListAdapter.PsiListAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = PsiListItemBinding.inflate(layoutInflater, parent, false)
+        val context = parent.context
 
-        return PsiListAdapterViewHolder(binding, mListener)
+        return PsiListAdapterViewHolder(binding, mListener, context)
     }
 
     override fun onBindViewHolder(holder: PsiListAdapter.PsiListAdapterViewHolder, position: Int) {

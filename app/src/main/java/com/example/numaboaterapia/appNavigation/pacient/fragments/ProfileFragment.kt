@@ -60,10 +60,6 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-        Glide.with(this)
-            .load(R.mipmap.pacient_gray)
-            .transform(CircleCrop())
-            .into(binding.profilePacientPhoto)
 
     }
 

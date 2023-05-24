@@ -1,7 +1,11 @@
 package com.example.numaboaterapia.appNavigation.pacient.data.repository
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.numaboaterapia.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,12 +18,14 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
+import java.io.ByteArrayOutputStream
 
 class PsiListRepository {
     private val firebaseUserMutableLiveData: MutableLiveData<FirebaseUser>?
     private val userLoggedMutableLiveData: MutableLiveData<Boolean>
     private val auth: FirebaseAuth
     private var psiUid : ArrayList<String> = arrayListOf()
+    private lateinit var imageDefault : ByteArray
     val db = FirebaseFirestore.getInstance()
 
     init {
@@ -32,6 +38,9 @@ class PsiListRepository {
         }
     }
 
+    fun setImageDefault(image : ByteArray) {
+        imageDefault = image
+    }
 
     fun getPsiUsers(): Flow<ArrayList<HashMap<String, String>>> = flow {
         val docRef = db.collection("psi_users")
@@ -128,14 +137,19 @@ class PsiListRepository {
 
         for (fileName in psiUid) {
             var imageName = fileName + ".jpg"
+            try{
             val fileRef = storageRef.child("psi/$imageName")
             val ONE_MEGABYTE: Long = 1024 * 1024
             val bytes = fileRef.getBytes(ONE_MEGABYTE).await()
-            imageByteArrays.add(bytes)
+            imageByteArrays.add(bytes)}
+            catch(e: Exception){
+                imageDefault?.let { imageByteArrays.add(it) }
+            }
         }
 
         emit(imageByteArrays)
     }.flowOn(Dispatchers.IO)
+
 
 
 }

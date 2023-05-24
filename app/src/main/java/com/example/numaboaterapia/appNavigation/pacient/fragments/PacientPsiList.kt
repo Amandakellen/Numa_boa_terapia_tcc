@@ -1,5 +1,9 @@
 package com.example.numaboaterapia.appNavigation.pacient.fragments
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.PsiListViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.adapter.DiaryAdapter
 import com.example.numaboaterapia.appNavigation.pacient.views.adapter.PsiListAdapter
@@ -15,6 +20,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 
 class PacientPsiList : Fragment() {
@@ -38,6 +45,7 @@ class PacientPsiList : Fragment() {
     }
 
     private fun setUpRecyclerView(){
+
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getPsiUser()
             viewModel.getBiography()
@@ -64,13 +72,34 @@ class PacientPsiList : Fragment() {
     }
 
 
+    @SuppressLint("ResourceType")
     private fun setUpViews(){
         binding.toolBarPsiList.getBackButton().visibility = View.GONE
         binding.psiListProgressbar.visibility = View.VISIBLE
         binding.psiListRecyclerview.layoutManager = LinearLayoutManager(context)
+        val inputStream = context?.resources?.openRawResource(R.mipmap.psi_gray)
+        val byteArray = inputStream?.let { fileToByteArray(it) }
+        if (byteArray != null) {
+            viewModel.setImageDefault(byteArray)
+        }
         binding.psiListRecyclerview.adapter = adapter
         setUpRecyclerView()
 
+    }
+
+    fun fileToByteArray(inputStream: InputStream): ByteArray {
+        val buffer = ByteArray(1024)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+
+        var length: Int
+        while (inputStream.read(buffer).also { length = it } != -1) {
+            byteArrayOutputStream.write(buffer, 0, length)
+        }
+
+        inputStream.close()
+        byteArrayOutputStream.flush()
+
+        return byteArrayOutputStream.toByteArray()
     }
 
 }
