@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.appNavigation.pacient.views.adapter
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
     private lateinit var mListener: PsiListAdapter.onItemclickListener
     var psiUser: ArrayList<HashMap<String, String>> = ArrayList()
     var biography: ArrayList<HashMap<String, String>> = ArrayList()
+    var psiImage = mutableListOf<ByteArray>()
 
     interface onItemclickListener {
         fun onItemClick(position: Int)
@@ -34,13 +36,16 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
 
 
         fun bind(position: Int) {
+            val bitmap =
+                BitmapFactory.decodeByteArray(psiImage[position], 0, psiImage[position].size)
             with(binding) {
                 psiListItemName.text = psiUser[position]["name"]
                 psiListItemLocation.text =
                     biography[position]["city"] + " - " + biography[position]["uf"]
                 psiListItemCrp.text = psiUser[position]["crp"]
-                psiListItemEspecializacao.text= psiUser[position]["especializacao"]
-                psiListTime.text = "Duração da sessão: "+ psiUser[position]["time"] + " min"
+                psiListItemEspecializacao.text = psiUser[position]["especializacao"]
+                psiListTime.text = "Duração da sessão: " + psiUser[position]["time"] + " min"
+                psiListPhoto.setImageBitmap(bitmap)
             }
         }
     }
