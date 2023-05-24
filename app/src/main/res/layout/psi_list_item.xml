@@ -36,7 +36,7 @@
             <TextView
                 android:id="@+id/psi_list_item_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="64dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/chau_philomene_one"

@@ -2,6 +2,7 @@ package com.example.numaboaterapia.appNavigation.pacient.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.PsiListViewModel
+import com.example.numaboaterapia.appNavigation.pacient.views.PsiProfileInformation
 import com.example.numaboaterapia.appNavigation.pacient.views.adapter.DiaryAdapter
 import com.example.numaboaterapia.appNavigation.pacient.views.adapter.PsiListAdapter
 import com.example.numaboaterapia.databinding.FragmentPacientPsiListBinding
@@ -63,7 +65,13 @@ class PacientPsiList : Fragment() {
                 adapter.psiImage = psiImage
                 adapter.setOnClickListener(object : PsiListAdapter.onItemclickListener {
                     override fun onItemClick(position: Int) {
-                        Log.i("cliquei","click")
+                        var intent = Intent(requireContext(), PsiProfileInformation::class.java)
+                        intent.putExtra("biography", adapter.biography[position])
+                        intent.putExtra("psiuser", adapter.psiUser[position])
+                        intent.putExtra("specialties", psiSpecialtiesData[position])
+                      //  intent.putExtra("image", psiImage[position])
+
+                        startActivity(intent)
                     }
                 })
 

@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission
         android:name="android.permission.CAMERA"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
@@ -29,9 +28,14 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
+            android:name=".appNavigation.pacient.views.PsiProfileInformation"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".appNavigation.pacient.views.PacientPsiListActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".camera.views.PreviewPhotoActivity"
             android:exported="false" />

@@ -100,12 +100,13 @@ class PsiListRepository {
 
 
     fun getPsiSpecialties(): Flow<ArrayList<HashMap<String, String>>> = flow {
-        psiUid.forEach {
-            val userUUID = it
+        val profileList = ArrayList<HashMap<String, String>>()
+
+        psiUid.forEach { userUUID ->
             val docRef = db.collection("psi_specialties")
             val query = docRef.whereEqualTo("uId", userUUID)
-            val profileList = ArrayList<HashMap<String, String>>()
             val documents = query.get().await()
+
             for (document in documents) {
                 val data = document.data
 
@@ -115,14 +116,10 @@ class PsiListRepository {
                 )
 
                 profileList.add(psiData)
-
-                Log.i("repository", psiData.toString())
-
             }
-            emit(profileList)
         }
 
-
+        emit(profileList)
     }.catch { exception ->
         Log.e("getCollection", "Error getting collection", exception)
         emit(ArrayList<HashMap<String, String>>())
