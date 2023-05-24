@@ -55,10 +55,17 @@ class PsiProfileInformation : AppCompatActivity() {
                 psiImage = viewModel.getImageData()
 
                 val bitmap = BitmapFactory.decodeByteArray(psiImage, 0, psiImage.size)
+                val buttonLabel = psiUser[0].split(" ")[0]
 
 
                 with(binding){
                     psiProfileInformationName.text = psiUser[0]
+                    psiProfileInformationEspecializacao.text = psiUser[6]
+                    psiProfileInformationCrp.text = psiUser[5]
+                    psiProfileInformationLocation.text =
+                        psiBiographyData[1] + " - " + psiBiographyData[2]
+                    psiProfileInformationTime.text = "Duração:"+ psiUser[4] + " minutos"
+                    psiProfileInformationWpp.text = "Converse com "+ buttonLabel
                     if(bitmap==null){
                         psiProfileInformationPhoto.setImageResource(R.mipmap.psi_gray)
                     }else{

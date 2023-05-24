@@ -65,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/chau_philomene_one"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -77,6 +77,103 @@
                         app:layout_constraintTop_toTopOf="@id/psi_profile_information_photo"
                         tools:text="Caspian X" />
 
+                    <TextView
+                        android:id="@+id/psi_profile_information_especializacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/chau_philomene_one"
+                        android:gravity="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/light_gray"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintEnd_toEndOf="@id/psi_profile_information_name"
+                        app:layout_constraintHorizontal_bias="0.235"
+                        app:layout_constraintStart_toStartOf="@id/psi_profile_information_name"
+                        app:layout_constraintTop_toBottomOf="@id/psi_profile_information_name"
+                        tools:text="@string/email" />
+
+                    <TextView
+                        android:id="@+id/psi_profile_information_crp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/chau_philomene_one"
+                        android:gravity="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/light_gray"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/psi_profile_information_especializacao"
+                        app:layout_constraintHorizontal_bias="0.235"
+                        app:layout_constraintStart_toStartOf="@id/psi_profile_information_especializacao"
+                        app:layout_constraintTop_toBottomOf="@id/psi_profile_information_especializacao"
+                        tools:text="XXXXXX/CRP - x região" />
+
+                    <TextView
+                        android:id="@+id/psi_profile_information_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/chau_philomene_one"
+                        android:gravity="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/light_gray"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@id/psi_profile_information_crp"
+                        app:layout_constraintHorizontal_bias="0.235"
+                        app:layout_constraintStart_toStartOf="@id/psi_profile_information_crp"
+                        app:layout_constraintTop_toBottomOf="@id/psi_profile_information_crp"
+                        tools:text="Narnia - Narnia" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/psi_profile_information_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/light_purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/psi_profile_information_location"
+                        app:layout_constraintHorizontal_bias="0.222"
+                        app:layout_constraintStart_toStartOf="@id/psi_profile_information_location"
+                        app:layout_constraintTop_toBottomOf="@id/psi_profile_information_location"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:autofillHints="name"
+                        android:textColor="@color/purple"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/chau_philomene_one"
+                        android:textColorHint="@color/purple"
+                        tools:text="Duração: 50 minutos" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/psi_profile_information_wpp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:autofillHints="name"
+                        android:fontFamily="@font/chau_philomene_one"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textStyle="bold"
+                        app:chipBackgroundColor="@color/purple"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/psi_profile_information_time"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="Converse com Caspian" />
+
+                    <ImageView
+                        android:layout_width="89dp"
+                        android:layout_height="73dp"
+                        android:src="@mipmap/wpp_icon_foreground"
+                        app:layout_constraintBottom_toBottomOf="@id/psi_profile_information_wpp"
+                        app:layout_constraintEnd_toEndOf="@id/psi_profile_information_wpp"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/psi_profile_information_wpp"
+                        app:layout_constraintTop_toTopOf="@id/psi_profile_information_wpp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
