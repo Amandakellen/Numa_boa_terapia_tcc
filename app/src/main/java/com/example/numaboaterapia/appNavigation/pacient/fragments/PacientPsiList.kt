@@ -66,11 +66,7 @@ class PacientPsiList : Fragment() {
                 adapter.setOnClickListener(object : PsiListAdapter.onItemclickListener {
                     override fun onItemClick(position: Int) {
                         var intent = Intent(requireContext(), PsiProfileInformation::class.java)
-                        intent.putExtra("biography", adapter.biography[position])
-                        intent.putExtra("psiuser", adapter.psiUser[position])
-                        intent.putExtra("specialties", psiSpecialtiesData[position])
-                      //  intent.putExtra("image", psiImage[position])
-
+                        intent.putExtra("uid", adapter.biography[position]["uuid"])
                         startActivity(intent)
                     }
                 })
