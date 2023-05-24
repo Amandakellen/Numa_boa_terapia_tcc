@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -114,6 +117,24 @@ class PsiListRepository {
     }.catch { exception ->
         Log.e("getCollection", "Error getting collection", exception)
         emit(ArrayList<HashMap<String, String>>())
+    }.flowOn(Dispatchers.IO)
+
+
+    fun getImageFilesFromStorage(): Flow<List<ByteArray>> = flow {
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+
+        val imageByteArrays = mutableListOf<ByteArray>()
+
+        for (fileName in psiUid) {
+            var imageName = fileName + ".jpg"
+            val fileRef = storageRef.child("psi/$imageName")
+            val ONE_MEGABYTE: Long = 1024 * 1024
+            val bytes = fileRef.getBytes(ONE_MEGABYTE).await()
+            imageByteArrays.add(bytes)
+        }
+
+        emit(imageByteArrays)
     }.flowOn(Dispatchers.IO)
 
 

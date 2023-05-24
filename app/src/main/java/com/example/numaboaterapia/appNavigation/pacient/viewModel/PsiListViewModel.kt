@@ -13,11 +13,13 @@ class PsiListViewModel:ViewModel() {
     private lateinit var psiUser : ArrayList<HashMap<String, String>>
     private lateinit var psiBiographyData : ArrayList<HashMap<String, String>>
     private lateinit var psiSpecialtiesData : ArrayList<HashMap<String, String>>
+    private  var psiImage = mutableListOf<ByteArray>()
 
 
     fun getPsiUserData():ArrayList<HashMap<String, String>> = psiUser
     fun getPsiBiographyData():ArrayList<HashMap<String, String>> = psiBiographyData
     fun getPsiSpecialtiesData():ArrayList<HashMap<String, String>> = psiSpecialtiesData
+    fun getImageData(): List<ByteArray> = psiImage
 
     suspend fun getPsiUser(){
         val psi = viewModelScope.async {
@@ -48,6 +50,17 @@ class PsiListViewModel:ViewModel() {
         bio.await().collect{biography->
             psiBiographyData = biography
         }
+    }
+
+    suspend fun getImage(){
+        val result = viewModelScope.async {
+            repositoryPsiData.getImageFilesFromStorage()
+        }
+
+        result.await().collect{list->
+            psiImage = list.toMutableList()
+        }
+
     }
 
 

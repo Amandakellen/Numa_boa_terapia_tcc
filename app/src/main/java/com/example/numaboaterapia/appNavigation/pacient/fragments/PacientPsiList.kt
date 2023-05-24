@@ -22,6 +22,8 @@ class PacientPsiList : Fragment() {
     private lateinit var viewModel: PsiListViewModel
     private lateinit var psiUser : ArrayList<HashMap<String, String>>
     private lateinit var psiBiographyData : ArrayList<HashMap<String, String>>
+    private lateinit var psiSpecialtiesData : ArrayList<HashMap<String, String>>
+    private var psiImage = mutableListOf<ByteArray>()
     private val adapter = PsiListAdapter()
 
 
@@ -39,13 +41,18 @@ class PacientPsiList : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getPsiUser()
             viewModel.getBiography()
+            viewModel.getSpecialties()
+            viewModel.getImage()
             withContext(Dispatchers.Main) {
                 binding.psiListProgressbar.visibility = View.GONE
                 psiUser = viewModel.getPsiUserData()
                 psiBiographyData = viewModel.getPsiBiographyData()
+                psiSpecialtiesData = viewModel.getPsiSpecialtiesData()
+                psiImage = viewModel.getImageData().toMutableList()
 
                 adapter.psiUser = psiUser
                 adapter.biography = psiBiographyData
+                adapter.psiImage = psiImage
                 adapter.setOnClickListener(object : PsiListAdapter.onItemclickListener {
                     override fun onItemClick(position: Int) {
                         Log.i("cliquei","click")
