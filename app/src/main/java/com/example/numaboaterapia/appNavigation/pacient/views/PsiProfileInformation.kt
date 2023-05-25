@@ -3,15 +3,19 @@ package com.example.numaboaterapia.appNavigation.pacient.views
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Typeface
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.PsiListViewModel
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.PsiProfileInformationViewModel
 import com.example.numaboaterapia.databinding.ActivityPsiProfileInformationBinding
+import com.google.android.material.chip.Chip
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +29,7 @@ class PsiProfileInformation : AppCompatActivity() {
     private lateinit var psiBiographyData: ArrayList<String>
     private lateinit var psiSpecialtiesData: ArrayList<String>
     private lateinit var psiImage: ByteArray
+    private val typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPsiProfileInformationBinding.inflate(layoutInflater)
@@ -73,6 +78,32 @@ class PsiProfileInformation : AppCompatActivity() {
                     } else {
                         psiProfileInformationPhoto.setImageBitmap(bitmap)
                     }
+                    psiSpecialtiesData.forEach {
+                        Log.i("especialidades",it)
+                        val chip = Chip(psiProfileInformationChipGroupSpecialties.context)
+                        chip.text = it
+                        chip.isClickable = false
+                        chip.isCheckable = false
+                        chip.setTextColor(
+                            ContextCompat.getColor(
+                                psiProfileInformationChipGroupSpecialties.context,
+                                R.color.purple
+                            )
+                        )
+                        chip.setChipBackgroundColorResource(R.color.white)
+                        chip.setChipStrokeColorResource(R.color.light_purple)
+                        chip.setChipStrokeWidth(2F)
+                        chip.setTypeface(typeface)
+
+                        binding.psiProfileInformationChipGroupSpecialties.addView(chip)
+
+                    }
+//                    psiSpecialtiesData.forEach {
+//
+//                        val chip = Chip(applicationContext)
+
+//
+//                    }
 
 
                 }
@@ -107,6 +138,9 @@ class PsiProfileInformation : AppCompatActivity() {
             val link = psiUser[3]
             openWhatsAppLink(link)
         }
+
+        binding.psiProfileInformationTime.setTypeface(typeface)
+
 
     }
 }

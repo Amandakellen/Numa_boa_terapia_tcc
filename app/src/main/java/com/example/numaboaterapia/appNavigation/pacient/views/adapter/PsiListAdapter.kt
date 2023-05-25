@@ -3,6 +3,7 @@ package com.example.numaboaterapia.appNavigation.pacient.views.adapter
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
     var psiUser: ArrayList<HashMap<String, String>> = ArrayList()
     var biography: ArrayList<HashMap<String, String>> = ArrayList()
     var psiImage = mutableListOf<ByteArray>()
+    private val typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
 
     private fun convertImageToByteArray(context: Context, resourceId: Int): ByteArray {
         val bitmap = BitmapFactory.decodeResource(context.resources, resourceId)
@@ -56,7 +58,8 @@ class PsiListAdapter : RecyclerView.Adapter<PsiListAdapter.PsiListAdapterViewHol
                     biography[position]["city"] + " - " + biography[position]["uf"]
                 psiListItemCrp.text = psiUser[position]["crp"]
                 psiListItemEspecializacao.text = psiUser[position]["especializacao"]
-                psiListTime.text = "Duração da sessão: " + psiUser[position]["time"] + " min"
+                psiListTime.text = "Duração da sessão: " + psiUser[position]["time"] + " minutos"
+                psiListTime.setTypeface(typeface)
                 if(bitmap==null){
                     psiListPhoto.setImageResource(R.mipmap.psi_gray)
                 }else{
