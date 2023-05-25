@@ -65,6 +65,10 @@ class EditPsiBiography : AppCompatActivity() {
         }
         binding.editBiographyPsiToolBar.setTitleText(R.string.edit_biography)
 
+        binding.editBiographyCancelButton.setOnClickListener {
+            finish()
+        }
+
         binding.editCepButton.setText(R.string.cep)
         binding.editBiographySaveButton.setText(R.string.save)
 
