@@ -98,12 +98,8 @@ class PsiProfileInformation : AppCompatActivity() {
                         binding.psiProfileInformationChipGroupSpecialties.addView(chip)
 
                     }
-//                    psiSpecialtiesData.forEach {
-//
-//                        val chip = Chip(applicationContext)
 
-//
-//                    }
+                    psiProfileInformationBiographyText.text = psiBiographyData[0]
 
 
                 }
@@ -135,8 +131,12 @@ class PsiProfileInformation : AppCompatActivity() {
         }
 
         binding.psiProfileInformationWpp.setOnClickListener {
-            val link = psiUser[3]
-            openWhatsAppLink(link)
+            val result = viewModel.savePacientData()
+            result.invokeOnCompletion {
+                val link = psiUser[3]
+                openWhatsAppLink(link)
+            }
+
         }
 
         binding.psiProfileInformationTime.setTypeface(typeface)
