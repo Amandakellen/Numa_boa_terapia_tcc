@@ -28,6 +28,7 @@
             android:padding="8dp">
 
             <TextView
+                android:id="@+id/acces_mounth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -37,6 +38,7 @@
                 tools:text="Mai" />
 
             <TextView
+                android:id="@+id/access_day"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -47,6 +49,7 @@
                 tools:text="26" />
 
             <TextView
+                android:id="@+id/access_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
