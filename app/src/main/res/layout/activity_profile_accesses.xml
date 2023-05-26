@@ -26,5 +26,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/psi_access_tool_bar" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_access_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/access_filter_button"
+        app:layout_constraintVertical_bias="0.087"
+        tools:listitem="@layout/profile_access_item"
+        tools:itemCount="6"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
