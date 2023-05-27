@@ -51,4 +51,17 @@ class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAc
     }
 
     override fun getItemCount(): Int = usersData.size
+
+    fun filterByDate(selectedDate: String) {
+        val filteredData = ArrayList<HashMap<String, String>>()
+        for (i in 0 until usersData.size) {
+            val user = usersData[i]
+            val userDate = "${user["day"]}/${user["mounth"]}/${user["year"]}"
+            if (userDate == selectedDate) {
+                filteredData.add(user)
+            }
+        }
+        usersData = filteredData
+        notifyDataSetChanged()
+    }
 }

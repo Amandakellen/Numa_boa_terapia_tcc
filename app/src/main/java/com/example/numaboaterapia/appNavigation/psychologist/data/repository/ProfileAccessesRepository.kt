@@ -95,16 +95,21 @@ class ProfileAccessesRepository {
 
     fun getUsersAverageIncome(): Flow<ArrayList<HashMap<String, String>>> = flow {
         val profileList = ArrayList<HashMap<String, String>>()
+
         userData.forEach { userData ->
             val uId = userData["Uid"]
             val docRef = db.collection("patient_average_income")
+            val accessDate = userData["access_date"]
             val query = docRef.whereEqualTo("uId", uId)
             val documents = query.get().await()
 
             for (document in documents) {
                 val data = document.data
-
+                val date = accessDate?.let { parseDate(it) }
                 val psiData = hashMapOf(
+                    "day" to date!![0],
+                    "mounth" to date!![1],
+                    "year"  to date!![2],
                     "average" to data["pri_average_income"] as String
                 )
 
