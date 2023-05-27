@@ -279,6 +279,10 @@ Não compartilhamos nenhum outro dado seu.</string>
     <!--lista de psicologo-->
     <string name="profile">Ver perfil completo</string>
 
+    <!--lista de acessos no perfil-->
+    <string name="access_label">Acessos ao seu perfil</string>
+    <string name="date_button_label">Selecione a data</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
