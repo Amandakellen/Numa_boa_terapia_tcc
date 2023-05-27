@@ -283,6 +283,10 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="access_label">Acessos ao seu perfil</string>
     <string name="date_button_label">Selecione a data</string>
 
+    <!--lista de pacientes-->
+    <string name="patient_list">Pacientes</string>
+    <string name="search_text">Pesquisar...</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

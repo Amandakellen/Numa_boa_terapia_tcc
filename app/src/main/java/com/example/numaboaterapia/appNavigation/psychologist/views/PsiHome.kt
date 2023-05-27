@@ -34,7 +34,7 @@ class PsiHome : AppCompatActivity() {
                         loadFragment(PsiHomeFragment())
                     }
                     R.id.sessoes->{
-                        //loadFragment()
+                       // loadFragment()
                     }
                     else->{
                         loadFragment(PsiProfileFragment())

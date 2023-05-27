@@ -69,7 +69,7 @@ class ProfileAccesses : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 adapter.setOnItemClickListener(object : ProfileAccessAdapter.onItemClickListener {
                     override fun onItemClick(position: Int) {
-
+                        //todo
                     }
                 })
             }

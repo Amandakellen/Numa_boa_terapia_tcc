@@ -28,7 +28,12 @@
         android:theme="@style/Theme.NumaBoaTerapia"
         tools:targetApi="31">
         <activity
+            android:name=".appNavigation.psychologist.views.PsiPatientsList"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".appNavigation.psychologist.views.ProfileAccesses"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".appNavigation.pacient.views.PsiProfileInformation"
