@@ -8,6 +8,7 @@ import kotlinx.coroutines.async
 class ProfileAccessesViewModel: ViewModel() {
     private val repository=  ProfileAccessesRepository()
 
+    private lateinit var userAccess : ArrayList<HashMap<String, String>>
     private lateinit var usersData : ArrayList<HashMap<String, String>>
     private lateinit var averageData : ArrayList<HashMap<String, String>>
 
@@ -19,6 +20,10 @@ class ProfileAccessesViewModel: ViewModel() {
     suspend fun getAccessUsers(){
         val access = viewModelScope.async {
             repository.getAccessUsers()
+        }
+
+        access.await().collect{users->
+            userAccess = users
         }
 
     }

@@ -36,9 +36,9 @@ class ProfileAccessesRepository {
     fun getAccessUsers(): Flow<ArrayList<HashMap<String, String>>> = flow {
 
         val userUUID = auth.currentUser!!.uid
-        val docRef = db.collection("patient_access")
-            .whereEqualTo("psi_uuid", userUUID)
-            .orderBy("access_date", Query.Direction.DESCENDING)
+        val docRef = db.collection("patient_accesses")
+            .whereEqualTo("psi_uid", userUUID)
+            .orderBy("accesses_date", Query.Direction.DESCENDING)
 
         val profileList = ArrayList<HashMap<String, String>>()
 
@@ -48,9 +48,9 @@ class ProfileAccessesRepository {
                 val data = document.data
 
                 val psiData = hashMapOf(
-                    "access_date" to data["access_date"] as String,
-                    "psi_uuid" to data["psi_uuid"] as String,
-                    "Uid" to data["Uid"] as String
+                    "access_date" to data["accesses_date"] as String,
+                    "psi_uuid" to data["psi_uid"] as String,
+                    "Uid" to data["uId"] as String
                 )
 
                 profileList.add(psiData)
