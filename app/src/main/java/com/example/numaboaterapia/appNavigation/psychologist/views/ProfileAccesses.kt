@@ -14,7 +14,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class ProfileAccesses : AppCompatActivity() {
     private lateinit var binding: ActivityProfileAccessesBinding
@@ -72,6 +74,19 @@ class ProfileAccesses : AppCompatActivity() {
                 })
             }
         }
+
+
+        viewModel.filteredUsersData.observe(this) { filteredUsersData ->
+            adapter.usersData = filteredUsersData
+            adapter.notifyDataSetChanged()
+            binding.progressAccess.visibility = View.GONE
+        }
+
+        viewModel.filteredAverageData.observe(this) { filteredAverageData ->
+            adapter.averageData = filteredAverageData
+            adapter.notifyDataSetChanged()
+            binding.progressAccess.visibility = View.GONE
+        }
     }
 
     private fun showDatePicker() {
@@ -83,11 +98,13 @@ class ProfileAccesses : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             DatePickerDialog.OnDateSetListener { _, selectedYear, selectedMonth, selectedDay ->
-                // Aqui você pode lidar com a data selecionada
-                selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-                // Faça o que precisar com a data selecionada
-                Toast.makeText(this,
-                    "Data selecionada: $selectedDate", Toast.LENGTH_SHORT).show()
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(selectedYear, selectedMonth, selectedDay)
+
+                val dateFormat = SimpleDateFormat("dd/MMMM/yyyy", Locale.getDefault())
+                selectedDate = dateFormat.format(selectedCalendar.time)
+                binding.progressAccess.visibility = View.VISIBLE
+                viewModel.getFilteredData(selectedDate)
             },
             year,
             month,
@@ -96,4 +113,8 @@ class ProfileAccesses : AppCompatActivity() {
 
         datePickerDialog.show()
     }
+
+
+
+
 }
