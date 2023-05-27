@@ -35,7 +35,7 @@ class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAc
             binding.accessProfileEmail.text = "Email: " + userData["email"]
             binding.accessProfileRenda.text = "Renda: " + averageDataItem["average"]
             binding.accessDay.text = userData["day"]
-            binding.accesMounth.text = userData["month"]
+            binding.accesMounth.text = userData["mounth"]
             binding.accessYear.text = userData["year"]
         }
     }
