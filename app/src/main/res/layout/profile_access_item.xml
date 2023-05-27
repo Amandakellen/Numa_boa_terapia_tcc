@@ -71,7 +71,7 @@
             android:textColor="@color/purple"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toEndOf="@id/layout_date"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Harry Potter" />

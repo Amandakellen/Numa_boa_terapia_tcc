@@ -29,7 +29,6 @@ class ProfileAccesses : AppCompatActivity() {
         binding = ActivityProfileAccessesBinding.inflate(layoutInflater)
         viewModel = ProfileAccessesViewModel()
         setUpViews()
-        setUpRecyclerView()
         setContentView(binding.root)
     }
 
@@ -43,8 +42,10 @@ class ProfileAccesses : AppCompatActivity() {
         binding.accessFilterButton.setOnClickListener {
             showDatePicker()
         }
-        binding.profileAccessRecyclerView.adapter = adapter
         binding.profileAccessRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.profileAccessRecyclerView.adapter = adapter
+        setUpRecyclerView()
+
     }
 
     private fun setUpRecyclerView(){
@@ -63,7 +64,8 @@ class ProfileAccesses : AppCompatActivity() {
 
                 adapter.usersData = usersData
                 adapter.averageData = averageData
-                adapter.setOnClickListener(object : ProfileAccessAdapter.onItemclickListener {
+                adapter.notifyDataSetChanged()
+                adapter.setOnItemClickListener(object : ProfileAccessAdapter.onItemClickListener {
                     override fun onItemClick(position: Int) {
 
                     }

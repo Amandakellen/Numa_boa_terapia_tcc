@@ -6,68 +6,47 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.numaboaterapia.databinding.ProfileAccessItemBinding
 
-class ProfileAccessAdapter :
-    RecyclerView.Adapter<ProfileAccessAdapter.ProfileAccessAdapterViewHolder>() {
-    private lateinit var mListener: ProfileAccessAdapter.onItemclickListener
-    var usersData =  ArrayList<HashMap<String, String>>()
-    var averageData =  ArrayList<HashMap<String, String>>()
+class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAccessAdapterViewHolder>() {
+    private lateinit var mListener: onItemClickListener
+    var usersData = ArrayList<HashMap<String, String>>()
+    var averageData = ArrayList<HashMap<String, String>>()
 
-    interface onItemclickListener {
+    interface onItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnClickListener(listener: onItemclickListener) {
+    fun setOnItemClickListener(listener: onItemClickListener) {
         mListener = listener
-
     }
 
-    inner class ProfileAccessAdapterViewHolder(
-        val binding: ProfileAccessItemBinding,
-        listener: ProfileAccessAdapter.onItemclickListener,
-        val context: Context
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ProfileAccessAdapterViewHolder(private val binding: ProfileAccessItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
+                mListener.onItemClick(adapterPosition)
             }
         }
-
 
         fun bind(position: Int) {
+            val userData = usersData[position]
+            val averageDataItem = averageData[position]
 
-            with(binding) {
-                accessProfileName.text = usersData[position]["name"]
-                accessProfileEmail.text = "Emal: "+ usersData[position]["email"]
-                accessProfileRenda.text="Renda: " + averageData[position]["average"]
-                accessDay.text = usersData[position]["day"]
-                accesMounth.text = usersData[position]["mounth"]
-                accessYear.text = usersData[position]["year"]
-
-
-            }
+            binding.accessProfileName.text = userData["name"]
+            binding.accessProfileEmail.text = "Email: " + userData["email"]
+            binding.accessProfileRenda.text = "Renda: " + averageDataItem["average"]
+            binding.accessDay.text = userData["day"]
+            binding.accesMounth.text = userData["month"]
+            binding.accessYear.text = userData["year"]
         }
-
-
     }
 
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ProfileAccessAdapter.ProfileAccessAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAccessAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ProfileAccessItemBinding.inflate(layoutInflater, parent, false)
-        val context = parent.context
-
-        return ProfileAccessAdapterViewHolder(binding, mListener, context)
+        return ProfileAccessAdapterViewHolder(binding)
     }
 
-    override fun onBindViewHolder(
-        holder: ProfileAccessAdapter.ProfileAccessAdapterViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: ProfileAccessAdapterViewHolder, position: Int) {
         holder.bind(position)
     }
 
