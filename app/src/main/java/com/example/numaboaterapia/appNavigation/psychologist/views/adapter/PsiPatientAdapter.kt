@@ -3,9 +3,10 @@ package com.example.numaboaterapia.appNavigation.psychologist.views.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.numaboaterapia.databinding.ProfileAccessItemBinding
+import com.example.numaboaterapia.databinding.PatientsListItemBinding
 
-class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAccessAdapterViewHolder>() {
+
+class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapterViewHolder>() {
     private lateinit var mListener: onItemClickListener
     var usersData = ArrayList<HashMap<String, String>>()
     var averageData = ArrayList<HashMap<String, String>>()
@@ -18,7 +19,8 @@ class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAc
         mListener = listener
     }
 
-    inner class ProfileAccessAdapterViewHolder(private val binding: ProfileAccessItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PsiPatientAdapterViewHolder(private val binding: PatientsListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {
@@ -30,22 +32,17 @@ class ProfileAccessAdapter : RecyclerView.Adapter<ProfileAccessAdapter.ProfileAc
             val userData = usersData[position]
             val averageDataItem = averageData[position]
 
-            binding.accessProfileName.text = userData["name"]
-            binding.accessProfileEmail.text = "Email: " + userData["email"]
-            binding.accessProfileRenda.text = "Renda: " + averageDataItem["average"]
-            binding.accessDay.text = userData["day"]
-            binding.accesMounth.text = userData["mounth"]
-            binding.accessYear.text = userData["year"]
+
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAccessAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PsiPatientAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ProfileAccessItemBinding.inflate(layoutInflater, parent, false)
-        return ProfileAccessAdapterViewHolder(binding)
+        val binding = PatientsListItemBinding.inflate(layoutInflater, parent, false)
+        return PsiPatientAdapterViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ProfileAccessAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PsiPatientAdapterViewHolder, position: Int) {
         holder.bind(position)
     }
 

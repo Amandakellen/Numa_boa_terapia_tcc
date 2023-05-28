@@ -287,6 +287,27 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="patient_list">Pacientes</string>
     <string name="search_text">Pesquisar...</string>
 
+    <!--Adicionar pacientes-->
+    <string name="add_tool_bar">Dados do Paciente</string>
+    <string name="information_label">Informações</string>
+    <string name="location_label">Endereço</string>
+    <string name="contact_label">Contato de emergência</string>
+    <string name="wpp_patient">Whatsapp</string>
+    <string name="profession">Profissão</string>
+    <string name="country">Naturalidade</string>
+    <string name="value">Valor por sessão</string>
+    <string name="schooling">Escolaridade</string>
+    <string name="adicional">Observações...</string>
+    <string name="address">Endereço</string>
+    <string name="number">Número</string>
+    <string name="neighborhood">Bairro</string>
+    <string name="city_label">Cidade</string>
+    <string name="uf">Estado</string>
+    <string name="gender">Gênero</string>
+    <string name="birthday">Data de nascimento</string>
+    <string name="add_patient">Adicionar paciente</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

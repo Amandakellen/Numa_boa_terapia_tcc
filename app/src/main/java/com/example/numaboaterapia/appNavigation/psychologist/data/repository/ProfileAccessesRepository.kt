@@ -80,7 +80,8 @@ class ProfileAccessesRepository {
                     "mounth" to date!![1],
                     "year"  to date!![2],
                     "email" to data["pu_email"] as String,
-                    "name" to data["pu_name"] as String
+                    "name" to data["pu_name"] as String,
+                    "Uid" to data["uId"] as String
                 )
 
                 profileList.add(psiData)

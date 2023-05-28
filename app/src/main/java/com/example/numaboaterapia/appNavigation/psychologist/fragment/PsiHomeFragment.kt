@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.psychologist.views.ProfileAccesses
+import com.example.numaboaterapia.appNavigation.psychologist.views.PsiPatientsList
 import com.example.numaboaterapia.databinding.FragmentPsiHomeBinding
 
 
@@ -29,6 +30,9 @@ class PsiHomeFragment : Fragment() {
         binding.toolBarPsiHome.getBackButton().visibility = View.GONE
         binding.psiViewAccessHome.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileAccesses::class.java))
+        }
+        binding.psiSubtitlePatient.setOnClickListener {
+            startActivity(Intent(requireContext(), PsiPatientsList::class.java))
         }
     }
 
