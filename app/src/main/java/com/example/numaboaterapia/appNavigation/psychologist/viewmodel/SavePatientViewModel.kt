@@ -2,8 +2,13 @@ package com.example.numaboaterapia.appNavigation.psychologist.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.numaboaterapia.register.data.repository.FirebaseResponseRepository
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 
 class SavePatientViewModel: ViewModel() {
+    private var firebaseRepository = FirebaseResponseRepository()
 
     private val _email = MutableLiveData<String>()
 
@@ -120,4 +125,53 @@ class SavePatientViewModel: ViewModel() {
         _patientId.value = senha
     }
 
+    private fun hashMapData(): HashMap<String, String> {
+        return hashMapOf(
+            "patient_name" to _name.value.toString(),
+            "patient_email" to _email.value.toString(),
+            "patient_wpp" to _wpp.value.toString(),
+            "patient_cpf" to _cpf.value.toString(),
+            "patient_gender" to _gender.value.toString(),
+            "patient_birthday" to _date.value.toString(),
+            "patient_profession" to _profission.value.toString(),
+            "patient_schooling" to _schooling.value.toString(),
+            "patient_country" to _country.value.toString(),
+            "patient_payment" to _value.value.toString(),
+            "patient_observation" to _observation.value.toString(),
+            "patient_address" to _address.value.toString(),
+            "patient_number" to _number.value.toString(),
+            "patient_neighborhood" to _neighborhood.value.toString(),
+            "patient_city" to _city.value.toString(),
+            "patient_uf" to _uf.value.toString(),
+            "patient_contact_name" to _contactName.value.toString(),
+            "patient_contact_wpp" to _contactWpp.value.toString(),
+            "patient_uid" to _patientId.value.toString()
+
+
+        )
+
+    }
+
+    fun saveValue(): Deferred<String> {
+
+        val result = viewModelScope.async {
+            firebaseRepository.saveData(
+                "psi_patient_list",
+                hashMapData()
+            )
+        }
+        return result
+    }
+
+    suspend fun verifyIfIsPacient():Boolean{
+        var result =viewModelScope.async{
+            firebaseRepository.checkValueInPacientList(_patientId.value.toString())
+        }
+
+        var retorno = false
+        result.await().collect{
+            retorno = it== true
+        }
+        return retorno
+    }
 }

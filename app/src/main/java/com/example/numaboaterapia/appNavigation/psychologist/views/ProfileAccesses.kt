@@ -72,8 +72,9 @@ class ProfileAccesses : AppCompatActivity() {
                     override fun onItemClick(position: Int) {
                         val intent =
                             Intent(applicationContext, AddPatientToListActivity::class.java)
-                        intent.putExtra("userData", usersData[position])
-                        intent.putExtra("userAverage", averageData[position])
+                        intent.putExtra("name", usersData[position]["name"])
+                        intent.putExtra("email", usersData[position]["email"])
+                        intent.putExtra("uId", usersData[position]["Uid"])
 
                         startActivity(intent)
                     }

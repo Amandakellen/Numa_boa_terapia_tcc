@@ -91,7 +91,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="4dp"
                 android:hint="@string/email_string"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -108,6 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -137,6 +138,7 @@
                     android:id="@+id/add_patient_gender_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -151,7 +153,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="4dp"
                 android:hint="@string/birthday"
-                android:inputType="text"
+                android:inputType="date"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -167,6 +169,7 @@
                     android:id="@+id/add_patient_date_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="date"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -182,7 +185,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="4dp"
                 android:hint="@string/wpp_patient"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -196,6 +199,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_patient_wpp_edit_text"
                     android:layout_width="170dp"
+                    android:inputType="number"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
@@ -212,7 +216,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="4dp"
                 android:hint="CPF"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -228,6 +232,8 @@
                     android:id="@+id/add_patient_cpf_edit_text"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="11"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -257,6 +263,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_patient_profession_edit_text"
                     android:layout_width="170dp"
+                    android:inputType="text"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
@@ -289,6 +296,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_patient_schooling_edit_text"
                     android:layout_width="170dp"
+                    android:inputType="text"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
@@ -319,6 +327,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_patient_country_edit_text"
                     android:layout_width="170dp"
+                    android:inputType="text"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
@@ -334,7 +343,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/chau_philomene_one"
                 android:hint="@string/value"
-                android:inputType="text"
+                android:inputType="number"
                 android:paddingBottom="4dp"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
@@ -436,6 +445,7 @@
                     android:id="@+id/add_patient_address_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -450,7 +460,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="4dp"
                 android:hint="@string/number"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -465,6 +475,7 @@
                 android:id="@+id/add_patient_number_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -497,6 +508,7 @@
                     android:id="@+id/add_patient_neighborhood_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -527,6 +539,7 @@
                     android:id="@+id/add_patient_city_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -559,6 +572,7 @@
                     android:id="@+id/add_patient_uf_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -617,6 +631,7 @@
                     android:id="@+id/add_patient_contact_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -631,7 +646,7 @@
                 android:layout_marginTop="8dp"
                 android:paddingBottom="4dp"
                 android:hint="@string/wpp_patient"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/purple"
                 app:boxStrokeColor="@color/purple"
@@ -647,6 +662,7 @@
                     android:id="@+id/add_patient_contact_wpp_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
