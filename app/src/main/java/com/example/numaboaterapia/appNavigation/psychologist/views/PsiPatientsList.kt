@@ -1,5 +1,6 @@
 package com.example.numaboaterapia.appNavigation.psychologist.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.R
@@ -20,5 +21,8 @@ class PsiPatientsList : AppCompatActivity() {
             finish()
         }
         binding.psiPatientListToolBar.setTitleText(R.string.patient_list)
+        binding.floatingActionButton.setOnClickListener {
+            startActivity(Intent(this, ProfileAccesses::class.java))
+        }
     }
 }
