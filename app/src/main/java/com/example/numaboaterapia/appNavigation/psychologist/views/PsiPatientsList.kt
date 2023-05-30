@@ -27,7 +27,7 @@ class PsiPatientsList : AppCompatActivity() {
     private lateinit var viewModel : PsiPatientListViewModel
     private var patientData =  ArrayList<HashMap<String, String>>()
     private var adapter = PsiPatientAdapter()
-    private var patientImage = mutableListOf<ByteArray>()
+    private var patientImage = mutableListOf<ByteArray?>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

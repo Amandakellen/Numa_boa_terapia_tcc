@@ -11,10 +11,10 @@ import java.util.Locale
 class PsiPatientListViewModel:ViewModel() {
     private val repository = PsiPatientListRepository()
     private lateinit var patientData : ArrayList<HashMap<String, String>>
-    private  var patientImage = mutableListOf<ByteArray>()
+    private  var patientImage = mutableListOf<ByteArray?>()
     private lateinit var imageDefaut : ByteArray
     private var filteredPatientData = ArrayList<HashMap<String, String>>()
-    private var filteredPatientImage = mutableListOf<ByteArray>()
+    private var filteredPatientImage = mutableListOf<ByteArray?>()
     var searchText = MutableLiveData<String>()
 
     init {
@@ -26,10 +26,10 @@ class PsiPatientListViewModel:ViewModel() {
     }
 
     fun getFilteredPatientData(): ArrayList<HashMap<String, String>> = filteredPatientData
-    fun getFilteredPatientImage(): List<ByteArray> = filteredPatientImage
+    fun getFilteredPatientImage(): List<ByteArray?> = filteredPatientImage
 
     fun getPatientList(): ArrayList<HashMap<String, String>> = patientData
-    fun getImageData(): List<ByteArray> = patientImage
+    fun getImageData(): List<ByteArray?> = patientImage
 
     suspend fun getPatientCollection() {
 
@@ -66,7 +66,7 @@ class PsiPatientListViewModel:ViewModel() {
         filteredPatientData.clear()
         filteredPatientImage.clear()
 
-        val filteredImagesMap = mutableMapOf<String, ByteArray>()
+        val filteredImagesMap = mutableMapOf<String, ByteArray?>()
 
         for (i in patientList.indices) {
             val patient = patientList[i]
