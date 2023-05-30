@@ -1,15 +1,18 @@
 package com.example.numaboaterapia.appNavigation.psychologist.views.adapter
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.PatientsListItemBinding
 
 
 class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapterViewHolder>() {
     private lateinit var mListener: onItemClickListener
     var usersData = ArrayList<HashMap<String, String>>()
-    var averageData = ArrayList<HashMap<String, String>>()
+    var patientImage = mutableListOf<ByteArray>()
+
 
     interface onItemClickListener {
         fun onItemClick(position: Int)
@@ -28,9 +31,27 @@ class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapt
             }
         }
 
-        fun bind(position: Int) {
-            val userData = usersData[position]
-            val averageDataItem = averageData[position]
+        fun bind(position: Int) {.
+
+            with(binding){
+                patientListItemName.text = usersData[position]["patient_name"]
+                patientListItemCpf.text = "CPF: "+ usersData[position]["patient_cpf"]
+                patientListItemWpp.text = "Whatsapp: "+usersData[position]["patient_wpp"]
+                try{
+                    val bitmap =
+                        BitmapFactory.decodeByteArray(patientImage[position],
+                            0, patientImage[position].size)
+                    patientListPhoto.setImageBitmap(bitmap)
+                }catch (e:Exception){
+                    patientListPhoto.setImageResource(R.mipmap.pacient_gray)
+                }
+//                if(bitmap==null){
+//                    patientListPhoto.setImageResource(R.mipmap.pacient_gray)
+//                }else{
+//                    patientListPhoto.setImageBitmap(bitmap)
+//                }
+            }
+
 
 
         }
@@ -48,16 +69,4 @@ class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapt
 
     override fun getItemCount(): Int = usersData.size
 
-    fun filterByDate(selectedDate: String) {
-        val filteredData = ArrayList<HashMap<String, String>>()
-        for (i in 0 until usersData.size) {
-            val user = usersData[i]
-            val userDate = "${user["day"]}/${user["mounth"]}/${user["year"]}"
-            if (userDate == selectedDate) {
-                filteredData.add(user)
-            }
-        }
-        usersData = filteredData
-        notifyDataSetChanged()
-    }
 }
