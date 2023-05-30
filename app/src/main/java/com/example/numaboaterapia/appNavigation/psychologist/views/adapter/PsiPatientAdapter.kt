@@ -31,7 +31,7 @@ class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapt
             }
         }
 
-        fun bind(position: Int) {.
+        fun bind(position: Int) {
 
             with(binding){
                 patientListItemName.text = usersData[position]["patient_name"]
@@ -45,11 +45,7 @@ class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapt
                 }catch (e:Exception){
                     patientListPhoto.setImageResource(R.mipmap.pacient_gray)
                 }
-//                if(bitmap==null){
-//                    patientListPhoto.setImageResource(R.mipmap.pacient_gray)
-//                }else{
-//                    patientListPhoto.setImageBitmap(bitmap)
-//                }
+
             }
 
 

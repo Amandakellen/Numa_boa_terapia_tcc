@@ -85,6 +85,12 @@ class PsiPatientsList : AppCompatActivity() {
                 showViews()
                 adapter.usersData = patientData
                 adapter.patientImage = patientImage
+                if(patientData.size == 1){
+                    binding.patientListCount.text = "1 paciente encontrado"
+                }else{
+                    binding.patientListCount.text =
+                        patientData.size.toString() + " pacientes encontrados"
+                }
 
 
 

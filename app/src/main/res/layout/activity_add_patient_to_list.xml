@@ -199,7 +199,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_patient_wpp_edit_text"
                     android:layout_width="170dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 

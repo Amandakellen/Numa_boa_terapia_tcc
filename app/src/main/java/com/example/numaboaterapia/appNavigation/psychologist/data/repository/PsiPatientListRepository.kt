@@ -37,7 +37,7 @@ class PsiPatientListRepository {
     fun getPatientCollection(): Flow<ArrayList<HashMap<String, String>>> = flow {
         val userUUID = auth.currentUser!!.uid
         val docRef = db.collection("psi_patient_list")
-        val query = docRef.whereEqualTo("uId", userUUID)
+        val query = docRef.whereEqualTo("uId", userUUID).orderBy("patient_name")
         val list = ArrayList<HashMap<String, String>>()
         val documents = query.get().await()
         for (document in documents) {
