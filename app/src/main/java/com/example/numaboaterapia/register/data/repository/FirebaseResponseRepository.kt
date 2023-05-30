@@ -63,5 +63,29 @@ class FirebaseResponseRepository {
         awaitClose()
     }
 
+    fun checkPayment(): Flow<String?> = callbackFlow {
+        val userUUID = auth.currentUser!!.uid
+        val firestore = FirebaseFirestore.getInstance()
+        val collectionRef = firestore.collection("psi_mercado_pago")
+
+        collectionRef
+            .whereEqualTo("uId", userUUID)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                val document = querySnapshot.documents.firstOrNull()
+                val emailCobranca = document?.getString("email_cobranca")
+                trySend(emailCobranca).isSuccess // Envia o resultado do campo "email_cobranca"
+                close()
+            }
+            .addOnFailureListener { exception ->
+                // Ocorreu um erro ao acessar o Firebase Firestore
+                println("Erro ao acessar o Firestore: $exception")
+                close(exception)
+            }
+
+        awaitClose()
+    }
+
+
 
 }

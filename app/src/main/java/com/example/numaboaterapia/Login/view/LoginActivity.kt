@@ -1,6 +1,7 @@
 package com.example.numaboaterapia.Login.view
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.views.PacientApp
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiHome
 import com.example.numaboaterapia.databinding.ActivityLoginBinding
+import com.example.numaboaterapia.register.psychologist.viewModel.CreateMercadoPagoUserViewModel
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +25,7 @@ import kotlinx.coroutines.withContext
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var mercadoPagoViewModel : CreateMercadoPagoUserViewModel
     private lateinit var binding: ActivityLoginBinding
     private lateinit var toastLoginIsNull: Toast
 
@@ -33,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         viewModel = LoginViewModel()
+        mercadoPagoViewModel = CreateMercadoPagoUserViewModel()
 
         setUpEditText()
         setupViews()
@@ -93,6 +97,7 @@ class LoginActivity : AppCompatActivity() {
                                 true -> {
                                     CoroutineScope(Dispatchers.IO).launch {
                                         val result = viewModel.verifyIfIsPacient()
+                                        mercadoPagoViewModel.verifyPaymentExits()
                                         withContext(Dispatchers.Main) {
                                             if (result) {
                                                 startActivity(
@@ -105,14 +110,38 @@ class LoginActivity : AppCompatActivity() {
                                             }else{
                                                 CoroutineScope(Dispatchers.IO).launch {
                                                     val isPsi = viewModel.verifyIfIsPsi()
+                                                    val email = mercadoPagoViewModel.verifyPaymentExits()
+
                                                     withContext(Dispatchers.Main) {
                                                         if(isPsi){
-                                                            startActivity(
-                                                                Intent(
-                                                                    applicationContext,
-                                                                    PsiHome::class.java
-                                                                )
-                                                            )
+                                                            email.await().collect{
+                                                                it?.let { it1 ->
+                                                                    mercadoPagoViewModel.emailValue(
+                                                                        it1
+                                                                    )
+                                                                }
+                                                            }
+                                                            val result = mercadoPagoViewModel.getPayment()
+                                                            result.invokeOnCompletion {
+                                                                val payment = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                    mercadoPagoViewModel.verifyPayment()
+                                                                } else {
+                                                                    TODO("VERSION.SDK_INT < O")
+                                                                }
+                                                                if(payment!= "authorized"){
+                                                                    //todo
+
+                                                                }else{
+                                                                    startActivity(
+                                                                        Intent(
+                                                                            applicationContext,
+                                                                            PsiHome::class.java
+                                                                        )
+                                                                    )
+                                                                }
+                                                            }
+
+
                                                         }else{
                                                             Toast.makeText(
                                                                 applicationContext,
