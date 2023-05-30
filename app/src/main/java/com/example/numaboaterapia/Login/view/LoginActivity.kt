@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LoginViewModel
-    private lateinit var mercadoPagoViewModel : CreateMercadoPagoUserViewModel
+    private lateinit var mercadoPagoViewModel: CreateMercadoPagoUserViewModel
     private lateinit var binding: ActivityLoginBinding
     private lateinit var toastLoginIsNull: Toast
 
@@ -107,31 +107,40 @@ class LoginActivity : AppCompatActivity() {
                                                     )
                                                 )
 
-                                            }else{
+                                            } else {
                                                 CoroutineScope(Dispatchers.IO).launch {
                                                     val isPsi = viewModel.verifyIfIsPsi()
-                                                    val email = mercadoPagoViewModel.verifyPaymentExits()
+                                                    val email =
+                                                        mercadoPagoViewModel.verifyPaymentExits()
 
                                                     withContext(Dispatchers.Main) {
-                                                        if(isPsi){
-                                                            email.await().collect{
+                                                        if (isPsi) {
+                                                            email.await().collect {
                                                                 it?.let { it1 ->
                                                                     mercadoPagoViewModel.emailValue(
                                                                         it1
                                                                     )
                                                                 }
                                                             }
-                                                            val result = mercadoPagoViewModel.getPayment()
+                                                            val result =
+                                                                mercadoPagoViewModel.getPayment()
                                                             result.invokeOnCompletion {
-                                                                val payment = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                                                    mercadoPagoViewModel.verifyPayment()
-                                                                } else {
-                                                                    TODO("VERSION.SDK_INT < O")
-                                                                }
-                                                                if(payment!= "authorized"){
-                                                                    //todo
+                                                                val payment =
+                                                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                        mercadoPagoViewModel.verifyPayment()
+                                                                    } else {
+                                                                        TODO("VERSION.SDK_INT < O")
+                                                                    }
+                                                                if (payment != "authorized") {
+                                                                    startActivity(
+                                                                        Intent(
+                                                                            applicationContext,
+                                                                            PaymentDeclinedActivity
+                                                                            ::class.java
+                                                                        )
+                                                                    )
 
-                                                                }else{
+                                                                } else {
                                                                     startActivity(
                                                                         Intent(
                                                                             applicationContext,
@@ -142,7 +151,7 @@ class LoginActivity : AppCompatActivity() {
                                                             }
 
 
-                                                        }else{
+                                                        } else {
                                                             Toast.makeText(
                                                                 applicationContext,
                                                                 "Usuário não encontrado",
