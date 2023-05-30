@@ -29,15 +29,20 @@ class PatientRecord : AppCompatActivity() {
         val image = intent.getByteArrayExtra("image")
 
         binding.patientRecordName.text = name
-        binding.patientRecordCpf.text = cpf
-        binding.patientRecordWpp.text = wpp
+        binding.patientRecordCpf.text = "CPF: "+ cpf
+        binding.patientRecordWpp.text = "Whatsapp: "+ wpp
 
-        val bitmap = BitmapFactory.decodeByteArray(image, 0, image?.size ?: 0)
-        if (bitmap != null) {
-            binding.patientRecordPhoto.setImageBitmap(bitmap)
-        } else {
+        try{
+            val bitmap = BitmapFactory.decodeByteArray(image, 0, image?.size ?: 0)
+            if (bitmap != null) {
+                binding.patientRecordPhoto.setImageBitmap(bitmap)
+            } else {
+                binding.patientRecordPhoto.setImageResource(R.mipmap.pacient_gray)
+            }
+        }catch(e: Exception){
             binding.patientRecordPhoto.setImageResource(R.mipmap.pacient_gray)
         }
+
 
     }
 }
