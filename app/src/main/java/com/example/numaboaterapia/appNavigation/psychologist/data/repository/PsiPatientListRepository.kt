@@ -79,11 +79,11 @@ class PsiPatientListRepository {
         imageDefault = image
     }
 
-    fun getImageFilesFromStorage(): Flow<List<ByteArray>> = flow {
+    fun getImageFilesFromStorage(): Flow<List<ByteArray?>> = flow {
         val storage = FirebaseStorage.getInstance()
         val storageRef = storage.reference
 
-        val imageByteArrays = mutableListOf<ByteArray>()
+        val imageByteArrays = mutableListOf<ByteArray?>()
 
         for (fileName in listPatientUid) {
             var imageName = fileName + ".jpg"
@@ -93,7 +93,7 @@ class PsiPatientListRepository {
                 val bytes = fileRef.getBytes(ONE_MEGABYTE).await()
                 imageByteArrays.add(bytes)}
             catch(e: Exception){
-
+                imageByteArrays.add(null)
             }
         }
 

@@ -14,6 +14,7 @@ import com.example.numaboaterapia.register.psychologist.data.repository.MercadoP
 import com.example.numaboaterapia.register.psychologist.model.RetrofitMercadoPago
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.Flow
 import java.text.SimpleDateFormat
 import java.time.temporal.ChronoUnit
 import java.util.*
@@ -161,5 +162,14 @@ class CreateMercadoPagoUserViewModel : ViewModel() {
         }
 
         return result
+    }
+
+    suspend fun verifyPaymentExits(): Deferred<Flow<String?>> {
+        var result =viewModelScope.async{
+            firebaseRepository.checkPayment()
+        }
+
+       return result
+
     }
 }

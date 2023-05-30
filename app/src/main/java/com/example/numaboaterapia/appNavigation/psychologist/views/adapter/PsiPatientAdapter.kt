@@ -11,7 +11,7 @@ import com.example.numaboaterapia.databinding.PatientsListItemBinding
 class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapterViewHolder>() {
     private lateinit var mListener: onItemClickListener
     var usersData = ArrayList<HashMap<String, String>>()
-    var patientImage = mutableListOf<ByteArray>()
+    var patientImage = mutableListOf<ByteArray?>()
 
 
     interface onItemClickListener {
@@ -37,14 +37,28 @@ class PsiPatientAdapter : RecyclerView.Adapter<PsiPatientAdapter.PsiPatientAdapt
                 patientListItemName.text = usersData[position]["patient_name"]
                 patientListItemCpf.text = "CPF: "+ usersData[position]["patient_cpf"]
                 patientListItemWpp.text = "Whatsapp: "+usersData[position]["patient_wpp"]
-                try{
+
+                if (position < patientImage.size && patientImage[position] != null) {
                     val bitmap =
-                        BitmapFactory.decodeByteArray(patientImage[position],
-                            0, patientImage[position].size)
+                        patientImage[position]?.let {
+                            BitmapFactory.decodeByteArray(patientImage[position],
+                                0, it.size)
+                        }
                     patientListPhoto.setImageBitmap(bitmap)
-                }catch (e:Exception){
+                }else{
                     patientListPhoto.setImageResource(R.mipmap.pacient_gray)
                 }
+
+//                try{
+//                    val bitmap =
+//                        patientImage[position]?.let {
+//                            BitmapFactory.decodeByteArray(patientImage[position],
+//                                0, it.size)
+//                        }
+//                    patientListPhoto.setImageBitmap(bitmap)
+//                }catch (e:Exception){
+//                    patientListPhoto.setImageResource(R.mipmap.pacient_gray)
+//                }
 
             }
 

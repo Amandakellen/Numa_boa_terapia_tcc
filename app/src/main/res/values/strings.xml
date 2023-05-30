@@ -287,6 +287,16 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="patient_list">Pacientes</string>
     <string name="search_text">Pesquisar...</string>
 
+    <!--Ficha do Paciente-->
+    <string name="patient_record">Ficha do paiente</string>
+    <string name="patient_data">Dados principais</string>
+
+    <!--pagamento recusado-->
+    <string name="payment_refused_label">Pagamento Pendente</string>
+    <string name="payment_refused_text">Não encontramos as informações do pagamento, verifique com a operadora do seu cartão para verificar caso tenha ocorrido algum erro.
+    Se sua assinatura venceu, não se preocupe, você pode realizar o pagamento de uma nova clicando no botao abaixo.</string>
+    <string name="payment_refused_assignature">Selecionar uma nova assinatura</string>
+
     <!--Adicionar pacientes-->
     <string name="add_tool_bar">Dados do Paciente</string>
     <string name="information_label">Informações</string>
@@ -306,7 +316,6 @@ Não compartilhamos nenhum outro dado seu.</string>
     <string name="gender">Gênero</string>
     <string name="birthday">Data de nascimento</string>
     <string name="add_patient">Adicionar paciente</string>
-
 
 
     <!-- TODO: Remove or change this placeholder text -->
