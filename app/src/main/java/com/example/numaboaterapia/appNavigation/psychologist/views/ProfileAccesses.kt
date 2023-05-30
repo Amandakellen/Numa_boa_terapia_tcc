@@ -1,6 +1,7 @@
 package com.example.numaboaterapia.appNavigation.psychologist.views
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,10 +21,10 @@ import java.util.Locale
 
 class ProfileAccesses : AppCompatActivity() {
     private lateinit var binding: ActivityProfileAccessesBinding
-    private lateinit var selectedDate : String
+    private lateinit var selectedDate: String
     private lateinit var viewModel: ProfileAccessesViewModel
-    private lateinit var usersData : ArrayList<HashMap<String, String>>
-    private lateinit var averageData : ArrayList<HashMap<String, String>>
+    private lateinit var usersData: ArrayList<HashMap<String, String>>
+    private lateinit var averageData: ArrayList<HashMap<String, String>>
     private var adapter = ProfileAccessAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class ProfileAccesses : AppCompatActivity() {
 
     }
 
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView() {
         binding.accessFilterButton.visibility = View.GONE
         binding.progressAccess.visibility = View.VISIBLE
         CoroutineScope(Dispatchers.IO).launch {
@@ -69,7 +70,13 @@ class ProfileAccesses : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 adapter.setOnItemClickListener(object : ProfileAccessAdapter.onItemClickListener {
                     override fun onItemClick(position: Int) {
+                        val intent =
+                            Intent(applicationContext, AddPatientToListActivity::class.java)
+                        intent.putExtra("name", usersData[position]["name"])
+                        intent.putExtra("email", usersData[position]["email"])
+                        intent.putExtra("uId", usersData[position]["Uid"])
 
+                        startActivity(intent)
                     }
                 })
             }
@@ -113,8 +120,6 @@ class ProfileAccesses : AppCompatActivity() {
 
         datePickerDialog.show()
     }
-
-
 
 
 }
