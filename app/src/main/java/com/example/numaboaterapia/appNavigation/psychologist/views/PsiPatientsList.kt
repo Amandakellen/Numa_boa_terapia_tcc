@@ -2,6 +2,7 @@ package com.example.numaboaterapia.appNavigation.psychologist.views
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
+import java.lang.Exception
 
 
 class PsiPatientsList : AppCompatActivity() {
@@ -119,6 +121,13 @@ class PsiPatientsList : AppCompatActivity() {
 
                 adapter.setOnItemClickListener(object : PsiPatientAdapter.onItemClickListener {
                     override fun onItemClick(position: Int) {
+                        val intent = Intent(applicationContext, PatientRecord::class.java)
+                        intent.putExtra("name", adapter.usersData[position]["patient_name"])
+                        intent.putExtra("wpp", adapter.usersData[position]["patient_wpp"])
+                        intent.putExtra("cpf",adapter.usersData[position]["patient_cpf"])
+
+                        intent.putExtra("image", patientImage[position])
+                        startActivity(intent)
 
                     }
                 })
