@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.numaboaterapia.R
@@ -53,6 +55,27 @@ class PsiPatientsList : AppCompatActivity() {
         }
         binding.patientListRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.patientListRecyclerView.adapter = adapter
+
+        binding.psiPatientTextInputEdit.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    adapter.usersData = patientData
+                    adapter.patientImage = patientImage
+                    adapter.notifyDataSetChanged()
+                }else{
+                    if (s?.length!! >= 3) {
+                        viewModel.setSearchText(s.toString())
+                        viewModel.filterPatientDataAndImages()
+                    }
+
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 
     private fun hideViews(){
@@ -101,6 +124,13 @@ class PsiPatientsList : AppCompatActivity() {
                 })
             }
         }
+        viewModel.searchText.observe(this) { filteredUsersData ->
+            adapter.usersData = viewModel.getFilteredPatientData()
+            adapter.patientImage = viewModel.getFilteredPatientImage().toMutableList()
+            adapter.notifyDataSetChanged()
+
+        }
+
     }
 
     fun fileToByteArray(inputStream: InputStream): ByteArray {
