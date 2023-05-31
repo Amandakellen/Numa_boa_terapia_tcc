@@ -6,11 +6,6 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Início"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/sessoes"
-        android:icon="@drawable/baseline_calendar_today_24"
-        android:title="Pacientes"
-        app:showAsAction="always" />
 
     <item
         android:id="@+id/conta"
