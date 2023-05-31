@@ -125,6 +125,7 @@ class PsiPatientsList : AppCompatActivity() {
                         intent.putExtra("name", adapter.usersData[position]["patient_name"])
                         intent.putExtra("wpp", adapter.usersData[position]["patient_wpp"])
                         intent.putExtra("cpf",adapter.usersData[position]["patient_cpf"])
+                        intent.putExtra("patientId", adapter.usersData[position]["patient_uid"])
 
                         intent.putExtra("image", patientImage[position])
                         startActivity(intent)
