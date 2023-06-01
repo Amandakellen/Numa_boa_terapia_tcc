@@ -59,9 +59,21 @@ class PsiProfileInformation : AppCompatActivity() {
                 psiUser = viewModel.getPsiUser()
                 psiBiographyData = viewModel.getPsiBiography()
                 psiSpecialtiesData = viewModel.getPsiSpecialties()
-                psiImage = viewModel.getImageData()
 
-                val bitmap = BitmapFactory.decodeByteArray(psiImage, 0, psiImage.size)
+                try{
+                    psiImage = viewModel.getImageData()
+                    val bitmap = BitmapFactory.decodeByteArray(psiImage, 0, psiImage.size)
+                    if (bitmap == null) {
+                        binding.psiProfileInformationPhoto.setImageResource(R.mipmap.psi_gray)
+                    } else {
+                        binding.psiProfileInformationPhoto.setImageBitmap(bitmap)
+                    }
+                }catch(e: Exception){
+                    binding.psiProfileInformationPhoto.setImageResource(R.mipmap.psi_gray)
+                }
+
+
+
                 val buttonLabel = psiUser[0].split(" ")[0]
 
 
@@ -73,11 +85,7 @@ class PsiProfileInformation : AppCompatActivity() {
                         psiBiographyData[1] + " - " + psiBiographyData[2]
                     psiProfileInformationTime.text = "Duração:" + psiUser[4] + " minutos"
                     psiProfileInformationWpp.text = "Converse com " + buttonLabel
-                    if (bitmap == null) {
-                        psiProfileInformationPhoto.setImageResource(R.mipmap.psi_gray)
-                    } else {
-                        psiProfileInformationPhoto.setImageBitmap(bitmap)
-                    }
+
                     psiSpecialtiesData.forEach {
                         Log.i("especialidades",it)
                         val chip = Chip(psiProfileInformationChipGroupSpecialties.context)

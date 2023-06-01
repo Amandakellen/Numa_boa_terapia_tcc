@@ -34,6 +34,50 @@ class PsiPatientListRepository {
         }
     }
 
+    fun getPatientInformation(patientId: String): Flow<ArrayList<HashMap<String, String>>> = flow {
+        val userUUID = auth.currentUser!!.uid
+        val docRef = db.collection("psi_patient_list")
+        val query = docRef.
+        whereEqualTo("uId", userUUID).
+        whereEqualTo("patient_uid", patientId)
+
+        val list = ArrayList<HashMap<String, String>>()
+        val documents = query.get().await()
+        for (document in documents) {
+            val psiData = hashMapOf(
+                "patient_name" to document.data.getValue("patient_name").toString(),
+                "patient_email" to document.data.getValue("patient_email").toString(),
+                "patient_wpp" to document.data.getValue("patient_wpp").toString(),
+                "patient_cpf" to document.data.getValue("patient_cpf").toString(),
+                "patient_gender" to document.data.getValue("patient_gender").toString(),
+                "patient_birthday" to document.data.getValue("patient_birthday").toString(),
+                "patient_profession" to document.data.getValue("patient_profession").toString(),
+                "patient_schooling" to document.data.getValue("patient_schooling").toString(),
+                "patient_country" to document.data.getValue("patient_country").toString(),
+                "patient_payment" to document.data.getValue("patient_payment").toString(),
+                "patient_observation" to document.data.getValue("patient_observation").toString(),
+                "patient_address" to document.data.getValue("patient_address").toString(),
+                "patient_number" to document.data.getValue("patient_number").toString(),
+                "patient_neighborhood" to document.data.getValue("patient_neighborhood").toString(),
+                "patient_city" to document.data.getValue("patient_city").toString(),
+                "patient_uf" to document.data.getValue("patient_uf").toString(),
+                "patient_contact_name" to document.data.getValue("patient_contact_name").toString(),
+                "patient_contact_wpp" to document.data.getValue("patient_contact_wpp").toString(),
+                "patient_uid" to document.data.getValue("patient_uid").toString()
+
+
+            )
+
+            list.add(psiData)
+
+            listPatientUid.add(document.data.getValue("patient_uid").toString())
+        }
+        emit(list)
+    }.catch { exception ->
+        Log.e("getCollection", "Error getting collection", exception)
+        emit(ArrayList<HashMap<String, String>>())
+    }.flowOn(Dispatchers.IO)
+
     fun getPatientCollection(): Flow<ArrayList<HashMap<String, String>>> = flow {
         val userUUID = auth.currentUser!!.uid
         val docRef = db.collection("psi_patient_list")

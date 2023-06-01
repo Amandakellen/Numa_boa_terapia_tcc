@@ -42,7 +42,7 @@ class AddPatientToListActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     if(patientExists){
                         Toast.makeText(
-                            applicationContext, "Pacinte já foi cadastrado",
+                            applicationContext, "Paciente já foi cadastrado",
                             Toast.LENGTH_SHORT
                         ).show()
                     }else{

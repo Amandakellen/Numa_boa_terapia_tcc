@@ -290,6 +290,7 @@ Não compartilhamos nenhum outro dado seu.</string>
     <!--Ficha do Paciente-->
     <string name="patient_record">Ficha do paiente</string>
     <string name="patient_data">Dados principais</string>
+    <string name="patient_data_toll_bar">Dados do paciente</string>
 
     <!--pagamento recusado-->
     <string name="payment_refused_label">Pagamento Pendente</string>

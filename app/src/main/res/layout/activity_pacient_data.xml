@@ -5,14 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".appNavigation.psychologist.views.AddPatientToListActivity">
+    tools:context=".appNavigation.psychologist.views.PacientDataActivity">
 
     <com.example.numaboaterapia.views.CustomView.RegisterInformationToolBar
-        android:id="@+id/add_patient_tool_bar"
+        android:id="@+id/patient_data_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:id="@+id/patient_data_progressr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <ScrollView
+        android:id="@+id/patient_data_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
@@ -21,9 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
-                android:id="@+id/information_image"
+                android:id="@+id/patient_data_information_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -34,7 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/information_label"
+                android:id="@+id/patient_data_information_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -47,11 +52,11 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.003"
-                app:layout_constraintStart_toEndOf="@id/information_image"
+                app:layout_constraintStart_toEndOf="@id/patient_data_information_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_name_layout"
+                android:id="@+id/patient_data__name_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -66,14 +71,14 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/information_image"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_information_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_name_edit_text"
+                    android:id="@+id/patient_data_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
@@ -82,7 +87,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_email_layout"
+                android:id="@+id/patient_data_email_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -97,14 +102,14 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_name_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data__name_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_email_edit_text"
+                    android:id="@+id/patient_data_email_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
@@ -114,7 +119,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_gender_layout"
+                android:id="@+id/patient_data_gender_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -129,22 +134,23 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_email_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_email_layout"
                 app:layout_constraintStart_toStartOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_gender_edit_text"
+                    android:id="@+id/patient_data_gender_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_date_layout"
+                android:id="@+id/patient_data_date_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -159,24 +165,25 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_gender_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_gender_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_date_edit_text"
+                    android:id="@+id/patient_data_date_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_wpp_layout"
+                android:id="@+id/patient_data_wpp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -191,22 +198,23 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_date_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_date_layout"
                 app:layout_constraintStart_toStartOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_wpp_edit_text"
+                    android:id="@+id/patient_data_wpp_edit_text"
                     android:layout_width="170dp"
                     android:inputType="text"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_cpf_layout"
+                android:id="@+id/patient_data_cpf_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -222,24 +230,25 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_date_layout"
-                app:layout_constraintStart_toEndOf="@id/add_patient_wpp_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_date_layout"
+                app:layout_constraintStart_toEndOf="@id/patient_data_wpp"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_cpf_edit_text"
+                    android:id="@+id/patient_data_cpf_edit_text"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="11"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_profession_layout"
+                android:id="@+id/patient_data_profession_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -254,23 +263,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_wpp_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_wpp"
                 app:layout_constraintStart_toStartOf="parent"
 
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_profession_edit_text"
+                    android:id="@+id/patient_data_profession_edit_text"
                     android:layout_width="170dp"
                     android:inputType="text"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_schooling_layout"
+                android:id="@+id/patient_data_schooling_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -286,24 +296,25 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_wpp_layout"
-                app:layout_constraintStart_toEndOf="@id/add_patient_profession_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_wpp"
+                app:layout_constraintStart_toEndOf="@id/patient_data_profession_layout"
                 app:layout_constraintEnd_toEndOf="parent"
 
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_schooling_edit_text"
+                    android:id="@+id/patient_data_schooling_edit_text"
                     android:layout_width="170dp"
                     android:inputType="text"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_country_layout"
+                android:id="@+id/patient_data_country_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -318,23 +329,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_profession_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_profession_layout"
                 app:layout_constraintStart_toStartOf="parent"
 
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_country_edit_text"
+                    android:id="@+id/patient_data_country_edit_text"
                     android:layout_width="170dp"
                     android:inputType="text"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_value_layout"
+                android:id="@+id/patient_data_value_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
@@ -351,13 +363,13 @@
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/add_patient_country_layout"
-
-                app:layout_constraintTop_toBottomOf="@id/add_patient_schooling_layout">
+                app:layout_constraintStart_toEndOf="@id/patient_data_country_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_schooling_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_value_edit_text"
+                    android:id="@+id/patient_data_value_edit_text"
                     android:layout_width="170dp"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:textColor="@color/gray" />
 
@@ -365,7 +377,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/add_observation_cardview"
+                android:id="@+id/patient_data_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
@@ -375,16 +387,17 @@
                 android:outlineSpotShadowColor="@color/purple"
                 android:layout_gravity="center"
                 app:cardCornerRadius="8dp"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_country_layout">
+                app:layout_constraintTop_toBottomOf="@id/patient_data_country_layout">
 
                 <EditText
-                    android:id="@+id/observation_edit_text"
+                    android:id="@+id/patient_data_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="32dp"
                     android:layout_marginHorizontal="8dp"
                     android:background="@android:color/transparent"
                     android:maxLength="850"
+                    android:enabled="false"
                     android:hint="@string/adicional"
                     android:textColor="@color/light_gray"
                     android:textColorHint="@color/light_gray" />
@@ -392,7 +405,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/location_image"
+                android:id="@+id/patient_data_location_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -400,10 +413,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_observation_cardview" />
+                app:layout_constraintTop_toBottomOf="@id/patient_data_cardview" />
 
             <TextView
-                android:id="@+id/location_label"
+                android:id="@+id/patient_data_location_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -416,11 +429,11 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.003"
-                app:layout_constraintStart_toEndOf="@id/location_image"
-                app:layout_constraintTop_toBottomOf="@id/add_observation_cardview" />
+                app:layout_constraintStart_toEndOf="@id/patient_data_location_image"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_cardview" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_address_layout"
+                android:id="@+id/patient_data_address_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -435,23 +448,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/location_image"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_location_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_address_edit_text"
+                    android:id="@+id/patient_data_address_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_number_layout"
+                android:id="@+id/patient_data_number_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="100dp"
@@ -466,23 +480,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_address_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_address_layout"
                 app:layout_constraintStart_toStartOf="parent"
 
                 >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_patient_number_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textColor="@color/gray" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/patient_data_number_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:enabled="false"
+                    android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_neighborhood_layout"
+                android:id="@+id/patient_data_neighborhood_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="230dp"
@@ -498,23 +513,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_address_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_address_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/add_patient_number_layout"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_neighborhood_edit_text"
+                    android:id="@+id/patient_data_neighborhood_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_city_layout"
+                android:id="@+id/patient_data_city_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -529,23 +545,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_number_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_number_layout"
                 app:layout_constraintStart_toStartOf="parent"
 
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_city_edit_text"
+                    android:id="@+id/patient_data_city_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_uf_layout"
+                android:id="@+id/patient_data_uf_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="170dp"
@@ -561,24 +578,25 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_number_layout"
-                app:layout_constraintStart_toEndOf="@id/add_patient_city_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_number_layout"
+                app:layout_constraintStart_toEndOf="@id/patient_data_city_layout"
                 app:layout_constraintEnd_toEndOf="parent"
 
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_uf_edit_text"
+                    android:id="@+id/patient_data_uf_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
-                android:id="@+id/contact_image"
+                android:id="@+id/patient_data_contact_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -586,24 +604,27 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_city_layout" />
+                app:layout_constraintTop_toBottomOf="@id/patient_data_city_layout" />
 
             <TextView
-                android:id="@+id/contact_label"
+                android:id="@+id/patient_data_contact_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/chau_philomene_one"
                 android:gravity="center"
                 android:text="@string/contact_label"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/purple"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/contact_image"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_city_layout" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.003"
+                app:layout_constraintStart_toEndOf="@id/patient_data_contact_image"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_city_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_contact_name_layout"
+                android:id="@+id/patient_data_contact_name_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -618,23 +639,24 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/contact_image"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_contact_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_contact_name_edit_text"
+                    android:id="@+id/patient_data_contact_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/add_patient_contact_wpp_layout"
+                android:id="@+id/patient_data_wpp_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:fontFamily="@font/chau_philomene_one"
                 android:layout_width="match_parent"
@@ -649,39 +671,25 @@
                 app:boxStrokeColor="@color/purple"
                 app:helperTextTextColor="@color/gray"
                 app:hintTextColor="@color/purple"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_contact_name_layout"
+                app:layout_constraintTop_toBottomOf="@id/patient_data_contact_name_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_patient_contact_wpp_edit_text"
+                    android:id="@+id/patient_data_contact_wpp_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:enabled="false"
                     android:textColor="@color/gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.example.numaboaterapia.views.CustomView.BotaoArredondadoRoxo
-                android:id="@+id/save_patient_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_patient_contact_wpp_layout"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp"/>
-
-
+            0
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </ScrollView>
-
-
-
 
 </LinearLayout>
