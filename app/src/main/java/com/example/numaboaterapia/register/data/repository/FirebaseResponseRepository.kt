@@ -40,6 +40,19 @@ class FirebaseResponseRepository {
         }
     }
 
+    suspend fun saveDataDiary(
+        collectionPath: String,
+        userData: HashMap<String, Any>
+    ): String {
+        try {
+            userData.put("uId", auth.currentUser!!.uid)
+            db.collection(collectionPath).add(userData)
+            return "Sucesso"
+        } catch (e: Exception) {
+            return "Ocorreu um erro, tente novamente!"
+        }
+    }
+
     fun checkValueInPacientList(patientId: String): Flow<Boolean> = callbackFlow {
         val userUUID = auth.currentUser!!.uid
         val firestore = FirebaseFirestore.getInstance()
