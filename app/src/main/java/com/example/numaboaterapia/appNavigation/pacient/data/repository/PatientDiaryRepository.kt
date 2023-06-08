@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.tasks.await
+import java.util.Locale
 
 
 class PatientDiaryRepository(val colectionName: String) {
@@ -43,20 +44,27 @@ class PatientDiaryRepository(val colectionName: String) {
         val userUUID = auth.currentUser!!.uid
         val docRef = db.collection("patient_diary")
         val query =
-            docRef.whereEqualTo("uId", userUUID).
-            orderBy("diary_date", Query.Direction.DESCENDING)
+            docRef.whereEqualTo("uId", userUUID).orderBy("diary_date", Query.Direction.DESCENDING)
         val dataHashMap = HashMap<Int, Any>()
         val documents = query.get().await()
         var i = 0
         for (document in documents) {
+            val feeling = document.getString("diary_feeling") ?: ""
+            val text = document.getString("diary_text") ?: ""
+            val timestamp = document.getTimestamp("diary_date")
+
+            val diaryDate = java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault())
+                .format(timestamp?.toDate())
+
             val hasMapFirebase = hashMapOf(
-                "diary_feeling" to document.data.getValue("diary_feeling"),
-                "diary_text" to document.data.getValue("diary_text"),
-                "diary_date" to document.data.getValue("diary_date")
+                "diary_feeling" to feeling,
+                "diary_text" to text,
+                "diary_date" to diaryDate
             )
-            textList.add(document.data.getValue("diary_text").toString())
-            dateList.add(document.data.getValue("diary_date").toString())
-            feelingList.add(document.data.getValue("diary_feeling").toString())
+
+            textList.add(text)
+            dateList.add(diaryDate)
+            feelingList.add(feeling)
             dataHashMap[i] = hasMapFirebase
             i++
         }
