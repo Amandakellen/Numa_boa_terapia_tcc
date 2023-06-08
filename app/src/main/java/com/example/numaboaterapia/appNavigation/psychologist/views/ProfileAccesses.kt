@@ -45,6 +45,7 @@ class ProfileAccesses : AppCompatActivity() {
         binding.accessFilterButton.setOnClickListener {
             showDatePicker()
         }
+        binding.profileAccessRecyclerView.clipToPadding = false
         binding.profileAccessRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.profileAccessRecyclerView.adapter = adapter
         setUpRecyclerView()
