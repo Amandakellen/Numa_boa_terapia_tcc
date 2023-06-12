@@ -25,6 +25,9 @@ class PacientDataActivity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
+        binding.patientDataToolBar.getBackButton().setOnClickListener {
+            finish()
+        }
         binding.patientDataToolBar.setTitleText(R.string.patient_data_toll_bar)
         binding.patientDataProgressr.visibility = View.VISIBLE
         val patientId = intent.getStringExtra("patientId")
