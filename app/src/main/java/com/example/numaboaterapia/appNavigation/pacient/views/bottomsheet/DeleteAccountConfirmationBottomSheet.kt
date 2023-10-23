@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.DeleteAccountConfirmationBottomSheetBinding
-import com.example.numaboaterapia.views.MainActivity
+import com.example.numaboaterapia.compose.main.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class DeleteAccountConfirmationBottomSheet : BottomSheetDialogFragment() {

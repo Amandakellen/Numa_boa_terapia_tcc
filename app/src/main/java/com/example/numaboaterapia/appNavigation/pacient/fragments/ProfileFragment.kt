@@ -10,16 +10,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.FragmentProfileBinding
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.RequestOptions
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.MyDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.ShareDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
-import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
-import com.example.numaboaterapia.views.MainActivity
+import com.example.numaboaterapia.compose.main.MainActivity
 import kotlinx.coroutines.launch
 
 

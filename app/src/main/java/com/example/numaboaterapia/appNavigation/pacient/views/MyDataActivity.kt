@@ -1,13 +1,11 @@
 package com.example.numaboaterapia.appNavigation.pacient.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.DeleteAccountBottomSheet
 import com.example.numaboaterapia.databinding.ActivityMyDataBinding
-import com.example.numaboaterapia.views.MainActivity
 
 class MyDataActivity : AppCompatActivity() {
 

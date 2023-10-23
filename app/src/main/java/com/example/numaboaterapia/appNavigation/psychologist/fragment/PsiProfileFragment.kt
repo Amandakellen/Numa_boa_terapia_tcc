@@ -9,19 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.numaboaterapia.R
 import com.example.numaboaterapia.appNavigation.pacient.viewModel.GetFirebaseProfileDataViewModel
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
-import com.example.numaboaterapia.appNavigation.psychologist.data.MyActivityResultContract
-import com.example.numaboaterapia.appNavigation.psychologist.data.MyResult
 import com.example.numaboaterapia.appNavigation.psychologist.viewmodel.GetFirebasePsiMyDataViewModel
 import com.example.numaboaterapia.appNavigation.psychologist.views.MyProfilePsiActivity
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
-import com.example.numaboaterapia.views.MainActivity
+import com.example.numaboaterapia.compose.main.MainActivity
 import kotlinx.coroutines.launch
 
 class PsiProfileFragment : Fragment() {
