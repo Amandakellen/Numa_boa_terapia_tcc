@@ -7,6 +7,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.numaboaterapia.R
 
 
 private val LightColors = lightColorScheme(
@@ -73,6 +76,10 @@ fun NumaBoaTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
+    val customFontFamily = FontFamily(
+        Font(R.font.chau_philomene_one)
+    )
+
     val colors = if (!useDarkTheme) {
         LightColors
     } else {
