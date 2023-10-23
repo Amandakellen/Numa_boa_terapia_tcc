@@ -7,7 +7,7 @@
     android:background="@color/light_purple"
     android:orientation="vertical"
     android:screenOrientation="portrait"
-    tools:context=".compose.main.MainActivity">
+    tools:context=".versionTwo.main.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"

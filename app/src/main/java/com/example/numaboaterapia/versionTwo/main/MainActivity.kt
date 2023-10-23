@@ -1,14 +1,11 @@
-package com.example.numaboaterapia.compose.main
+package com.example.numaboaterapia.versionTwo.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import com.example.numaboaterapia.Login.view.LoginActivity
-import com.example.numaboaterapia.R
 import com.example.numaboaterapia.databinding.ActivityMainBinding
-import com.example.numaboaterapia.register.userType.view.UserType
 import com.example.numaboaterapia.views.CustomView.BotaoArredondadoBranco
 
 class MainActivity : AppCompatActivity() {

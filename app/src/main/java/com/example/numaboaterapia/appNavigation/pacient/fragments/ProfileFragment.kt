@@ -15,7 +15,7 @@ import com.example.numaboaterapia.appNavigation.pacient.views.MyDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.ShareDataActivity
 import com.example.numaboaterapia.appNavigation.pacient.views.bottomsheet.ChangeProfilephotoBottomSheet
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
-import com.example.numaboaterapia.compose.main.MainActivity
+import com.example.numaboaterapia.versionTwo.main.MainActivity
 import kotlinx.coroutines.launch
 
 

@@ -1,4 +1,4 @@
-package com.example.numaboaterapia.compose.main
+package com.example.numaboaterapia.versionTwo.main
 
 sealed class MainStates{
     data class Enabled(val isEnabled: Boolean) : MainStates()

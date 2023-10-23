@@ -1,11 +1,11 @@
-package com.example.numaboaterapia.compose.main.viewModel
+package com.example.numaboaterapia.versionTwo.main.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.numaboaterapia.compose.main.MainActions
-import com.example.numaboaterapia.compose.main.MainEffects
-import com.example.numaboaterapia.compose.main.MainStates
+import com.example.numaboaterapia.versionTwo.main.MainActions
+import com.example.numaboaterapia.versionTwo.main.MainEffects
+import com.example.numaboaterapia.versionTwo.main.MainStates
 import com.example.numaboaterapia.extensions.MutableSingleLiveEvent
 
 class MainViewModel(): ViewModel(), MainActions {

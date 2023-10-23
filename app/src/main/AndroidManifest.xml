@@ -179,7 +179,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".compose.main.MainActivity"
+            android:name=".versionTwo.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

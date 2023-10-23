@@ -17,7 +17,7 @@ import com.example.numaboaterapia.appNavigation.psychologist.views.MyProfilePsiA
 import com.example.numaboaterapia.appNavigation.psychologist.views.PsiMyDataActivity
 import com.example.numaboaterapia.camera.viewmodel.CameraViewModel
 import com.example.numaboaterapia.databinding.FragmentPsiProfileBinding
-import com.example.numaboaterapia.compose.main.MainActivity
+import com.example.numaboaterapia.versionTwo.main.MainActivity
 import kotlinx.coroutines.launch
 
 class PsiProfileFragment : Fragment() {

@@ -39,6 +39,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        compose true
     }
 }
 
@@ -113,4 +114,7 @@ dependencies {
 
     // Material Icons Extended
     implementation("androidx.compose.material:material-icons-extended:1.0.0-beta01")
+    implementation "androidx.compose.material:material:1.0.0"
+
+
 }
