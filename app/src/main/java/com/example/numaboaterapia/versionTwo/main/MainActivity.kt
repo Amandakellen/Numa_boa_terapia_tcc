@@ -6,10 +6,13 @@ import android.os.Bundle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,12 +21,11 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,7 +58,6 @@ class MainActivity : AppCompatActivity() {
                     mainViewModel.sendAction(action)
                 }
 
-
                 MainScreen(state = state, onAction = onAction)
             }
         }
@@ -67,56 +68,37 @@ class MainActivity : AppCompatActivity() {
         state: MainStates,
         onAction: (MainActions.Action) -> Unit
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color(0xFFE1BEE7))
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
             Image(
-                painter = painterResource(id = R.mipmap.ic_logo_foreground),
-                contentDescription = "TODO",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp)
-                    .align(Alignment.CenterHorizontally)
+                painter = painterResource(id = R.mipmap.ic_logo_background), // Substitua pelo ID da sua imagem
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
 
-            Text(
-                text = stringResource(id = R.string.name),
-                color = Color(0xFF9C27B0),
-                fontSize = 48.sp,
-                textAlign = TextAlign.Center,
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 32.dp)
-            )
-
-            Text(
-                text = stringResource(id = R.string.name_subtitle),
-                color = Color(0xFF9C27B0),
-                fontSize = 48.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp)
-            )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                    .fillMaxSize()
+                    .padding(16.dp) // Ajuste o espaçamento conforme necessário
+                    .background(Color.Transparent),
+                verticalArrangement = Arrangement.Bottom, // Alinhar os elementos na parte inferior
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                CustomWhiteButton(
+                    text = "Cadastro",
+                    onClick = { onAction(MainActions.Action.ClickButton) }
+
+                )
+                Spacer(modifier = Modifier.height(16.dp))
                 CustomWhiteButton(
                     text = "Entrar",
                     onClick = { onAction(MainActions.Action.ClickButton) }
                 )
-
-                CustomWhiteButton(
-                    text = "Cadastro",
-                    onClick = { onAction(MainActions.Action.ClickButton) }
-                )
             }
+
         }
     }
 
@@ -128,5 +110,4 @@ class MainActivity : AppCompatActivity() {
             onAction = { action -> /* Define ação aqui */ }
         )
     }
-
 }

@@ -26,18 +26,13 @@ fun CustomWhiteButton(
 ) {
     Card(
         modifier = Modifier
-            .fillMaxSize()
             .padding(10.dp),
         backgroundColor = Color.White,
         elevation = 2.dp,
         shape = MaterialTheme.shapes.medium,
         onClick = onClick
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxSize()
-        ) {
+        Column{
             Text(
                 text = text,
                 fontSize = 16.sp,
